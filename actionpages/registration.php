@@ -31,14 +31,15 @@ if($row = mysqli_fetch_array($result)) {
       echo ("registered");
     } 
 else {
-   $sql = "INSERT INTO `voters`( `name`, `gender`, `voteid`, `phone`,'fingerid','faceid') 
-	VALUES ('$name','$gender','$voteId','$phone','$fingerId','$faceId')";
+  
+$sql = "INSERT INTO voters (Name,gender,voteid, phone,fingerid,faceid)
+VALUES ('".$name."','".$gender."','".$voteId."','".$phone."','".$fingerId."','".$faceId."')";
 
 if (mysqli_query($link, $sql)) {
 		echo ("success");
 	} 
 	else {
-	echo ("error: ".mysql_error($link));
+	echo ("error: ".mysqli_error($link));
 	}
     }
 
