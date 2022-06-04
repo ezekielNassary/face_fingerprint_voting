@@ -19,10 +19,10 @@ $sql="CREATE TABLE IF NOT EXISTS `voters` (
 
 CONSTRAINT UC_voters UNIQUE (id)
 );";
-if (mysqli_query($con, $sql)) {
+if (mysqli_query($link, $sql)) {
 echo "table created";
 } else {
-echo "Error: " . mysqli_error($con);
+echo "Error: " . mysqli_error($link);
 }
 
 $sql="SELECT * FROM voters where fingerid='$fingerId'";
