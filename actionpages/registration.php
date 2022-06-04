@@ -20,9 +20,9 @@ $sql="CREATE TABLE IF NOT EXISTS `voters` (
 CONSTRAINT UC_voters UNIQUE (id)
 );";
 if (mysqli_query($link, $sql)) {
-echo "table created";
+//echo "table created";
 } else {
-echo "Error: " . mysqli_error($link);
+//echo "Error: " . mysqli_error($link);
 }
 
 $sql="SELECT * FROM voters where fingerid='$fingerId'";
@@ -36,7 +36,7 @@ $sql = "INSERT INTO voters (Name,gender,voteid, phone,fingerid,faceid)
 VALUES ('".$name."','".$gender."','".$voteId."','".$phone."','".$fingerId."','".$faceId."')";
 
 if (mysqli_query($link, $sql)) {
-		echo ("success");
+	echo ("success");
 	} 
 	else {
 	echo ("error: ".mysqli_error($link));
