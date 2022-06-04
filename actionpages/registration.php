@@ -8,14 +8,31 @@
     $fingerId = mysqli_real_escape_string($link, $_POST['fingerId']);
     $faceId = mysqli_real_escape_string($link, $_POST['faceId']);
 
-$sql="SELECT * FROM admin_list where Email='$email'";
+$sql="CREATE TABLE IF NOT EXISTS `voters` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`name` varchar(50) NOT NULL,
+`gender` varchar(50),
+`voteid` varchar(50),
+`phone` varchar(50) ,
+`fingerid` varchar(50),
+`faceid` varchar(50),
+
+CONSTRAINT UC_voters UNIQUE (id)
+);";
+if (mysqli_query($con, $sql)) {
+echo "table created";
+} else {
+echo "Error: " . mysqli_error($con);
+}
+
+$sql="SELECT * FROM voters where fingerid='$fingerId'";
     $result = mysqli_query($link,$sql);
 if($row = mysqli_fetch_array($result)) {
       echo ("registered");
     } 
 else {
-   $sql = "INSERT INTO `admin_list`( `Username`, `Password`, `Phone`, `Email`) 
-	VALUES ('$name','$pass','$phone','$email')";
+   $sql = "INSERT INTO `voters`( `name`, `gender`, `voteid`, `phone`,'fingerid','faceid') 
+	VALUES ('$name','$gender','$voteId','$phone','$fingerId','$faceId')";
 
 if (mysqli_query($link, $sql)) {
 		echo ("success");
