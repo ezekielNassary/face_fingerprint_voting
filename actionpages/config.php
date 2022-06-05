@@ -4,10 +4,10 @@ $db_pass = "";
 $db_server = "localhost";
 $conn = mysqli_connect($db_server,$db_user,$db_pass);
 if(!$conn){
-	echo  "connection error";
+	//echo  "connection error";
 }
 else{
-echo  "connection succesful ";
+//echo  "connection succesful ";
 }
 $sql = "CREATE DATABASE voting_system";
 	 $result = mysqli_query($conn,$sql);

@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
     require_once "config.php"; 
   
     $name = mysqli_real_escape_string($link, $_POST['name']);
@@ -10,12 +11,12 @@
 
 $sql="CREATE TABLE IF NOT EXISTS `voters` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
-`name` varchar(50) NOT NULL,
-`gender` varchar(50),
-`voteid` varchar(50),
-`phone` varchar(50) ,
-`fingerid` varchar(50),
-`faceid` varchar(50),
+`Name` varchar(50) NOT NULL,
+`Gender` varchar(50),
+`vote_Id` varchar(50),
+`Phone` varchar(50) ,
+`Fingerid` varchar(50),
+`Faceid` varchar(50),
 
 CONSTRAINT UC_voters UNIQUE (id)
 );";
@@ -32,7 +33,7 @@ if($row = mysqli_fetch_array($result)) {
     } 
 else {
   
-$sql = "INSERT INTO voters (Name,gender,voteid, phone,fingerid,faceid)
+$sql = "INSERT INTO voters (Name,Gender,Vote_Id, Phone,Fingerid,Faceid)
 VALUES ('".$name."','".$gender."','".$voteId."','".$phone."','".$fingerId."','".$faceId."')";
 
 if (mysqli_query($link, $sql)) {
