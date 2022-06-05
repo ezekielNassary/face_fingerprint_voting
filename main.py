@@ -14,8 +14,14 @@ import asyncio
 from threading import Thread
 import subprocess
 
-import websockets
+import time
+import board
+#import busio
+from digitalio import DigitalInOut, Direction
+import adafruit_fingerprint
 
+led = DigitalInOut(board.D13)
+led.direction = Direction.OUTPUT
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(CURRENT_DIR))
@@ -38,20 +44,9 @@ clients = set()
 async  def index(request):
     return FileResponse(st_abs_file_path + "index.html")
 
-ports = get_serial_ports()
+uart = serial.Serial("/dev/ttyS0", baudrate=57600, timeout=1)
 
-_port = None
-serial_port = None
-for port, desc, hwid in sorted(ports):
-    logger.info("{}: {} [{}]".format(port, desc, hwid))
-    if "USB-Serial" in desc:
-        _port = port
-        break
-
-
-
-serial_port = serial.Serial(_port, baudrate=9600, timeout=0)
-
+finger = adafruit_fingerprint.Adafruit_Fingerprint(uart)
 
 @app.websocket_route("/ws")
 async def websocket_endpoint(websocket: WebSocket):
@@ -69,21 +64,16 @@ async def websocket_endpoint(websocket: WebSocket):
 
             async def read_serial():
                 while is_running:
+                    print("----------------")
+                    if finger.read_templates() != adafruit_fingerprint.OK:
+                        raise RuntimeError("Failed to read templates")
+                    print("Fingerprint templates:", finger.templates)
+                    print("e) enroll print")
+                    print("f) find print")
+                    print("d) delete print")
+                    print("----------------")
 
-                    try:
-                        if serial_port.inWaiting() > 0:
-                            data = serial_port.readline()
-                            data = data.decode()
-                            await websocket.send_text(data)
-                            logger.info("Received Data from Serial Port: {}".format(data))
-                            serial_port.flushInput()
-                    except Exception as e:
-                        try:
-                            if serial_port is not None and not serial_port.is_open:
-                                serial_port.open()
-                        except Exception as e:
-                            pass
-                        logger.error(f"Error in sending data {e}", exc_info=True)
+                    
             
             message = await websocket.receive_text()
             if message == 'R':
