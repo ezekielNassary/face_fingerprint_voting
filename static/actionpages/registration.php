@@ -1,5 +1,6 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
     require_once "config.php"; 
   
     $name = mysqli_real_escape_string($link, $_POST['name']);
