@@ -121,7 +121,7 @@
                       <div class="card-body">
                         <h4 class="card-title">Tundu Antipas Lissu</h4>
                         <p class="card-text">CHADEMA</p>
-                       <button type="button" class="btn btn-danger" id="vote-cdm">VOTE</button>
+                        <button type="button" class="btn btn-danger" id="vote-cdm">VOTE</button>
                       </div>
                     </div>
                   </td>
@@ -186,10 +186,13 @@
       var finger_status = document.getElementById('finger-print-status');
       var start_fingerprint = document.getElementById('start-fingerprint');
       var input_name = document.getElementById('input_name');
-      var voteccm=document.getElementById("vote-ccm");
-      var votecdm=document.getElementById("vote-cdm");
-      var voteact=document.getElementById("vote-act");
+      var voteccm = document.getElementById("vote-ccm");
+      var votecdm = document.getElementById("vote-cdm");
+      var voteact = document.getElementById("vote-act");
       var fingerId = "";
+      var vote = 0;
+      var party = "";
+      var faceId = "";
       var server_status = document.getElementById('serverStatus');
       $("#vote-ccm").prop("disabled", true);
       $("#vote-cdm").prop("disabled", true);
@@ -205,7 +208,7 @@
         fingerId = data.id;
         $('#finger-print-status').html(message);
         $('#finger_id').html(fingerId);
-        if(message=="Success"){
+        if (message == "Success") {
           $("#vote-ccm").prop("disabled", false);
           $("#vote-cdm").prop("disabled", false);
           $("#vote-act").prop("disabled", false);
@@ -213,20 +216,73 @@
 
       }
       voteccm.addEventListener('click', function () {
+        party = "ccm";
+        vote();
         $("#vote-ccm").prop("disabled", true);
-      $("#vote-cdm").prop("disabled", true);
-      $("#vote-act").prop("disabled", true);
+        $("#vote-cdm").prop("disabled", true);
+        $("#vote-act").prop("disabled", true);
+        party = "";
       });
       votecdm.addEventListener('click', function () {
+        party = "chadema";
+        vote();
         $("#vote-ccm").prop("disabled", true);
-      $("#vote-cdm").prop("disabled", true);
-      $("#vote-act").prop("disabled", true);
+        $("#vote-cdm").prop("disabled", true);
+        $("#vote-act").prop("disabled", true);
+        party = "";
       });
       voteact.addEventListener('click', function () {
+        party = "act";
+        vote();
         $("#vote-ccm").prop("disabled", true);
-      $("#vote-cdm").prop("disabled", true);
-      $("#vote-act").prop("disabled", true);
+        $("#vote-cdm").prop("disabled", true);
+        $("#vote-act").prop("disabled", true);
+        party = "";
       });
+
+      function vote() {
+        var ccm = 0;
+        var cdm = 0;
+        var act = 0;
+
+        if (party == "chadema") {
+          cdm = 1;
+        }
+        if (party == "ccm") {
+          ccm = 1;
+        }
+        if (party == "act") {
+          act = 1;
+        }
+        if (fingerId == "") {
+          alert("Finger Id is not given");
+          return;
+        } else
+          $.ajax({
+            type: "POST",
+            url: "http://192.168.36.191/face_fingerprint_voting/static/actionpages/vote.php",
+            data: {
+              ccm: ccm,
+              cdm: cdm,
+              act: act,
+              phone: phone,
+              fingerId: fingerId,
+              faceId: faceId
+            },
+            cache: false,
+            success: function (data) {
+              alert(data);
+              if (data == "success") {
+
+              } else {
+
+              }
+            },
+            error: function (xhr, status, error) {
+              // alert(error);
+            }
+          });
+      }
 
       start_fingerprint.addEventListener('click', function () {
         socket.send("f");
