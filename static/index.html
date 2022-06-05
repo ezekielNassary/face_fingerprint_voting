@@ -186,6 +186,9 @@
       var finger_status = document.getElementById('finger-print-status');
       var start_fingerprint = document.getElementById('start-fingerprint');
       var input_name = document.getElementById('input_name');
+      var voteccm=document.getElementById("vote-ccm");
+      var votecdm=document.getElementById("vote-cdm");
+      var voteact=document.getElementById("vote-act");
       var fingerId = "";
       var server_status = document.getElementById('serverStatus');
       $("#vote-ccm").prop("disabled", true);
@@ -209,17 +212,17 @@
         }
 
       }
-      $("#vote-ccm").addEventListener('click', function () {
+      voteccm.addEventListener('click', function () {
         $("#vote-ccm").prop("disabled", true);
       $("#vote-cdm").prop("disabled", true);
       $("#vote-act").prop("disabled", true);
       });
-      $("#vote-cdm").addEventListener('click', function () {
+      votecdm.addEventListener('click', function () {
         $("#vote-ccm").prop("disabled", true);
       $("#vote-cdm").prop("disabled", true);
       $("#vote-act").prop("disabled", true);
       });
-      $("#vote-act").addEventListener('click', function () {
+      voteact.addEventListener('click', function () {
         $("#vote-ccm").prop("disabled", true);
       $("#vote-cdm").prop("disabled", true);
       $("#vote-act").prop("disabled", true);
