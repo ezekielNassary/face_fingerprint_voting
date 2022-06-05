@@ -209,7 +209,21 @@
         }
 
       }
-
+      $("#vote-ccm").addEventListener('click', function () {
+        $("#vote-ccm").prop("disabled", true);
+      $("#vote-cdm").prop("disabled", true);
+      $("#vote-act").prop("disabled", true);
+      });
+      $("#vote-cdm").addEventListener('click', function () {
+        $("#vote-ccm").prop("disabled", true);
+      $("#vote-cdm").prop("disabled", true);
+      $("#vote-act").prop("disabled", true);
+      });
+      $("#vote-act").addEventListener('click', function () {
+        $("#vote-ccm").prop("disabled", true);
+      $("#vote-cdm").prop("disabled", true);
+      $("#vote-act").prop("disabled", true);
+      });
 
       start_fingerprint.addEventListener('click', function () {
         socket.send("f");
