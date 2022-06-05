@@ -80,7 +80,7 @@
                   </div>  -->
                   
                   <h4 class="p-3">Finger Print Verification</h4>
-
+                  <button type="button" class="btn btn-danger " id="start-fingerprint">Start</button>
 
                   <div class=" p-3 mb-2  bg-danger text-light text-center w-100">
                     <h3 id="placeFinger">No Finger Detected</h3>
@@ -136,7 +136,9 @@
      // $('#placeFinger').html("wait..");
     //});
 
-
+   $('#start-fingerprint').click(function (e) {    
+  socket.send("R");
+     });
 
     $('#submit-btn').click(function (e) {
       e.preventDefault();
