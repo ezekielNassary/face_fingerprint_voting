@@ -37,7 +37,7 @@
 
 
 
-          <div class="col-lg-4">
+          <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
                 
@@ -69,10 +69,10 @@
                 </div>
             
               </div>
-              
+              <a href="http://localhost:5555/static/register.html" id="reg" class="btn btn-success">Click here to register</a>
             </div>
           </div>
-          <div class="col-lg-8">
+          <div class="col-lg-6">
             <p><b>CANDIDATES</b></p>
             <table class="table">
               <thead>
@@ -157,7 +157,7 @@
 
 
     <script>
-      var socket = new WebSocket('ws:localhost:8000/ws');
+      var socket = new WebSocket('ws:localhost:5555/ws');
       var finger_status = document.getElementById('finger-print-status');
       var vote_btn = document.getElementById('vote-btn');
       var input_name = document.getElementById('input_name');
