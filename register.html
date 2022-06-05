@@ -25,84 +25,84 @@
     <div class="row ">
       <div class="col-md-3"></div>
       <div class="col-md-6 shadow-sm p-3 mb-5 bg-white rounded">
-         <h3 class="text-center p-3">ELECTRONIC VOTING</h3>
-    <form id="register-form">
-      <div>
-        <p class=" bg-warning p-2 text-center">REGISTER</p>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-lg-12">Server Status: <span id="serverStatus">Not connected </span></div>
-      </div>
-      <hr>
+        <h3 class="text-center p-3">ELECTRONIC VOTING</h3>
+        <form id="register-form">
+          <div>
+            <p class=" bg-warning p-2 text-center">REGISTER</p>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-lg-12">Server Status: <span id="serverStatus">Not connected </span></div>
+          </div>
+          <hr>
 
-      <div class="mb-3 mt-3">
+          <div class="mb-3 mt-3">
 
-        <label for="name" class="form-label"> Full Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter Full Name" name="name" required>
-      </div>
-      <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
-        <div class="col-sm-10">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="Male" checked>
-            <label class="form-check-label" for="gridRadios1">
-              Male
-            </label>
+            <label for="name" class="form-label"> Full Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter Full Name" name="name" required>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="Female">
-            <label class="form-check-label" for="gridRadios2">
-              Female
-            </label>
-          </div>
+          <fieldset class="row mb-3">
+            <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="Male" checked>
+                <label class="form-check-label" for="gridRadios1">
+                  Male
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="Female">
+                <label class="form-check-label" for="gridRadios2">
+                  Female
+                </label>
+              </div>
 
-        </div>
-      </fieldset>
-      <div class="mb-3 mt-3">
-        <label for="voteid" class="form-label"> Vote ID</label>
-        <input type="text" class="form-control" id="voteId" placeholder="Enter vote ID" name="voteID" required>
-      </div>
-      <div class="mb-3 mt-3">
-        <label for="phone" class="form-label">Phone:</label>
-        <input type="phone" class="form-control" id="phone" placeholder="Enter phone" name="phone">
-      </div>
-
-      <div class="mb-3 mt-3 p-3">
-        <div class="row">
-          <div class="col-md-12 "> 
-           <div class="card ">
-             <h4 class="p-3">Finger Print Verification</h4>
-      
-        
-          <div class=" p-3 mb-2  bg-danger text-light text-center w-100" >
-            <h3 id="placeFinger">No Finger Detected</h3>
-          </div>
-         
-           </div>
-          </div>
-          <div class="col-md-12 ">
-            <div class="card h-100">
-              <h4 class="p-3">Face Recognition</h4>
-          
-          <div class=" p-3 bg-danger text-light text-center w-100">
-            <h3 id="placeFinger">Not Recognized</h3>
-          </div>
-      
             </div>
+          </fieldset>
+          <div class="mb-3 mt-3">
+            <label for="voteid" class="form-label"> Vote ID</label>
+            <input type="text" class="form-control" id="voteId" placeholder="Enter vote ID" name="voteID" required>
           </div>
-        </div>
-        
-        
-      </div>
-      <button type="button" class="btn btn-primary w-100" id="submit-btn">Register</button>
+          <div class="mb-3 mt-3">
+            <label for="phone" class="form-label">Phone:</label>
+            <input type="phone" class="form-control" id="phone" placeholder="Enter phone" name="phone">
+          </div>
 
-    </form>
+          <div class="mb-3 mt-3 p-3 bg-success">
+            <div class="row">
+              <div class="col-md-12 ">
+                <div class="card p-2">
+                  <h4 class="p-3">Finger Print Verification</h4>
+
+
+                  <div class=" p-3 mb-2  bg-danger text-light text-center w-100">
+                    <h3 id="placeFinger">No Finger Detected</h3>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-md-12 ">
+                <div class="card p-2">
+                  <h4 class="p-3">Face Recognition</h4>
+
+                  <div class=" p-3 bg-danger text-light text-center w-100">
+                    <h3 id="placeFinger">Not Recognized</h3>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <button type="button" class="btn btn-primary w-100" id="submit-btn">Register</button>
+
+        </form>
       </div>
       <div class="col-md-3"></div>
     </div>
   </div>
- 
+
 
   <script>
     var socket = new WebSocket('ws:localhost:5555/ws');
@@ -120,14 +120,14 @@
       res = res.replace(/\s/g, '');
       var message = ``;
       $('#placeFinger').html(res);
-     
+
     }
 
     sendId.addEventListener('click', function () {
-        $('#sendId').prop('disabled', true);
+      $('#sendId').prop('disabled', true);
       socket.send("e");
       $('#placeFinger').html("wait..");
-      });
+    });
 
 
 
@@ -154,7 +154,7 @@
         type: "POST",
         url: "http://192.168.2.118/voting_system/actionpages/registration.php",
         data: {
-          name: name, 
+          name: name,
           gender: gender,
           voteId: voteId,
           phone: phone,
