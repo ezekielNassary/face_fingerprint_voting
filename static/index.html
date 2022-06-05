@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Voting System</title>
- 
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
@@ -41,64 +41,60 @@
             <div class="row">
               <div class="col-lg-12 p-3">Server Status: <span id="serverStatus">Not connected </span></div>
             </div>
-            
-            
-            
+
+
+
             <div class="mb-3 mt-3 p-3 bg-secondary">
-            <div class="row">
-              <div class="col-md-12 ">
-                <div class="card p-2">
-                  <!-- <div class="input-group mb-3 mt-3">
+              <div class="row">
+                <div class="col-md-12 ">
+                  <div class="card p-2">
+                    <!-- <div class="input-group mb-3 mt-3">
                     <input type="number" class="form-control" id="input_Id" placeholder="Enter finger id (1-127)">
                     <div class="input-group-append">
                       <button class="btn btn-secondary" type="submit">Send</button>
                     </div>
                   </div>  -->
-                  
-                  <h4 class="p-3">Finger Print Verification</h4>
-    <button type="button" class="btn btn-warning" id="start-fingerprint">Start</button>
 
-                  <div class=" p-3 mb-2  bg-danger text-light text-center w-100">
-                    <h3 id="finger-print-status"><div class="spinner-grow spinner-grow-sm text-warning"></div></h3>
+                    <h4 class="p-3">Finger Print Verification</h4>
+                    <button type="button" class="btn btn-warning" id="start-fingerprint">Start</button>
+
+                    <div class=" p-3 mb-2  bg-danger text-light text-center w-100">
+                      <h3 id="finger-print-status">
+                        <div class="spinner-grow spinner-grow-sm text-warning"></div>
+                      </h3>
+                    </div>
+                    <p id="fingerid"></p>
                   </div>
-                     <p id="fingerid"></p>
+                </div>
+                <div class="col-md-12 ">
+                  <div class="card p-2">
+                    <h4 class="p-3">Face Recognition</h4>
+                    <button type="button" class="btn btn-warning" id="start-face">Start</button>
+                    <div class=" p-3 bg-danger text-light text-center w-100">
+                      <h3 id="face-status">
+                        <div class="spinner-grow spinner-grow-sm text-warning"></div>
+                      </h3>
+                    </div>
+
+                  </div>
                 </div>
               </div>
-              <div class="col-md-12 ">
-                <div class="card p-2">
-                  <h4 class="p-3">Face Recognition</h4>
-<button type="button" class="btn btn-warning" id="start-face">Start</button>
-                  <div class=" p-3 bg-danger text-light text-center w-100">
-                    <h3 id="face-status"><div class="spinner-grow spinner-grow-sm text-warning"></div></h3>
-                  </div>
 
-                </div>
-              </div>
             </div>
 
-          </div>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             <div class="card">
               <div class="card-body">
-              
+
               </div>
             </div>
             <div class="card">
               <div class="card-body">
-                
-              
-            
+
+
+
               </div>
-              <a href="http://localhost:5555/static/register.html" id="reg" class="btn btn-success">Click here to register</a>
+              <a href="http://localhost:5555/static/register.html" id="reg" class="btn btn-success">Click here to
+                register</a>
             </div>
           </div>
           <div class="col-lg-6">
@@ -112,7 +108,7 @@
                       <div class="card-body">
                         <h4 class="card-title">Samia Hassan Suluhu</h4>
                         <p class="card-text">CCM</p>
-                        <a href="javascript:void(0)" id="vote-ccm" class="btn btn-success">VOTE</a>
+                        <button type="button" class="btn btn-warning" id="vote-ccm">VOTE</button>
                       </div>
                     </div>
                   </td>
@@ -125,7 +121,7 @@
                       <div class="card-body">
                         <h4 class="card-title">Tundu Antipas Lissu</h4>
                         <p class="card-text">CHADEMA</p>
-                        <a href="javascript:void(0)" id="vote-cdm" class="btn btn-danger">VOTE</a>
+                       <button type="button" class="btn btn-danger" id="vote-cdm">VOTE</button>
                       </div>
                     </div>
                   </td>
@@ -138,7 +134,7 @@
                       <div class="card-body">
                         <h4 class="card-title">Zitto Kabwe</h4>
                         <p class="card-text">ACT WAZALENDO</p>
-                        <a href="javascript:void(0)" id="vote-act" class="btn btn-primary">VOTE</a>
+                        <button type="button" class="btn btn-primary" id="vote-act">VOTE</button>
                       </div>
                     </div>
                   </td>
@@ -186,12 +182,15 @@
 
 
     <script>
-      var socket = new WebSocket('ws:localhost:5555/ws');
+      var socket = new WebSocket('ws:192.168.36.45:5555/ws');
       var finger_status = document.getElementById('finger-print-status');
       var start_fingerprint = document.getElementById('start-fingerprint');
       var input_name = document.getElementById('input_name');
-      var fingerId="";
+      var fingerId = "";
       var server_status = document.getElementById('serverStatus');
+      $("#vote-ccm").prop("disabled", true);
+      $("#vote-cdm").prop("disabled", true);
+      $("#vote-act").prop("disabled", true);
       socket.onopen = function () {
         console.log('Connected to server');
         $('#serverStatus').html('Server Connected');
@@ -200,10 +199,15 @@
       socket.onmessage = function (event) {
         var data = JSON.parse(event.data);
         var message = data.command;
-        fingerId=data.id;
+        fingerId = data.id;
         $('#finger-print-status').html(message);
         $('#finger_id').html(fingerId);
-        
+        if(message=="Success"){
+          $("#vote-ccm").prop("disabled", false);
+          $("#vote-cdm").prop("disabled", false);
+          $("#vote-act").prop("disabled", false);
+        }
+
       }
 
 
