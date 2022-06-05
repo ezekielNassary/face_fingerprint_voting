@@ -87,31 +87,14 @@ async def websocket_endpoint(websocket: WebSocket):
             
             message = await websocket.receive_text()
             if message == 'R':
-                try:
-                    logger.info(f"Received message Socket {message}", exc_info=True)
-                    serial_port.write(bytes(message, 'utf-8'))
-                    serial_port.flush()
-                    data = serial_port.readline()
-                    data = data.decode()
-                    if data != '':
-                        logger.info("Received Data from Serial Port: {}".format(data))
-                    serial_port.flushInput()                    
-                except Exception as e:
-                    logger.error(f"Error in sending data {e}", exc_info=True)
+                logger.info(f"Start Training new dataset")
+                subprocess.Popen(["python", "fingerprintAdafruit.py"])
             else:
                 logger.info(f"Received message from Socket {message}", exc_info=True)
                 
                 if message == 'train':
                     logger.info(f"Start Training new dataset")
                     subprocess.Popen(["python", "training.py"])
-            
-            if message.isnumeric():
-                try:
-                    serial_port.write(bytes(message, 'utf-8'))
-                    serial_port.flush()
-                    logger.info(f"Sendig message {message}")
-                except Exception as e:
-                    logger.error(f"Error in sending data {e}", exc_info=True)
             
 
     except Exception as e:
