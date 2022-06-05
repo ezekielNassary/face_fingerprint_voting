@@ -217,7 +217,7 @@
       }
       voteccm.addEventListener('click', function () {
         party = "ccm";
-        vote();
+        voting(party);
         $("#vote-ccm").prop("disabled", true);
         $("#vote-cdm").prop("disabled", true);
         $("#vote-act").prop("disabled", true);
@@ -225,7 +225,7 @@
       });
       votecdm.addEventListener('click', function () {
         party = "chadema";
-        vote();
+        voting(party);
         $("#vote-ccm").prop("disabled", true);
         $("#vote-cdm").prop("disabled", true);
         $("#vote-act").prop("disabled", true);
@@ -233,7 +233,7 @@
       });
       voteact.addEventListener('click', function () {
         party = "act";
-        vote();
+        voting(party);
         $("#vote-ccm").prop("disabled", true);
         $("#vote-cdm").prop("disabled", true);
         $("#vote-act").prop("disabled", true);
@@ -252,7 +252,7 @@
         $('#serverStatus').html('Server Disconneted');
       };
 
-      function vote() {
+      function voting(party) {
         var ccm = 0;
         var cdm = 0;
         var act = 0;
