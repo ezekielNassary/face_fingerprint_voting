@@ -240,6 +240,18 @@
         party = "";
       });
 
+     
+
+      start_fingerprint.addEventListener('click', function () {
+        socket.send("f");
+      });
+
+
+      socket.onclose = function () {
+        console.log('Network Disconneted');
+        $('#serverStatus').html('Server Disconneted');
+      };
+
       function vote() {
         var ccm = 0;
         var cdm = 0;
@@ -257,7 +269,7 @@
         if (fingerId == "") {
           alert("Finger Id is not given");
           return;
-        } else
+        } else{
           $.ajax({
             type: "POST",
             url: "http://192.168.36.191/face_fingerprint_voting/static/actionpages/vote.php",
@@ -282,18 +294,8 @@
               // alert(error);
             }
           });
+        }
       }
-
-      start_fingerprint.addEventListener('click', function () {
-        socket.send("f");
-      });
-
-
-      socket.onclose = function () {
-        console.log('Network Disconneted');
-        $('#serverStatus').html('Server Disconneted');
-      };
-
     </script>
 
 </body>
