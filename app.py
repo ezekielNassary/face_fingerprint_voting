@@ -28,7 +28,7 @@ ports = get_serial_ports()
 
 script_dir = os.path.dirname(__file__)
 st_abs_file_path = os.path.join(script_dir, "static/")
-# app.mount("/static", StaticFiles(directory=st_abs_file_path, html=True), name="static")
+app.mount("/static", StaticFiles(directory=st_abs_file_path, html=True), name="static")
 
 
 clients = set()
