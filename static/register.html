@@ -124,8 +124,7 @@
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
       var res = data.command;
-      res = res.replace(/\s/g, '');
-      var message = ``;
+      //res = res.replace(/\s/g, '');
       $('#placeFinger').html(res);
 
     }
@@ -137,7 +136,7 @@
     //});
 
    $('#start-fingerprint').click(function (e) {    
-  socket.send("R");
+  socket.send("e");
      });
 
     $('#submit-btn').click(function (e) {
