@@ -72,10 +72,13 @@ async def websocket_endpoint(websocket: WebSocket):
             if c == "e":
                 await enroll_finger(get_num(),websocket)
             if c == "f":
-                if get_fingerprint():
+                if await get_fingerprint(websocket):
                     print("Detected #", finger.finger_id, "with confidence", finger.confidence)
+                    await websocket.send_json({"command": "Success"})
+                    await websocket.send_json({"id": finger.finger_id})
                 else:
                     print("Finger not found")
+                    await websocket.send_json({"command": "Finger not found"})
             if c == "d":
                 if finger.delete_model(get_num()) == adafruit_fingerprint.OK:
                     print("Deleted!")
@@ -85,20 +88,21 @@ async def websocket_endpoint(websocket: WebSocket):
     except Exception as e:
         logger.error(f"Error message f{e}", exc_info=True)
         # await websocket.close()
-def get_fingerprint():
+async def get_fingerprint(websocket):
     """Get a finger print image, template it, and see if it matches!"""
     print("Waiting for image...")
+    await websocket.send_json({"command": "Place finger on sensor"})
     while finger.get_image() != adafruit_fingerprint.OK:
         pass
-    print("Templating...")
     if finger.image_2_tz(1) != adafruit_fingerprint.OK:
         return False
     print("Searching...")
+    await websocket.send_json({"command": "Searching....."})
     if finger.finger_search() != adafruit_fingerprint.OK:
         return False
     return True
 # pylint: disable=too-many-branches
-def get_fingerprint_detail():
+async def get_fingerprint_detail(websocket):
     """Get a finger print image, template it, and see if it matches!
     This time, print out each error instead of just returning on failure"""
     print("Getting image...", end="", flush=True)
@@ -134,11 +138,14 @@ def get_fingerprint_detail():
     # pylint: disable=no-else-return
     # This block needs to be refactored when it can be tested.
     if i == adafruit_fingerprint.OK:
+        await websocket.send_json({"command": "Success"})
         print("Found fingerprint!")
+               
         return True
     else:
         if i == adafruit_fingerprint.NOTFOUND:
             print("No match found")
+            await websocket.send_json({"command": "No match found....."})
         else:
             print("Other error")
         return False
@@ -188,7 +195,7 @@ async def enroll_finger(location,websocket: WebSocket):
 
         if fingerimg == 1:
             print("Remove finger")
-            await websocket.send_json({"command": "Place Your Finger"})
+            await websocket.send_json({"command": "Remove your finger"})
             time.sleep(1)
             while i != adafruit_fingerprint.NOFINGER:
                 i = finger.get_image()

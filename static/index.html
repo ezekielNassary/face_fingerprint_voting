@@ -26,7 +26,7 @@
 
           </div>
           <div class="col-lg-6">
-            <img src="static/img/tume.jpg" class="rounded-circle w-50 p-3" alt="Tume Tanzania">
+            <img src="img/tume.jpg" class="rounded-circle w-50 p-3" alt="Tume Tanzania">
           </div>
           <div class="col-lg-3">
 
@@ -41,35 +41,61 @@
             <div class="row">
               <div class="col-lg-12 p-3">Server Status: <span id="serverStatus">Not connected </span></div>
             </div>
-            <div class="card">
-              <div class="card-body">
-                
-                <p class="mt-2">Place Your Finger To Vote</p>
-                <hr>
+            
+            
+            
+            <div class="mb-3 mt-3 p-3 bg-secondary">
+            <div class="row">
+              <div class="col-md-12 ">
                 <div class="card p-2">
-                  <h4 class="p-3"><b class="text-danger">FINGERPRINT CHECK</b></h4>
+                  <!-- <div class="input-group mb-3 mt-3">
+                    <input type="number" class="form-control" id="input_Id" placeholder="Enter finger id (1-127)">
+                    <div class="input-group-append">
+                      <button class="btn btn-secondary" type="submit">Send</button>
+                    </div>
+                  </div>  -->
+                  
+                  <h4 class="p-3">Finger Print Verification</h4>
+    <button type="button" class="btn btn-warning" id="start-fingerprint">Start</button>
 
-                  <div class=" p-3 bg-danger text-light text-center w-100">
+                  <div class=" p-3 mb-2  bg-danger text-light text-center w-100">
                     <h3 id="finger-print-status"><div class="spinner-grow spinner-grow-sm text-warning"></div></h3>
                   </div>
-
+                     <p id="fingerid"></p>
                 </div>
-            
               </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                
-                <p class="mt-2">Face Recognition</p>
-                <hr>
+              <div class="col-md-12 ">
                 <div class="card p-2">
-                  <h4 class="p-3"><b class="text-danger">FACEID CHECK</b></h4>
-
+                  <h4 class="p-3">Face Recognition</h4>
+<button type="button" class="btn btn-warning" id="start-face">Start</button>
                   <div class=" p-3 bg-danger text-light text-center w-100">
                     <h3 id="face-status"><div class="spinner-grow spinner-grow-sm text-warning"></div></h3>
                   </div>
 
                 </div>
+              </div>
+            </div>
+
+          </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <div class="card">
+              <div class="card-body">
+              
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                
+              
             
               </div>
               <a href="http://localhost:5555/static/register.html" id="reg" class="btn btn-success">Click here to register</a>
@@ -82,11 +108,11 @@
                 <tr>
                   <td>
                     <div class="card">
-                      <img src="static/img/ccm.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
+                      <img src="img/ccm.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
                       <div class="card-body">
                         <h4 class="card-title">Samia Hassan Suluhu</h4>
                         <p class="card-text">CCM</p>
-                        <a href="#" id="vote-btn" class="btn btn-success">VOTE</a>
+                        <a href="javascript:void(0)" id="vote-ccm" class="btn btn-success">VOTE</a>
                       </div>
                     </div>
                   </td>
@@ -95,11 +121,11 @@
                 <tr>
                   <td>
                     <div class="card">
-                      <img src="static/img/chadema.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
+                      <img src="img/chadema.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
                       <div class="card-body">
                         <h4 class="card-title">Tundu Antipas Lissu</h4>
                         <p class="card-text">CHADEMA</p>
-                        <a href="#" class="btn btn-danger">VOTE</a>
+                        <a href="javascript:void(0)" id="vote-cdm" class="btn btn-danger">VOTE</a>
                       </div>
                     </div>
                   </td>
@@ -108,11 +134,11 @@
                 <tr>
                   <td>
                     <div class="card">
-                      <img src="static/img/act.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
+                      <img src="img/act.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
                       <div class="card-body">
                         <h4 class="card-title">Zitto Kabwe</h4>
                         <p class="card-text">ACT WAZALENDO</p>
-                        <a href="#" class="btn btn-primary">VOTE</a>
+                        <a href="javascript:void(0)" id="vote-act" class="btn btn-primary">VOTE</a>
                       </div>
                     </div>
                   </td>
@@ -162,8 +188,9 @@
     <script>
       var socket = new WebSocket('ws:localhost:5555/ws');
       var finger_status = document.getElementById('finger-print-status');
-      var vote_btn = document.getElementById('vote-btn');
+      var start_fingerprint = document.getElementById('start-fingerprint');
       var input_name = document.getElementById('input_name');
+      var fingerId="";
       var server_status = document.getElementById('serverStatus');
       socket.onopen = function () {
         console.log('Connected to server');
@@ -173,12 +200,15 @@
       socket.onmessage = function (event) {
         var data = JSON.parse(event.data);
         var message = data.command;
-        finger_status.innerHTML = message;
+        fingerId=data.id;
+        $('#finger-print-status').html(message);
+        $('#finger_id').html(fingerId);
+        
       }
 
 
-      vote_btn.addEventListener('click', function () {
-        socket.send(input_name.value);
+      start_fingerprint.addEventListener('click', function () {
+        socket.send("f");
       });
 
 
