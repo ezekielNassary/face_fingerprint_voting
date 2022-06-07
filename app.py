@@ -136,11 +136,12 @@ async def createDataset(websocket):
             cv2.imshow(name+""+str(x), image)
             cv2.imwrite(name+""+str(x)+".png", image)
             
-            cv2.destroyWindow(name)
+            
             time.sleep(3)
         else:
             print("No image detected. Please! try again")
         os.listdir()
+    cv2.destroyWindow(name)
     return True
     
     
