@@ -111,53 +111,48 @@ async def createDataset(websocket):
     #input dir name
     name = await websocket.receive_text()
     
-    #make voter dir
-    voter_path==os.path.join(new_directory,name)
-    
     #checking if file already exists
-    isdir = os.path.isdir(voter_path) 
-    if isdir:
+    
+    isFile = os.path.isfile(os.path.join(new_directory, name)) 
+    if isFile:
         print("Voter name exists")
         return True
-    else:
-        #create voters dir
-        os.mkdir(name)
-
-        #get voter dir
-        voter_dir=os.getcwd()
-
-        #join to dataset director
-        voter_dir=os.path.join(new_directory, name)
-        
-            
-        #change dir to voter dir
-        os.chdir(voter_dir)
-
-        
-        time.sleep(10)
-        for x in range(10):
-            #capture image
-            cam = cv2.VideoCapture(cam_port)
-
-            #save image
-            
-            result, image = cam.read()
-            if result:
-                cv2.imshow(name+""+str(x), image)
-                cv2.imwrite(name+""+str(x)+".png", image)
-                time.sleep(3)
-                cv2.destroyWindow(name)
-            else:
-                print("No image detected. Please! try again")
-            os.listdir()
-        
-        return True
-        
-        
 
     
 
+    #create voters dir
+    os.mkdir(name)
+
+    #get voter dir
+    voter_dir=os.getcwd()
+
+    #join to dataset director
+    voter_dir=os.path.join(new_directory, name)
     
+        
+    #change dir to voter dir
+    os.chdir(voter_dir)
+
+    #change to voter dir
+    os.chdir(voter_dir)
+    time.sleep(10)
+    for x in range(10):
+        #capture image
+        cam = cv2.VideoCapture(cam_port)
+
+        #save image
+        
+        result, image = cam.read()
+        if result:
+            cv2.imshow(name+""+str(x), image)
+            cv2.imwrite(name+""+str(x)+".png", image)
+            time.sleep(3)
+            cv2.destroyWindow(name)
+        else:
+            print("No image detected. Please! try again")
+        os.listdir()
+    
+    return True
     
     
 async def get_fingerprint(websocket):
