@@ -114,6 +114,7 @@ async def createDataset(websocket):
     #checking if file already exists
     
     isFile = os.path.isfile(os.path.join(new_directory, name)) 
+    print(isFile)
     if isFile:
         print("Voter name exists")
         return True
