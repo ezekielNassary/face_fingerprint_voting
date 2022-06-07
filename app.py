@@ -111,23 +111,27 @@ async def createDataset(websocket):
     #input dir name
     name = await websocket.receive_text()
     
-    #join to dataset director
-    voter_dir=os.path.join(new_directory, name)
-    
     #checking if file already exists
     
-    isFile = os.path.isfile(voter_dir) 
+    isFile = os.path.isfile(os.path.join(new_directory, name)) 
     print(isFile)
     if isFile == False:
         print("Voter name exists")
         return True
     else:
+        #change dir to dataset
+        os.chdir(new_directory)
+        
         #create voters dir
         os.mkdir(name)
 
         #get voter dir
         voter_dir=os.getcwd()
+
+        #join to dataset director
+        voter_dir=os.path.join(new_directory, name)
         
+            
         #change dir to voter dir
         os.chdir(voter_dir)
 
