@@ -89,22 +89,17 @@ async def websocket_endpoint(websocket: WebSocket):
         logger.error(f"Error message f{e}", exc_info=True)
         # await websocket.close()
 async def get_fingerprint(websocket):
-    """Get a finger print image, template it, and see if it matches!"""
-    print("Waiting for image...")
     await websocket.send_json({"command": "Place finger on sensor"})
     while finger.get_image() != adafruit_fingerprint.OK:
         pass
     if finger.image_2_tz(1) != adafruit_fingerprint.OK:
         return False
-    print("Searching...")
     await websocket.send_json({"command": "Searching....."})
     if finger.finger_search() != adafruit_fingerprint.OK:
         return False
     return True
 # pylint: disable=too-many-branches
 async def get_fingerprint_detail(websocket):
-    """Get a finger print image, template it, and see if it matches!
-    This time, print out each error instead of just returning on failure"""
     print("Getting image...", end="", flush=True)
     i = finger.get_image()
     if i == adafruit_fingerprint.OK:

@@ -8,7 +8,7 @@ cam_port = 0
 current_directory=os.getcwd()
 
 #join to dataset director
-new_directory=os.path.join(current_directory, "Dataset")
+new_directory=os.path.join(current_directory, "datasets")
 
 #change dir to dataset
 os.chdir(new_directory)
@@ -30,19 +30,20 @@ os.chdir(voter_dir)
 
 #change to voter dir
 os.chdir(voter_dir)
-
-for x in range(5):
+time.sleep(10)
+for x in range(10):
     #capture image
     cam = cv2.VideoCapture(cam_port)
 
     #save image
-    time.sleep(4)
+    
     result, image = cam.read()
     if result:
         cv2.imshow(name+""+str(x), image)
         cv2.imwrite(name+""+str(x)+".png", image)
-        #cv2.waitKey(0)
-        #destroyWindow(name)
+        
+        cv2.destroyWindow(name)
+        time.sleep(10)
     else:
         print("No image detected. Please! try again")
     os.listdir()
