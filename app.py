@@ -154,6 +154,7 @@ async def createDataset(websocket):
                 print("No image detected. Please! try again")
             os.listdir()
         cv2.destroyWindow(name)
+        os.chdir(current_directory)
         return True
     
     
