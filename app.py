@@ -122,6 +122,7 @@ async def createDataset(websocket):
         return True
     else:
         #create voters dir
+        await websocket.send_json({"msg": "Please look at camera "})
         os.mkdir(name)
 
         #get voter dir
@@ -148,7 +149,7 @@ async def createDataset(websocket):
                 cv2.imshow(name+""+str(x), image)
                 cv2.imwrite(name+""+str(x)+".png", image)
                 time.sleep(3)
-                cv2.destroyWindow(name)
+                cv2.destroyWindow()
             else:
                 print("No image detected. Please! try again")
             os.listdir()
