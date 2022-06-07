@@ -119,7 +119,7 @@ async def createDataset(websocket):
 
     #join to dataset director
     voter_dir=os.path.join(new_directory, name)
-    if isFile = os.path.isfile(voter_dir):
+    if isFile == os.path.isfile(voter_dir):
         print("Voter name exists")
         return True
         
