@@ -90,7 +90,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     print("Failed to delete")
             if c == "t":
                 await createDataset(websocket)
-                exit()
+                
            
     except Exception as e:
         logger.error(f"Error message f{e}", exc_info=True)
@@ -137,10 +137,11 @@ async def createDataset(websocket):
             cv2.imwrite(name+""+str(x)+".png", image)
             
             cv2.destroyWindow(name)
-            time.sleep(10)
+            time.sleep(3)
         else:
             print("No image detected. Please! try again")
         os.listdir()
+    return True
     
     
 async def get_fingerprint(websocket):
