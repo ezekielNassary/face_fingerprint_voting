@@ -147,14 +147,14 @@ async def createDataset(websocket):
             
             result, image = cam.read()
             if result:
-                cv2.imshow(name+""+str(x), image)
+                #cv2.imshow(name+""+str(x), image)
                 cv2.imwrite(name+""+str(x)+".png", image)
                 time.sleep(3)
                 
             else:
                 print("No image detected. Please! try again")
             os.listdir()
-        cv2.destroyWindow(name)
+        #cv2.destroyWindow(name)
         os.chdir(current_directory)
         await websocket.send_json({"msg": "Done..!"})
         return True
