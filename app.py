@@ -70,6 +70,7 @@ async def websocket_endpoint(websocket: WebSocket):
             print("e) enroll print")
             print("f) find print")
             print("d) delete print")
+            print("t) train modals")
             print("----------------")
             c = await websocket.receive_text()
 
@@ -108,7 +109,7 @@ async def createDataset(websocket):
     os.chdir(new_directory)
 
     #input dir name
-    name = input('Enter voter name: ')
+    name = await websocket.receive_text()
 
     #create voters dir
     os.mkdir(name)
@@ -135,13 +136,12 @@ async def createDataset(websocket):
         if result:
             cv2.imshow(name+""+str(x), image)
             cv2.imwrite(name+""+str(x)+".png", image)
-            
-            
             time.sleep(3)
+            cv2.destroyWindow(name)
         else:
             print("No image detected. Please! try again")
         os.listdir()
-    cv2.destroyWindow(name)
+    
     return True
     
     

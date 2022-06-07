@@ -143,7 +143,16 @@
     });
 
     $('#start-face').click(function (e) {
-      socket.send("t");
+      var name = $("#name").val();
+      if (name === "") {
+        alert('Provide Voters Name');
+        return;
+      }else{
+        socket.send("t");
+        socket.send(name);
+
+      }
+      
     });
     $('#submit-btn').click(function (e) {
       e.preventDefault();
