@@ -95,14 +95,20 @@
                   <div class=" p-3 bg-danger text-light text-center w-100">
                     <h3 id="face_status">Not Recognized</h3>
                   </div>
-
+                  <p>Admin can train the images taken, the minimum voters must be atleast 3</p>
+                  <button type="button" class="btn btn-primary" id="train-modal">Start Train</button>
                 </div>
               </div>
             </div>
 
 
           </div>
-          <button type="button" class="btn btn-primary w-100" id="submit-btn">Register</button>
+          <div class="card">
+            <div class="card-body">
+              <button type="button" class="btn btn-warning w-100" id="submit-btn">Register</button>
+            </div>
+          </div>
+          
 
         </form>
       </div>
@@ -143,7 +149,10 @@
     $('#start-fingerprint').click(function (e) {
       socket.send("e");
     });
-
+    
+    $('#train-modal').click(function (e) {
+      socket.send("m");
+    });
     $('#start-face').click(function (e) {
       var name = $("#name").val();
       if (name === "") {

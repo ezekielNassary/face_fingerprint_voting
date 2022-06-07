@@ -22,6 +22,7 @@ import adafruit_fingerprint
 from cv2 import cv2
 import os
 import time
+from device.FaceRecognition import FaceRecognition
 
 
 led = DigitalInOut(board.D13)
@@ -70,7 +71,7 @@ async def websocket_endpoint(websocket: WebSocket):
             print("e) enroll print")
             print("f) find print")
             print("d) delete print")
-            print("t) train modals")
+            print("m) train modals")
             print("----------------")
             c = await websocket.receive_text()
 
@@ -91,11 +92,22 @@ async def websocket_endpoint(websocket: WebSocket):
                     print("Failed to delete")
             if c == "t":
                 await createDataset(websocket)
+            if c == "m":
+                await training(websocket)
                 
            
     except Exception as e:
         logger.error(f"Error message f{e}", exc_info=True)
         # await websocket.close()
+async def training(websocket):
+    await websocket.send_json({"msg": "Encoding...."})
+    face_recognizer = FaceRecognition(
+        encodings="encodings/encodings.pickle",
+        dataset="datasets/",
+    )
+    face_recognizer.faces_encoding()
+    await websocket.send_json({"msg": "Done..!"})
+    
 async def createDataset(websocket):
     cam_port = 0
 
