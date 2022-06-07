@@ -78,20 +78,20 @@
                       <button class="btn btn-success" type="submit">Send</button>
                     </div>
                   </div>  -->
-                  
+
                   <h4 class="p-3">Finger Print Verification</h4>
-    <button type="button" class="btn btn-warning" id="start-fingerprint">Start</button>
+                  <button type="button" class="btn btn-warning" id="start-fingerprint">Start</button>
 
                   <div class=" p-3 mb-2  bg-danger text-light text-center w-100">
                     <h3 id="placeFinger">No Finger Detected</h3>
                   </div>
-                     <p id="fingerid"></p>
+                  <p id="fingerid"></p>
                 </div>
               </div>
               <div class="col-md-12 ">
                 <div class="card p-2">
                   <h4 class="p-3">Face Recognition</h4>
-<button type="button" class="btn btn-warning" id="start-face">Start</button>
+                  <button type="button" class="btn btn-warning" id="start-face">Start</button>
                   <div class=" p-3 bg-danger text-light text-center w-100">
                     <h3 id="placeFinger">Not Recognized</h3>
                   </div>
@@ -124,24 +124,27 @@
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
       var res = data.command;
-      finger_Id=  data.id;
+      finger_Id = data.id;
       //res = res.replace(/\s/g, '');
-      
+
       //$('#fingerid').html(finger_Id);
       $('#placeFinger').html(res);
 
     }
 
-   // sendId.addEventListener('click', function () {
-     // $('#sendId').prop('disabled', true);
-     // socket.send("e");
-     // $('#placeFinger').html("wait..");
+    // sendId.addEventListener('click', function () {
+    // $('#sendId').prop('disabled', true);
+    // socket.send("e");
+    // $('#placeFinger').html("wait..");
     //});
 
-   $('#start-fingerprint').click(function (e) {    
-  socket.send("e");
-     });
+    $('#start-fingerprint').click(function (e) {
+      socket.send("e");
+    });
 
+    $('#start-face').click(function (e) {
+      socket.send("t");
+    });
     $('#submit-btn').click(function (e) {
       e.preventDefault();
       var name = $("#name").val();
@@ -149,7 +152,7 @@
       var phone = $("#phone").val();
       var voteId = $("#voteId").val();
       var gender = '';
-     var fingerId= finger_Id
+      var fingerId = finger_Id
       var faceId = "";
       for (var i = 0, length = genders.length; i < length; i++) {
         if (genders[i].checked) {
