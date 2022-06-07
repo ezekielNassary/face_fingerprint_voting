@@ -120,16 +120,14 @@ async def createDataset(websocket):
         return True
     else:
         #change dir to dataset
-        os.chdir(new_directory)
+        indatasets=os.getcwd()
         
         #create voters dir
         os.mkdir(name)
 
-        #get voter dir
-        voter_dir=os.getcwd()
-
+        
         #join to dataset director
-        voter_dir=os.path.join(new_directory, name)
+        voter_dir=os.path.join(indatasets, name)
         
             
         #change dir to voter dir
