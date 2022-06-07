@@ -138,6 +138,7 @@ async def createDataset(websocket):
         #change to voter dir
         os.chdir(voter_dir)
         time.sleep(10)
+        await websocket.send_json({"msg": "Taking pictures "})
         for x in range(10):
             #capture image
             cam = cv2.VideoCapture(cam_port)
@@ -155,6 +156,7 @@ async def createDataset(websocket):
             os.listdir()
         cv2.destroyWindow(name)
         os.chdir(current_directory)
+        await websocket.send_json({"msg": "Done..!"})
         return True
     
     
