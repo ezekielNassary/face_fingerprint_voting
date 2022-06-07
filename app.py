@@ -116,6 +116,8 @@ async def createDataset(websocket):
     
     if isdir:
         print("Voter name exists")
+        os.chdir(current_directory)
+        print(os.chdir(current_directory))
         return True
     else:
         #create voters dir
