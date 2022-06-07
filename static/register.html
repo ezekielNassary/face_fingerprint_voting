@@ -93,7 +93,7 @@
                   <h4 class="p-3">Face Recognition</h4>
                   <button type="button" class="btn btn-warning" id="start-face">Start</button>
                   <div class=" p-3 bg-danger text-light text-center w-100">
-                    <h3 id="placeFinger">Not Recognized</h3>
+                    <h3 id="face_status">Not Recognized</h3>
                   </div>
 
                 </div>
@@ -124,11 +124,13 @@
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
       var res = data.command;
+      var msg =data.msg;
       finger_Id = data.id;
       //res = res.replace(/\s/g, '');
 
       //$('#fingerid').html(finger_Id);
       $('#placeFinger').html(res);
+      $('#face_status').html(msg);
 
     }
 

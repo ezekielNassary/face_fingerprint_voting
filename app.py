@@ -116,6 +116,7 @@ async def createDataset(websocket):
     
     if isdir:
         print("Voter name exists")
+        await websocket.send_json({"msg": "Voter name exists"})
         os.chdir(current_directory)
         print(os.chdir(current_directory))
         return True
