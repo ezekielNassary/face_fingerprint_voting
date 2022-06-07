@@ -1,3 +1,4 @@
+from device.FaceRecognition import FaceRecognition
 from cProfile import run
 from importlib import reload
 from cv2 import log
@@ -22,7 +23,6 @@ import adafruit_fingerprint
 from cv2 import cv2
 import os
 import time
-from device.FaceRecognition import FaceRecognition
 
 
 led = DigitalInOut(board.D13)
