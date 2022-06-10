@@ -67,10 +67,10 @@
             <label for="phone" class="form-label">Phone:</label>
             <input type="phone" class="form-control" id="phone" placeholder="Enter phone" name="phone">
           </div>
-
+          <br><br>
           <div class="mb-3 mt-3 p-3 bg-success">
             <div class="row">
-              <div class="col-md-12 ">
+              <div class="col-md-6 ">
                 <div class="card p-2">
                   <!-- <div class="input-group mb-3 mt-3">
                     <input type="number" class="form-control" id="input_Id" placeholder="Enter finger id (1-127)">
@@ -88,16 +88,19 @@
                   <p id="fingerid"></p>
                 </div>
               </div>
-              <div class="col-md-12 ">
+              <div class="col-md-6 ">
                 <div class="card p-2">
                   <h4 class="p-3">Face Recognition</h4>
+                  <hr>
+                  <br>
+                  <br>
                   <button type="button" class="btn btn-warning" id="start-face">Start</button>
                   <div class=" p-3 bg-danger text-light text-center w-100">
                     <h3 id="face_status">Not Recognized</h3>
                   </div>
-                  <p>Admin can train the images taken, the minimum voters must be atleast 3</p>
-                  <button type="button" class="btn btn-primary" id="train-modal">Start Train</button>
+              
                 </div>
+                <br>
               </div>
             </div>
 
@@ -111,6 +114,7 @@
           
 
         </form>
+        <a href="../static/" id="vt">Click here to start Voting</a>
       </div>
       <div class="col-md-3"></div>
     </div>
@@ -136,7 +140,13 @@
 
       //$('#fingerid').html(finger_Id);
       $('#placeFinger').html(res);
+      if(res == "Success"){
+        $('#placeFinger').html("Finger Exists");
+      }else{
+        socket.send("e");
+      }
       $('#face_status').html(msg);
+
 
     }
 
@@ -147,7 +157,8 @@
     //});
 
     $('#start-fingerprint').click(function (e) {
-      socket.send("e");
+     
+      socket.send("f");
     });
     
     $('#train-modal').click(function (e) {
