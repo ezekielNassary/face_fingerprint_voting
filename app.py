@@ -73,19 +73,17 @@ async def websocket_endpoint(websocket: WebSocket):
             print("t) train modals")
             print("----------------")
             c = await websocket.receive_text()
-            print(c)
+
             if c == "e":
                 await enroll_finger(get_num(),websocket)
             if c == "f":
                 if await get_fingerprint(websocket):
                     print("Detected #", finger.finger_id, "with confidence", finger.confidence)
                     await websocket.send_json({"command": "Success"})
-                    await websocket.send_json({"check": "Success"})
                     await websocket.send_json({"id": finger.finger_id})
                 else:
                     print("Finger not found")
                     await websocket.send_json({"command": "Finger not found"})
-                    await websocket.send_json({"check": "error"})
             if c == "d":
                 if finger.delete_model(get_num()) == adafruit_fingerprint.OK:
                     print("Deleted!")
@@ -209,7 +207,6 @@ async def get_fingerprint_detail(websocket):
     # This block needs to be refactored when it can be tested.
     if i == adafruit_fingerprint.OK:
         await websocket.send_json({"command": "Success"})
-        await websocket.send_json({"check": "Success"})
         print("Found fingerprint!")
                
         return True
@@ -217,7 +214,6 @@ async def get_fingerprint_detail(websocket):
         if i == adafruit_fingerprint.NOTFOUND:
             print("No match found")
             await websocket.send_json({"command": "No match found....."})
-            await websocket.send_json({"check": "error"})
         else:
             print("Other error")
         return False

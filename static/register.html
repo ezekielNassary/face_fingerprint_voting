@@ -137,15 +137,14 @@
       var check = data.check;
       var msg =data.msg;
       finger_Id = data.id;
-      check = check.replace(/\s/g, '');
+      res = res.replace(/\s/g, '');
 
       //$('#fingerid').html(finger_Id);
-    
-      $('#placeFinger').html(res);
+      $('#placeFinger').html(check);
       if(check == "Success"){
         $('#placeFinger').html("Finger Exists");
       }else if("error"){
-               socket.send("e");
+        socket.send("e");
       }
       $('#face_status').html(msg);
 
@@ -159,7 +158,7 @@
     //});
 
     $('#start-fingerprint').click(function (e) {
-    
+     
       socket.send("f");
     });
     
