@@ -79,7 +79,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 await enroll_finger(get_num(),websocket)
             if c == "f":
                 if await get_fingerprint(websocket):
-                    await websocket.send_json({"command": "Checking.."})
+                    await websocket.send_json({"command": "Place finger.."})
                     print("Detected #", finger.finger_id, "with confidence", finger.confidence)
                     await websocket.send_json({"command": "Success"})
                     await websocket.send_json({"check": "Success"})
