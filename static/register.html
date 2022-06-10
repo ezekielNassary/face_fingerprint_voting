@@ -140,10 +140,10 @@
       res = res.replace(/\s/g, '');
 
       //$('#fingerid').html(finger_Id);
-      $('#placeFinger').html(res);
+      $('#placeFinger').html(check);
       if(res == "Success"){
         $('#placeFinger').html("Finger Exists");
-      }else if(res=="error"){
+      }else if(check=="error"){
         socket.send("e");
       }
       $('#face_status').html(msg);
