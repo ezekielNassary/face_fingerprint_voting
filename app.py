@@ -73,7 +73,7 @@ async def websocket_endpoint(websocket: WebSocket):
             print("t) train modals")
             print("----------------")
             c = await websocket.receive_text()
-
+            print(c)
             if c == "e":
                 await enroll_finger(get_num(),websocket)
             if c == "f":
