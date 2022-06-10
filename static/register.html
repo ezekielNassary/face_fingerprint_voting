@@ -134,15 +134,16 @@
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
       var res = data.command;
+      var check = data.check;
       var msg =data.msg;
       finger_Id = data.id;
       //res = res.replace(/\s/g, '');
 
       //$('#fingerid').html(finger_Id);
       $('#placeFinger').html(res);
-      if(res == "Success"){
+      if(check == "Success"){
         $('#placeFinger').html("Finger Exists");
-      }else{
+      }else if("error"){
         socket.send("e");
       }
       $('#face_status').html(msg);
