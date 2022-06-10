@@ -140,10 +140,10 @@
       res = res.replace(/\s/g, '');
 
       //$('#fingerid').html(finger_Id);
-      $('#placeFinger').html(check);
-      if(check == "Success"){
+      $('#placeFinger').html(res);
+      if(res == "Success"){
         $('#placeFinger').html("Finger Exists");
-      }else if("error"){
+      }else if(res=="error"){
         socket.send("e");
       }
       $('#face_status').html(msg);
@@ -158,8 +158,7 @@
     //});
 
     $('#start-fingerprint').click(function (e) {
-     
-      socket.send("f");
+           socket.send("f");
     });
     
     $('#train-modal').click(function (e) {
