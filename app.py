@@ -75,11 +75,9 @@ async def websocket_endpoint(websocket: WebSocket):
             c = await websocket.receive_text()
             print(c)
             if c == "e":
-                await websocket.send_json({"command": "Registration"})
                 await enroll_finger(get_num(),websocket)
             if c == "f":
                 if await get_fingerprint(websocket):
-                    await websocket.send_json({"command": "Place finger.."})
                     print("Detected #", finger.finger_id, "with confidence", finger.confidence)
                     await websocket.send_json({"command": "Success"})
                     await websocket.send_json({"check": "Success"})
@@ -89,7 +87,6 @@ async def websocket_endpoint(websocket: WebSocket):
                     await websocket.send_json({"command": "Finger not found"})
                     await websocket.send_json({"check": "error"})
             if c == "d":
-                await websocket.send_json({"command": "Delete"})
                 if finger.delete_model(get_num()) == adafruit_fingerprint.OK:
                     print("Deleted!")
                 else:
