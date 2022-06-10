@@ -145,8 +145,7 @@
       if(check == "Success"){
         $('#placeFinger').html("Finger Exists");
       }else if("error"){
-        $('#placeFinger').html("Starting registration");
-        socket.send("e");
+               socket.send("e");
       }
       $('#face_status').html(msg);
 
@@ -160,7 +159,7 @@
     //});
 
     $('#start-fingerprint').click(function (e) {
-      $('#placeFinger').html("Checking if exists");
+    
       socket.send("f");
     });
     
