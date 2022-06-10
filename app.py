@@ -78,7 +78,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 if await get_fingerprint(websocket):
                     print("Detected #", finger.finger_id, "with confidence", finger.confidence)
                     await websocket.send_json({"command": "Voter exists with id "+str(finger.finger_id)})
-                    return True
+                    
                 else:
                     await enroll_finger(get_num(),websocket)
                 
