@@ -83,7 +83,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     await websocket.send_json({"id": finger.finger_id})
                 else:
                     print("Finger not found")
-                    await websocket.send_json({"command": "error"})
+                    await websocket.send_json({"command": "Finger not found"})
             if c == "d":
                 if finger.delete_model(get_num()) == adafruit_fingerprint.OK:
                     print("Deleted!")
