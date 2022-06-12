@@ -38,8 +38,17 @@
 
           <div class="mb-3 mt-3">
 
-            <label for="name" class="form-label"> Full Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter Full Name" name="name" required>
+            <label for="name" class="form-label"> First Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter First Name" name="name" required>
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="name" class="form-label"> Middle Name</label>
+            <input type="text" class="form-control" id="mname" placeholder="Enter Middle Name" name="name" required>
+          </div>
+          <div class="mb-3 mt-3">
+
+            <label for="name" class="form-label"> Surname</label>
+            <input type="text" class="form-control" id="sname" placeholder="Enter Surname" name="name" required>
           </div>
           <fieldset class="row mb-3">
             <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
@@ -183,9 +192,21 @@
         alert('Provide Voters Name');
         return;
       }
+      if (gender === "") {
+        alert('Provide Voters Name');
+        return;
+      }
+      if (fingerId === "") {
+        alert('Provide Voters Name');
+        return;
+      }
+      if (faceId === "") {
+        alert('Provide Voters Name');
+        return;
+      }
       $.ajax({
         type: "POST",
-        url: "http://192.168.36.191/face_fingerprint_voting/static/actionpages/registration.php",
+        url: "http://192.168.77.181/face_fingerprint_voting/static/actionpages/registration.php",
         data: {
           name: name,
           gender: gender,
