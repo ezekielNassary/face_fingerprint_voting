@@ -180,6 +180,7 @@
      
       if (name === "") {
         alert('Provide Voters Name');
+        $('#start-face').prop("disabled", false);
         return;
       }else{
         socket.send("t");
