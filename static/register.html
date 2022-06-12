@@ -202,11 +202,11 @@
         alert('Select Gender');
         return;
       }
-      if (fingerId === "") {
+      if (fingerId === "" || fingerId === "undefined") {
         alert('Finger verification not done');
         return;
       }
-      if (faceId === "") {
+      if (faceId === ""  || faceId === "undefined") {
         alert('Face verification not done');
         return;
       }
