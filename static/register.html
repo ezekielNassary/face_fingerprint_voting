@@ -131,7 +131,7 @@
     var finger_status = document.getElementById('finger-print-status');
     //var sendId = document.getElementById('sendId');
     var finger_Id = "";
-    var face_id="";
+    var faceId="";
     socket.onopen = function () {
       console.log('Connected to server');
       $('#serverStatus').html('Server Connected');
@@ -141,7 +141,7 @@
       var res = data.command;
       var msg =data.msg;
       finger_Id = data.id;
-      face_id=data.faceid;
+      faceId=data.faceid;
       //res = res.replace(/\s/g, '');
 
       //$('#fingerid').html(finger_Id);
@@ -202,15 +202,15 @@
         return;
       }
       if (fingerId === "") {
-        alert('No finger verification done');
+        alert('Finger verification not done');
         return;
       }
-      if (face_id === "") {
+      if (faceId === "") {
         alert('Face verification not done');
         return;
       }
       if (voteId === "") {
-        alert('Face verification not done');
+        alert('Please Enter Vote ID');
         return;
       }
       $.ajax({
@@ -222,7 +222,7 @@
           voteId: voteId,
           phone: phone,
           fingerId: fingerId,
-          faceId: face_id
+          faceId: faceId
         },
         cache: false,
         success: function (data) {
