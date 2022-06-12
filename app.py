@@ -172,7 +172,7 @@ async def createDataset(websocket):
         #cv2.destroyWindow(name)
         os.chdir(current_directory)
         await websocket.send_json({"msg": "Done..!"})
-        await websocket.send_json({"faceid": name,"id": fingerId})
+        await websocket.send_json({"faceid": name,"id": finger.store_model(location)})
         
         return True
     
@@ -302,9 +302,9 @@ async def enroll_finger(location,websocket: WebSocket):
     i = finger.store_model(location)
     if i == adafruit_fingerprint.OK:
         print("Stored")
-        fingerId=location
+        
         await websocket.send_json({"command": "Success"})
-        await websocket.send_json({"id": fingerId})
+        await websocket.send_json({"id": location})
         
     else:
         if i == adafruit_fingerprint.BADLOCATION:
@@ -319,7 +319,7 @@ async def enroll_finger(location,websocket: WebSocket):
 ##################################################
 
 
-fingerId=0;
+
 def get_num():
     """Use input() to get a valid number from 1 to 127. Retry till success!"""
     i = 0
