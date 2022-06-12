@@ -131,6 +131,7 @@
     var finger_status = document.getElementById('finger-print-status');
     //var sendId = document.getElementById('sendId');
     var finger_Id = "";
+    var face_id="";
     socket.onopen = function () {
       console.log('Connected to server');
       $('#serverStatus').html('Server Connected');
@@ -140,6 +141,7 @@
       var res = data.command;
       var msg =data.msg;
       finger_Id = data.id;
+      face_id=data.faceid;
       //res = res.replace(/\s/g, '');
 
       //$('#fingerid').html(finger_Id);
@@ -163,6 +165,7 @@
     });
     $('#start-face').click(function (e) {
       var name = $("#name").val();
+     
       if (name === "") {
         alert('Provide Voters Name');
         return;
@@ -176,12 +179,14 @@
     $('#submit-btn').click(function (e) {
       e.preventDefault();
       var name = $("#name").val();
+      var lname = $("#lname").val();
+      var sname = $("#sname").val();
       var genders = document.getElementsByName('gender');
       var phone = $("#phone").val();
       var voteId = $("#voteId").val();
       var gender = '';
       var fingerId = finger_Id
-      var faceId = "";
+      
       for (var i = 0, length = genders.length; i < length; i++) {
         if (genders[i].checked) {
           gender = genders[i].value;
@@ -193,15 +198,15 @@
         return;
       }
       if (gender === "") {
-        alert('Provide Voters Name');
+        alert('Select Gender');
         return;
       }
       if (fingerId === "") {
-        alert('Provide Voters Name');
+        alert('No finger verification done');
         return;
       }
       if (faceId === "") {
-        alert('Provide Voters Name');
+        alert('Face verification not done');
         return;
       }
       $.ajax({
