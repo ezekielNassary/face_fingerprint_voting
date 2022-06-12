@@ -214,6 +214,8 @@
         alert('Please Enter Vote ID');
         return;
       }
+      console.log("faceid: "+faceId)
+      console.log("fingerid: "+fingerId)
       $.ajax({
         type: "POST",
         url: "http://192.168.77.181/face_fingerprint_voting/static/actionpages/registration.php",
