@@ -80,7 +80,8 @@ async def websocket_endpoint(websocket: WebSocket):
                     await websocket.send_json({"command": "Voter exists with id "+str(finger.finger_id)})
                     
                 else:
-                    time.sleep(5)
+                    time.sleep(3)
+                    
                     await enroll_finger(get_num(),websocket)
                     
                 
@@ -174,7 +175,7 @@ async def get_fingerprint(websocket):
         pass
     if finger.image_2_tz(1) != adafruit_fingerprint.OK:
         return False
-    await websocket.send_json({"command": "Ready to register..."})
+    await websocket.send_json({"command": "No finger found..."})
     if finger.finger_search() != adafruit_fingerprint.OK:
         return False
     return True
@@ -232,7 +233,7 @@ async def enroll_finger(location,websocket: WebSocket):
     for fingerimg in range(1, 3):
         if fingerimg == 1:
             print("Place finger on sensor...", end="", flush=True)
-            websocket.send_json({"command": "Place finger on sensor"})
+            await websocket.send_json({"command": "Place finger on sensor"})
         else:
             print("Place same finger again...", end="", flush=True)
             await websocket.send_json({"command": "Place same finger again"})
