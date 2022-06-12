@@ -149,6 +149,9 @@
       if(finger_Id  == ''){
         $("#start-fingerprint").prop("disabled", false);
       }
+      if(face_Id  == ''){
+        $("#start-fingerprint").prop("disabled", false);
+      }
       //$('#fingerid').html(finger_Id);
       $('#placeFinger').html(res);
       $('#face_status').html(msg);
@@ -168,7 +171,8 @@
     });
     
     $('#train-modal').click(function (e) {
-          socket.send("m");
+      socket.send("m");
+      $("#train-modal").prop("disabled", true);
     });
     $('#start-face').click(function (e) {
       var name = $("#name").val();
