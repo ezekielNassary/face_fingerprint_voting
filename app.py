@@ -53,7 +53,7 @@ finger = adafruit_fingerprint.Adafruit_Fingerprint(uart)
 async  def index(request):
     return FileResponse(st_abs_file_path + "index.html")
 
-
+finger_id=0;
 
 @app.websocket_route("/ws")
 async def websocket_endpoint(websocket: WebSocket):
@@ -161,7 +161,7 @@ async def createDataset(websocket):
             result, image = cam.read()
             if result:
                 #cv2.imshow(name+""+str(x), image)
-                await websocket.send_json({"msg": "Pleas wait.......-"})
+                await websocket.send_json({"msg": "Pleas wait......."})
                 cv2.imwrite(name+""+str(x)+".png", image)
                 time.sleep(3)
                 
@@ -171,7 +171,7 @@ async def createDataset(websocket):
         #cv2.destroyWindow(name)
         os.chdir(current_directory)
         await websocket.send_json({"msg": "Done..!"})
-        await websocket.send_json({"faceid": name,"id": finger.finger_id})
+        await websocket.send_json({"faceid": name,"id": finger_id})
         
         return True
     
@@ -303,6 +303,7 @@ async def enroll_finger(location,websocket: WebSocket):
         print("Stored")
         await websocket.send_json({"command": "Success"})
         await websocket.send_json({"id": location})
+        finger_id=location
     else:
         if i == adafruit_fingerprint.BADLOCATION:
             print("Bad storage location")
