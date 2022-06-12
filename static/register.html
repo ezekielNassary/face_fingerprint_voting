@@ -138,6 +138,7 @@
     };
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
+      console.log(data);
       var res = data.command;
       var msg =data.msg;
       finger_Id = data.id;
