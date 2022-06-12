@@ -105,13 +105,13 @@ async def websocket_endpoint(websocket: WebSocket):
                 else:
                     print("Failed to delete")
             if c == "t":
-                await createDataset(websocket,fingerId)
+                await createDataset(websocket)
                 
            
     except Exception as e:
         logger.error(f"Error message f{e}", exc_info=True)
         # await websocket.close()
-async def createDataset(websocket,fingerId):
+async def createDataset(websocket):
     cam_port = 0
 
     #get current directory
