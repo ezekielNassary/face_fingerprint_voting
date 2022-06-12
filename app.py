@@ -81,7 +81,10 @@ async def websocket_endpoint(websocket: WebSocket):
                     
                 else:
                     time.sleep(3)
-                    
+                    await websocket.send_json({"command": "Remove your finger..."})
+                    time.sleep(3)
+                    await websocket.send_json({"command": "Registration initializing..."})
+                    time.sleep(3)
                     await enroll_finger(get_num(),websocket)
                     
                 
