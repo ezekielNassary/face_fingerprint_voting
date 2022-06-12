@@ -132,6 +132,7 @@
     //var sendId = document.getElementById('sendId');
     var finger_Id = "";
     var face_Id="";
+    $('#train-modal').prop("disabled", true);
     socket.onopen = function () {
       console.log('Connected to server');
       $('#serverStatus').html('Server Connected');
@@ -160,10 +161,12 @@
 
     $('#start-fingerprint').click(function (e) {
       socket.send("e");
+      $("#start-fingerprint").prop("disabled", true);
+      $('#train-modal').prop("disabled", false);
     });
     
     $('#train-modal').click(function (e) {
-      socket.send("m");
+          socket.send("m");
     });
     $('#start-face').click(function (e) {
       var name = $("#name").val();

@@ -161,7 +161,7 @@ async def createDataset(websocket):
             result, image = cam.read()
             if result:
                 #cv2.imshow(name+""+str(x), image)
-                await websocket.send_json({"msg": "Taking-"+str(x)})
+                await websocket.send_json({"msg": "Pleas wait.......-"})
                 cv2.imwrite(name+""+str(x)+".png", image)
                 time.sleep(3)
                 
@@ -172,6 +172,7 @@ async def createDataset(websocket):
         os.chdir(current_directory)
         await websocket.send_json({"msg": "Done..!"})
         await websocket.send_json({"faceid": name})
+        await websocket.send_json({"id": finger.finger_id})
         return True
     
     
