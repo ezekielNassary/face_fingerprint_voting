@@ -53,7 +53,7 @@ finger = adafruit_fingerprint.Adafruit_Fingerprint(uart)
 async  def index(request):
     return FileResponse(st_abs_file_path + "index.html")
 
-finger_id=0;
+fingerId=0;
 
 @app.websocket_route("/ws")
 async def websocket_endpoint(websocket: WebSocket):
@@ -92,7 +92,9 @@ async def websocket_endpoint(websocket: WebSocket):
                 if await get_fingerprint(websocket):
                     print("Detected #", finger.finger_id, "with confidence", finger.confidence)
                     await websocket.send_json({"command": "Success"})
-                    await websocket.send_json({"id": finger.finger_id})
+                    fingerId=finger.finger_id
+                    await websocket.send_json({"id": fingerId})
+                    
                 else:
                     print("Finger not found")
                     await websocket.send_json({"command": "Finger not found"})
@@ -103,13 +105,13 @@ async def websocket_endpoint(websocket: WebSocket):
                 else:
                     print("Failed to delete")
             if c == "t":
-                await createDataset(websocket)
+                await createDataset(websocket,fingerId)
                 
            
     except Exception as e:
         logger.error(f"Error message f{e}", exc_info=True)
         # await websocket.close()
-async def createDataset(websocket):
+async def createDataset(websocket,fingerId):
     cam_port = 0
 
     #get current directory
@@ -171,7 +173,7 @@ async def createDataset(websocket):
         #cv2.destroyWindow(name)
         os.chdir(current_directory)
         await websocket.send_json({"msg": "Done..!"})
-        await websocket.send_json({"faceid": name,"id": finger_id})
+        await websocket.send_json({"faceid": name,"id": fingerId})
         
         return True
     
@@ -303,7 +305,7 @@ async def enroll_finger(location,websocket: WebSocket):
         print("Stored")
         await websocket.send_json({"command": "Success"})
         await websocket.send_json({"id": location})
-        finger_id=location
+        
     else:
         if i == adafruit_fingerprint.BADLOCATION:
             print("Bad storage location")
