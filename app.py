@@ -172,7 +172,7 @@ async def createDataset(websocket):
         #cv2.destroyWindow(name)
         os.chdir(current_directory)
         await websocket.send_json({"msg": "Done..!"})
-        await websocket.send_json({"faceid": name,"id":finger.finger_id})
+        await websocket.send_json({"faceid": name})
         
         return True
     
@@ -326,6 +326,7 @@ def get_num():
     while (i > 127) or (i < 1):
         try:
             #i = int(input("Enter ID # from 1-127: "))
+            #i = await websocket.receive_text()
             i=random.randint(0, 128) 
         except ValueError:
             pass
