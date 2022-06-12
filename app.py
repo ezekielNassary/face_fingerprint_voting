@@ -110,7 +110,7 @@ async def websocket_endpoint(websocket: WebSocket):
     except Exception as e:
         logger.error(f"Error message f{e}", exc_info=True)
         # await websocket.close()
-async def createDataset(websocket):
+async def createDataset(location,websocket):
     cam_port = 0
 
     #get current directory
