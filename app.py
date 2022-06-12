@@ -104,13 +104,13 @@ async def websocket_endpoint(websocket: WebSocket):
                 else:
                     print("Failed to delete")
             if c == "t":
-                await createDataset(get_num(),websocket)
+                await createDataset(websocket)
                 
            
     except Exception as e:
         logger.error(f"Error message f{e}", exc_info=True)
         # await websocket.close()
-async def createDataset(location,websocket):
+async def createDataset(websocket):
     cam_port = 0
 
     #get current directory
@@ -172,7 +172,7 @@ async def createDataset(location,websocket):
         #cv2.destroyWindow(name)
         os.chdir(current_directory)
         await websocket.send_json({"msg": "Done..!"})
-        await websocket.send_json({"faceid": name,"id": finger.store_model(location)})
+        await websocket.send_json({"faceid": name,"id":finger.finger_id})
         
         return True
     
