@@ -53,7 +53,7 @@ finger = adafruit_fingerprint.Adafruit_Fingerprint(uart)
 async  def index(request):
     return FileResponse(st_abs_file_path + "index.html")
 
-fingerId=0;
+
 
 @app.websocket_route("/ws")
 async def websocket_endpoint(websocket: WebSocket):
@@ -319,7 +319,7 @@ async def enroll_finger(location,websocket: WebSocket):
 ##################################################
 
 
-
+fingerId=0;
 def get_num():
     """Use input() to get a valid number from 1 to 127. Retry till success!"""
     i = 0
