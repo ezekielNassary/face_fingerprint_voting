@@ -247,7 +247,7 @@ async def enroll_finger(location,websocket: WebSocket):
                 break
             if i == adafruit_fingerprint.NOFINGER:
                 #await websocket.send_json({"command": "Place Your Finger"})
-                #print(".", end="", flush=True)
+                print(".", end="", flush=True)
             elif i == adafruit_fingerprint.IMAGEFAIL:
                 print("Imaging error")
                 return False
