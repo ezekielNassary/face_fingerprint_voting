@@ -67,6 +67,7 @@ async def websocket_endpoint(websocket: WebSocket):
             if finger.read_templates() != adafruit_fingerprint.OK:
                 raise RuntimeError("Failed to read templates")
             print("Fingerprint templates:", finger.templates)
+            await websocket.send_json({"templates": finger.templates})
             print("e) enroll print")
             print("f) find print")
             print("d) delete print")
