@@ -144,16 +144,15 @@
       var msg =data.msg;
       finger_Id = data.id;
       face_Id=data.faceid;
-      finger_Id = finger_Id.replace(/\s/g, '');
+      //finger_Id = finger_Id.replace(/\s/g, '');
       //faceId = faceId.replace(/\s/g, '');
       if(finger_Id  == ''){
-
-
+        $("#start-fingerprint").prop("disabled", false);
       }
       //$('#fingerid').html(finger_Id);
       $('#placeFinger').html(res);
       $('#face_status').html(msg);
-      $("#start-fingerprint").prop("disabled", false);
+      
     }
 
     // sendId.addEventListener('click', function () {
