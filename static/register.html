@@ -131,7 +131,7 @@
     var finger_status = document.getElementById('finger-print-status');
     //var sendId = document.getElementById('sendId');
     var finger_Id = "";
-    var faceId="";
+    var face_Id="";
     socket.onopen = function () {
       console.log('Connected to server');
       $('#serverStatus').html('Server Connected');
@@ -142,7 +142,7 @@
       var res = data.command;
       var msg =data.msg;
       finger_Id = data.id;
-      faceId=data.faceid;
+      face_Id=data.faceid;
       //finger_Id = finger_Id.replace(/\s/g, '');
       //faceId = faceId.replace(/\s/g, '');
 
@@ -188,6 +188,7 @@
       var voteId = $("#voteId").val();
       var gender = '';
       var fingerId = finger_Id;
+      var faceId=face_Id;
       
       for (var i = 0, length = genders.length; i < length; i++) {
         if (genders[i].checked) {
@@ -203,11 +204,11 @@
         alert('Select Gender');
         return;
       }
-      if (fingerId === "" || fingerId === "undefined") {
+      if (fingerId === "") {
         alert('Finger verification not done');
         return;
       }
-      if (faceId === ""  || faceId === "undefined") {
+      if (faceId === "") {
         alert('Face verification not done');
         return;
       }
