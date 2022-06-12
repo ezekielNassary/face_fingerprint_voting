@@ -80,6 +80,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     await websocket.send_json({"command": "Voter exists with id "+str(finger.finger_id)})
                     
                 else:
+                    time.sleep(5)
                     await enroll_finger(get_num(),websocket)
                 
             if c == "f":
@@ -136,8 +137,7 @@ async def createDataset(websocket):
 
         #join to dataset director
         voter_dir=os.path.join(new_directory, name)
-        
-            
+                    
         #change dir to voter dir
         os.chdir(voter_dir)
 
