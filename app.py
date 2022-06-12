@@ -104,7 +104,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 else:
                     print("Failed to delete")
             if c == "t":
-                await createDataset(websocket)
+                await createDataset(get_num(),websocket)
                 
            
     except Exception as e:
