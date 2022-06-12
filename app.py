@@ -174,7 +174,7 @@ async def get_fingerprint(websocket):
         pass
     if finger.image_2_tz(1) != adafruit_fingerprint.OK:
         return False
-    await websocket.send_json({"command": "Searching....."})
+    await websocket.send_json({"command": "Ready to register..."})
     if finger.finger_search() != adafruit_fingerprint.OK:
         return False
     return True
