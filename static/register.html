@@ -143,7 +143,8 @@
       var msg =data.msg;
       finger_Id = data.id;
       faceId=data.faceid;
-      //res = res.replace(/\s/g, '');
+      finger_Id = finger_Id.replace(/\s/g, '');
+      faceId = faceId.replace(/\s/g, '');
 
       //$('#fingerid').html(finger_Id);
       $('#placeFinger').html(res);
