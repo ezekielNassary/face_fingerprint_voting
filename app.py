@@ -78,7 +78,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 if await get_fingerprint(websocket):
                     print("Detected #", finger.finger_id, "with confidence", finger.confidence)
                     await websocket.send_json({"command": "Voter exists with id "+str(finger.finger_id)})
-                    
+                    await websocket.send_json({"id": ""})
                 else:
                     time.sleep(3)
                     await websocket.send_json({"command": "Remove your finger..."})
@@ -130,6 +130,7 @@ async def createDataset(websocket):
     if isdir:
         print("Voter name exists")
         await websocket.send_json({"msg": "Voter name exists"})
+        await websocket.send_json({"faceid": ""})
         os.chdir(current_directory)
         print(os.chdir(current_directory))
         return True
@@ -290,6 +291,7 @@ async def enroll_finger(location,websocket: WebSocket):
         if i == adafruit_fingerprint.ENROLLMISMATCH:
             print("Prints did not match")
             await websocket.send_json({"command": "Prints did not match"})
+            await websocket.send_json({"id": ""})
         else:
             print("Other error")
         return False
