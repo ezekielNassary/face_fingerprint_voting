@@ -171,8 +171,8 @@ async def createDataset(websocket):
         #cv2.destroyWindow(name)
         os.chdir(current_directory)
         await websocket.send_json({"msg": "Done..!"})
-        await websocket.send_json({"faceid": name})
-        await websocket.send_json({"id": finger.finger_id})
+        await websocket.send_json({"faceid": name,"id": finger.finger_id})
+        
         return True
     
     
