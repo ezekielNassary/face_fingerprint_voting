@@ -84,7 +84,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     time.sleep(3)
                     await websocket.send_json({"command": "Registration initializing..."})
                     time.sleep(3)
-                    await enroll_finger(get_num(),websocket)
+                    await enroll_finger(get_num(websocket),websocket)
                     
                     
                 
@@ -99,9 +99,9 @@ async def websocket_endpoint(websocket: WebSocket):
                     print("Finger not found")
                     await websocket.send_json({"command": "Finger not found"})
             if c == "d":
-                if finger.delete_model(get_num()) == adafruit_fingerprint.OK:
+                if finger.delete_model(get_num(websocket)) == adafruit_fingerprint.OK:
                     print("Deleted!")
-                    await websocket.send_json({"command": "Deleted"+str(get_num())})
+                    await websocket.send_json({"command": "Deleted"+str(get_num(websocket))})
                 else:
                     print("Failed to delete")
             if c == "t":
@@ -337,7 +337,7 @@ async def enroll_finger(location,websocket: WebSocket):
 
 
 
-def get_num():
+def get_num(websocket):
     """Use input() to get a valid number from 1 to 127. Retry till success!"""
     i = 0
     await websocket.send_json({"command": "Enter Number between 1-127"})
