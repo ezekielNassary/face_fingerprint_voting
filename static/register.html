@@ -81,14 +81,7 @@
             <div class="row">
               <div class="col-md-12 ">
                 <div class="card p-2">
-                  The following ids is taken
-                  <p id="templates"></p>
-                  <div class="input-group mb-3 mt-3">
-                    <input type="number" class="form-control" id="input_Id" placeholder="Enter finger id (1-127)">
-                    <div class="input-group-append">
-                      <button class="btn btn-success" type="submit">Send</button>
-                    </div>
-                  </div> 
+                  
 
                   <h4 class="p-3">Finger Print Verification</h4>
                   <button type="button" class="btn btn-warning" id="start-fingerprint">Start</button>
@@ -96,7 +89,14 @@
                   <div class=" p-3 mb-2  bg-danger text-light text-center w-100">
                     <h3 id="placeFinger">No Finger Detected</h3>
                   </div>
-                  <p id="fingerid"></p>
+                  The following ids is taken
+                  <p id="templates"></p>
+                  <div class="input-group mb-3 mt-3">
+                    <input type="number" class="form-control" id="input_Id" placeholder="Enter finger id (1-127)">
+                    <div class="input-group-append">
+                      <button id="send-btn" class="btn btn-success" type="submit">Send</button>
+                    </div>
+                  </div> 
                 </div>
               </div>
               <div class="col-md-12 ">
@@ -135,6 +135,7 @@
     var finger_Id = "";
     var face_Id="";
     $('#train-modal').prop("disabled", true);
+    $("#send-btn").prop("disabled", true);
     socket.onopen = function () {
       console.log('Connected to server');
       $('#serverStatus').html('Server Connected');
@@ -176,12 +177,17 @@
       socket.send("e");
       $("#start-fingerprint").prop("disabled", true);
       $('#start-face').prop("disabled", false);
+      $("#send-btn").prop("disabled", false);
     });
     
     $('#train-modal').click(function (e) {
       socket.send("m");
-     
     });
+    $('#send-btn').click(function(e){
+      var input_id=$('#input_Id').val();
+      socket.send(input_id);
+      
+    })
     $('#start-face').click(function (e) {
       $("#start-face").prop("disabled", true);
       var name = $("#name").val();
