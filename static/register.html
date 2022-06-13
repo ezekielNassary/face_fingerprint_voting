@@ -147,7 +147,10 @@
       finger_Id = data.id;
       face_Id=data.faceid;
       var tmp=data.templates;
+
+      tmp = tmp.join(',')
       console.log(tmp)
+
       //finger_Id = finger_Id.replace(/\s/g, '');
       //faceId = faceId.replace(/\s/g, '');
       if(finger_Id  == ''){
