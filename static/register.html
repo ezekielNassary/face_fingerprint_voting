@@ -147,6 +147,7 @@
       finger_Id = data.id;
       face_Id=data.faceid;
       var tmp=data.templates;
+      console.log(tmp)
       //finger_Id = finger_Id.replace(/\s/g, '');
       //faceId = faceId.replace(/\s/g, '');
       if(finger_Id  == ''){
@@ -187,8 +188,8 @@
         $('#start-face').prop("disabled", false);
         return;
       }else{
-        socket.send("m");
-        //socket.send(name);
+        socket.send("t");
+        socket.send(name);
 
       }
       

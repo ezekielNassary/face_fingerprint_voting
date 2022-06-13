@@ -112,11 +112,13 @@ async def websocket_endpoint(websocket: WebSocket):
                     command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8',
                     universal_newlines=True
                 )
+                """
                 while True:
                     realtime_output = process.stdout.readline()
                     if realtime_output != '':
                         await websocket.send_json({"command": realtime_output})
                     break
+                """
                         
                 
             
