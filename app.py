@@ -337,7 +337,7 @@ async def enroll_finger(location,websocket: WebSocket):
 
 
 
-def get_num(websocket):
+async def get_num(websocket):
     """Use input() to get a valid number from 1 to 127. Retry till success!"""
     i = 0
     await websocket.send_json({"command": "Enter Number between 1-127"})
