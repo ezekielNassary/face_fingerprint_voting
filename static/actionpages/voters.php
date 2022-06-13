@@ -8,7 +8,7 @@ echo ' <table id = "myTable" class = "table table-bordered" style = "width: 100%
                 <th>Gender</th>
                 <th>Phone</th>
                 <th>Vote ID</th>
-                             <th>Action</th> 
+                <th>Action</th> 
              </tr>
     </thead>
     <tbody>';

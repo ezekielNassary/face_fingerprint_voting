@@ -89,8 +89,7 @@
                   <div class=" p-3 mb-2  bg-danger text-light text-center w-100">
                     <h3 id="placeFinger">No Finger Detected</h3>
                   </div>
-                  The following ids is taken
-                  <p id="templates"></p>
+                 
                   <div class="input-group mb-3 mt-3">
                     <input type="number" class="form-control" id="input_Id" placeholder="Enter finger id (1-127)">
                     <div class="input-group-append">
@@ -149,8 +148,8 @@
       face_Id=data.faceid;
       var tmp=data.templates;
 
-      tmp = tmp.join(',')
-      console.log(tmp)
+      //tmp = tmp.join(',')
+       // console.log(tmp)
 
       //finger_Id = finger_Id.replace(/\s/g, '');
       //faceId = faceId.replace(/\s/g, '');
@@ -163,7 +162,7 @@
       //$('#fingerid').html(finger_Id);
       $('#placeFinger').html(res);
       $('#face_status').html(msg);
-      $('#templates').html(tmp);
+      //$('#templates').html(tmp);
       
     }
 
