@@ -106,6 +106,19 @@ async def websocket_endpoint(websocket: WebSocket):
                     print("Failed to delete")
             if c == "t":
                 await createDataset(websocket)
+            if c == "m":
+                command = "python3 training.py"
+                process = subprocess.Popen(
+                    command, shell=True, stdout=subprocess.Pipe, stderr=subprocess.STDOUT, enconding='utf-8',
+                    universal_newlines=True
+                )
+                while True:
+                    realtime_output = process.stdout.readline()
+                    if realtime_output != '':
+                        await websocket.send_json({"command": realtime_output})
+                        
+                
+            
                 
            
     except Exception as e:
