@@ -109,7 +109,7 @@ async def websocket_endpoint(websocket: WebSocket):
             if c == "m":
                 command = "python3 training.py"
                 process = subprocess.Popen(
-                    command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, enconding='utf-8',
+                    command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8',
                     universal_newlines=True
                 )
                 while True:
