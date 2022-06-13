@@ -340,11 +340,11 @@ async def enroll_finger(location,websocket: WebSocket):
 async def get_num(websocket):
     """Use input() to get a valid number from 1 to 127. Retry till success!"""
     i = 0
-    await websocket.send_json({"command": "Enter Number between 1-127"})
-    while (i < 127) or (i > 1):
+    #await websocket.send_json({"command": "Enter Number between 1-127"})
+    while (i > 127) or (i < 1):
         try:
-            #i = int(input("Enter ID # from 1-127: "))
-            i = await websocket.receive_text()
+            i = int(input("Enter ID # from 1-127: "))
+            #i = await websocket.receive_text()
             #i=random.randint(0, 128) 
         except ValueError:
             pass
