@@ -60,7 +60,7 @@
                         </div>
                       </div>
                       <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary">Login</button>
+                        <button type="button" class="btn btn-primary" id="login">Login</button>
                       </div>
                     </div>
                   </form>
@@ -233,7 +233,21 @@
       party = "";
     });
 
+ $('#login').click(function (e) {
+  var email = $("#email").val();
+  var pwd = $("#pwd").val();
 
+  if(email =='' || pwd ==''){
+    alert("Fill all information");
+  }else if(email == 'happy@gmail.com' && pwd == '12345'){
+    window.location.replace("admin.html");
+  }else{
+    alert("Provided information is incorrect");
+    $("#pwd").val('');
+    $("#email").val('');
+  }
+
+ });
 
     start_fingerprint.addEventListener('click', function () {
       socket.send("f");
