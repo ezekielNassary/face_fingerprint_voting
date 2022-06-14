@@ -140,8 +140,7 @@
                 <div class=" card bg-light p-5 text-center" id="votestatus">
                   
                 </div>
-              
-                <a href="resultpage.php" id="resultpage" class="btn btn-success">View Result</a>
+                <a href="resultpage.html" class="btn btn-warning w-100" >VIEW RESULT</a>
               </div>
             </div>
 
@@ -246,7 +245,7 @@
         } else{
           $.ajax({
             type: "POST",
-            url: "http://192.168.36.191/face_fingerprint_voting/static/actionpages/vote.php",
+            url: "http://192.168.69.191/face_fingerprint_voting/static/actionpages/vote.php",
             data: {
               ccm: ccm,
               cdm: cdm,
