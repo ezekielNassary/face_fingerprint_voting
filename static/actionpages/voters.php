@@ -10,6 +10,8 @@ echo ' <table id = "myTable" class = "table table-bordered" style = "width: 100%
                 <th>Gender</th>
                 <th>Phone</th>
                 <th>Vote ID</th>
+                <th>Finger ID</th>
+                <th>Face ID</th>
                 <th>Action</th> 
              </tr>
     </thead>
@@ -33,8 +35,8 @@ while ($row = mysqli_fetch_array($result)) {
     echo '<td> ' . $gender . ' </td>';
     echo "<td>" . $phone . "</td>";
     echo "<td>" . $voteid . "</td>";
-    // echo "<td>" . $fingerid . "</td>";
-    // echo "<td>" . $faceid . "</td>";
+     echo "<td>" . $fingerid . "</td>";
+     echo "<td>" . $faceid . "</td>";
     echo  " <td><button type='button' class='btn btn-warning w-100' id='train'>DELETE</button></td>";
     echo "</tr>";
 }
