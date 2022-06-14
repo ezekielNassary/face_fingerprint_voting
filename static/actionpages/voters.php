@@ -1,4 +1,6 @@
 <?php
+ header("Access-Control-Allow-Origin: *");
+ header("Access-Control-Allow-Headers: *");
 require_once "config.php";
 echo ' <table id = "myTable" class = "table table-bordered" style = "width: 100%">
     <thead class="table-success">

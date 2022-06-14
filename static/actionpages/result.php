@@ -1,10 +1,13 @@
 
    <?php
-
-    $res = mysqli_real_escape_string($link, $_POST['status']);
-    echo 'Ezekiel';
+   header("Access-Control-Allow-Origin: *");
+   header("Access-Control-Allow-Headers: *");
+   if(isset($_POST['status'])){
+    
     require_once "config.php";
-    $result2 = mysqli_query($link, "SELECT  SUM(CCM),SUM(CHADEMA), SUM(ACT) FROM votes");
+    $res = mysqli_real_escape_string($link, $_POST['status']);
+    $sql="SELECT  SUM(CCM),SUM(CHADEMA), SUM(ACT) FROM votes";
+    $result2 = mysqli_query($link, $sql);
     while ($row = mysqli_fetch_array($result2)) {
         $ccm = $row['SUM(CCM)'];
         $cdm = $row['SUM(CHADEMA)'];
@@ -18,18 +21,22 @@
                 <th>CCM</th>
                 <th>CHADEMA</th>
                 <th>ACT</th>
-                            </tr>
+               
+             </tr>
     </thead>
     <tbody>';
+
     echo "<tr>";
     echo "<td>" . $ccm . "</td>";
     echo '<td> ' . $cdm . ' </td>';
     echo "<td>" . $act . "</td>";
+
+
     echo "</tr>";
     echo '</tbody>';
     echo '</table>';
-
-
-
+   }
+   
+  
 
     ?>
