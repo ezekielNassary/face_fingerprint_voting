@@ -58,88 +58,24 @@
                         $('#serverStatus').html('Server Connected');
                     };
                     socket.onmessage = function(event) {
-                        var data = JSON.parse(event.data);
-                        var res = data.command;
-                        var msg = data.msg;
-                        finger_Id = data.id;
-                        //res = res.replace(/\s/g, '');
-
-                        //$('#fingerid').html(finger_Id);
-                        $('#placeFinger').html(res);
-                        $('#face_status').html(msg);
-
+                      
                     }
-
-                    // sendId.addEventListener('click', function () {
-                    // $('#sendId').prop('disabled', true);
-                    // socket.send("e");
-                    // $('#placeFinger').html("wait..");
-                    //});
-
-                    $('#start-fingerprint').click(function(e) {
-                        socket.send("e");
-                    });
-
-                    $('#train-modal').click(function(e) {
-                        socket.send("m");
-                    });
-                    $('#start-face').click(function(e) {
-                        var name = $("#name").val();
-                        if (name === "") {
-                            alert('Provide Voters Name');
-                            return;
-                        } else {
-                            socket.send("t");
-                            socket.send(name);
-
-                        }
-
-                    });
-                    $('#submit-btn').click(function(e) {
-                        e.preventDefault();
-                        var name = $("#name").val();
-                        var genders = document.getElementsByName('gender');
-                        var phone = $("#phone").val();
-                        var voteId = $("#voteId").val();
-                        var gender = '';
-                        var fingerId = finger_Id
-                        var faceId = "";
-                        for (var i = 0, length = genders.length; i < length; i++) {
-                            if (genders[i].checked) {
-                                gender = genders[i].value;
-                                break;
-                            }
-                        }
-                        if (name === "") {
-                            alert('Provide Voters Name');
-                            return;
-                        }
-                        $.ajax({
+                     $.ajax({
                             type: "POST",
-                            url: "http://192.168.36.191/face_fingerprint_voting/static/actionpages/registration.php",
+                            url: "http://192.168.69.191/face_fingerprint_voting/static/actionpages/result.php",
                             data: {
-                                name: name,
-                                gender: gender,
-                                voteId: voteId,
-                                phone: phone,
-                                fingerId: fingerId,
-                                faceId: faceId
+                                status: "result"
                             },
                             cache: false,
                             success: function(data) {
                                 alert(data);
-                                if (data == "success") {
-                                    $('#register-form').trigger("reset");
-                                } else {
-                                    $("#error").show();
-                                    $('#error').html('Error Occured');
-                                }
+                            
                             },
                             error: function(xhr, status, error) {
-                                // alert(error);
+                            alert(error);
                             }
                         });
-                    });
+                
 
                     socket.onclose = function() {
                         console.log('Network Disconneted');

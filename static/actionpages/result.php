@@ -1,5 +1,7 @@
 
    <?php
+   if(isset($_POST['result'])){
+    $res = mysqli_real_escape_string($link, $_POST['result']);
     require_once "config.php";
     $result2 = mysqli_query($link, "SELECT  SUM(CCM),SUM(CHADEMA), SUM(ACT) FROM votes");
     while ($row = mysqli_fetch_array($result2)) {
@@ -29,5 +31,8 @@
     echo "</tr>";
     echo '</tbody>';
     echo '</table>';
+   }
+   
+  
 
     ?>
