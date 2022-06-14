@@ -1,6 +1,6 @@
 
    <?php
-   if(isset($_POST['status'])){
+
     $res = mysqli_real_escape_string($link, $_POST['status']);
     require_once "config.php";
     $result2 = mysqli_query($link, "SELECT  SUM(CCM),SUM(CHADEMA), SUM(ACT) FROM votes");
@@ -17,22 +17,18 @@
                 <th>CCM</th>
                 <th>CHADEMA</th>
                 <th>ACT</th>
-               
-             </tr>
+                            </tr>
     </thead>
     <tbody>';
-
     echo "<tr>";
     echo "<td>" . $ccm . "</td>";
     echo '<td> ' . $cdm . ' </td>';
     echo "<td>" . $act . "</td>";
-
-
     echo "</tr>";
     echo '</tbody>';
     echo '</table>';
-   }
-   
-  
+
+
+
 
     ?>
