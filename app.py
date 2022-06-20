@@ -22,7 +22,7 @@ import adafruit_fingerprint
 from cv2 import cv2
 import os
 import time
-from device.FaceRecognition import FaceRecognition
+
 
 led = DigitalInOut(board.D13)
 led.direction = Direction.OUTPUT
@@ -120,6 +120,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     break
                 """
             if c == "u":
+                from device.FaceRecognition import FaceRecognition
                 face_recognizer = FaceRecognition(
                 encodings="encodings/encodings.pickle",)
                 face_recognizer.faces_detection()
