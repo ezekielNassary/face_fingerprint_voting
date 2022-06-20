@@ -201,6 +201,7 @@
       var message = data.command;
       var faceDetails=data.face_status;
       fingerId = data.id;
+      console.log(faceDetails);
       $('#finger-print-status').html(message);
       $('#face-status').html(faceDetails);
       $('#finger_id').html(fingerId);
