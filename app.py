@@ -146,9 +146,9 @@ async def websocket_endpoint(websocket: WebSocket):
                             print(command)
                         if command=='Unknown':
                             continue
-                    cancel = await websocket.receive_text()
-                        if cancel == "c":
-                            break
+                cancel = await websocket.receive_text()
+                if cancel == "c":
+                    break
                         
                 
             
