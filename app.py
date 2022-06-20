@@ -147,6 +147,7 @@ async def websocket_endpoint(websocket: WebSocket):
                                 await websocket.send_json({"face_status": command})
                                 print(command)
                                 if x==19:
+                                    cv2.destroyAllWindows()
                                     return True
                             
                             
