@@ -94,8 +94,8 @@
           };
           socket.onmessage = function(event) {
             var data = JSON.parse(event.data);
-            var training=data.command;
-            console.log(training)
+            var res = data.command;
+            console.log(res)
           }
           $('#train-modal').click(function (e) {
             console.log('m')
