@@ -131,24 +131,24 @@ async def websocket_endpoint(websocket: WebSocket):
                     command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8',
                     universal_newlines=True
                 )
-                while True:
-                    for  x in range(20):
-                        realtime_output = process.stdout.readline()
-                        if realtime_output != '':
-                            # await websocket.send_json({"face_status": realtime_output})
-                            # 2022-06-20T15:56:43 EAT [6109] INFO :
-                            # 2022-06-20T15:56:45 EAT [6109] INFO : happy
-                            command=realtime_output[38:45]
-                            time.sleep(1)
-                            print(x)
-                            if command == '':
-                                command='No person'
-                            else:
-                                await websocket.send_json({"face_status": command})
-                                print(command)
-                                if x==19:
-                                    cv2.destroyAllWindows()
-                                    return True
+                
+                for  x in range(20):
+                    realtime_output = process.stdout.readline()
+                    if realtime_output != '':
+                        # await websocket.send_json({"face_status": realtime_output})
+                        # 2022-06-20T15:56:43 EAT [6109] INFO :
+                        # 2022-06-20T15:56:45 EAT [6109] INFO : happy
+                        command=realtime_output[38:45]
+                        time.sleep(1)
+                        print(x)
+                        if command == '':
+                            command='No person'
+                        else:
+                            await websocket.send_json({"face_status": command})
+                            print(command)
+                            if x==19:
+                                cv2.destroyAllWindows()
+                                return True
                             
                             
                             
