@@ -111,7 +111,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 try:
                     process = subprocess.Popen(
                         command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8',
-                        universal_newlines=True, timeout=2
+                        universal_newlines=True
                     )
                 
                     while True:
@@ -119,9 +119,9 @@ async def websocket_endpoint(websocket: WebSocket):
                         if realtime_output != '':
                             print(realtime_output)
                             # await websocket.send_json({"command": realtime_output})
-                except process.TimeoutExpired as t:
+                except subprocess.CalledProcessError:
                     print("Timeout expired!")
-                    print(t.timeout)
+                   
                     
                 
             if c == "u":
