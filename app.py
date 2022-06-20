@@ -118,7 +118,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     if realtime_output != '':
                         print(realtime_output)
                         # await websocket.send_json({"command": realtime_output})
-                    break
+                    
                 
             if c == "u":
                 command = "python3 vote.py"
