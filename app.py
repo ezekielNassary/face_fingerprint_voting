@@ -108,16 +108,20 @@ async def websocket_endpoint(websocket: WebSocket):
                 await createDataset(websocket)
             if c == "m":
                 command = "python3 training.py"
-                process = subprocess.Popen(
-                    command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8',
-                    universal_newlines=True
-                )
+                try:
+                    process = subprocess.Popen(
+                        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8',
+                        universal_newlines=True, timeout=2
+                    )
                 
-                while True:
-                    realtime_output = process.stdout.readline()
-                    if realtime_output != '':
-                        print(realtime_output)
-                        # await websocket.send_json({"command": realtime_output})
+                    while True:
+                        realtime_output = process.stdout.readline()
+                        if realtime_output != '':
+                            print(realtime_output)
+                            # await websocket.send_json({"command": realtime_output})
+                except process.TimeoutExpired as t:
+                    print("Timeout expired!")
+                    print(t.timeout)
                     
                 
             if c == "u":
