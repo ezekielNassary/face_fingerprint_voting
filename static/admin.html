@@ -100,10 +100,14 @@
           $('#train-modal').click(function(e) {
             socket.send("m");
           });
+          $('#voters-table tr').each(function() {
+            var customerId = $(this).find("td").eq(2).html(); 
+            alert(customerId)   
+        });
        
           $.ajax({
             type: "POST",
-            url: "http://192.168.69.191/face_fingerprint_voting/static/actionpages/voters.php",
+            url: "http://192.168.46.191/face_fingerprint_voting/static/actionpages/voters.php",
             data: {  },
             cache: false,
             success: function(data) {

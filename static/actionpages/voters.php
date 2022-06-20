@@ -2,7 +2,7 @@
  header("Access-Control-Allow-Origin: *");
  header("Access-Control-Allow-Headers: *");
 require_once "config.php";
-echo ' <table id = "myTable" class = "table table-bordered" style = "width: 100%">
+echo ' <table id="voters-table" class = "table table-bordered" style = "width: 100%">
     <thead class="table-success">
       <tr>
         <th>S/N</th>
