@@ -176,6 +176,7 @@
     var socket = new WebSocket('ws:localhost:5555/ws');
     var finger_status = document.getElementById('finger-print-status');
     var start_fingerprint = document.getElementById('start-fingerprint');
+    var start_face = document.getElementById('start-face');
     var input_name = document.getElementById('input_name');
     var voteccm = document.getElementById("vote-ccm");
     var votecdm = document.getElementById("vote-cdm");
@@ -252,6 +253,9 @@
     start_fingerprint.addEventListener('click', function () {
       socket.send("f");
 
+    });
+    start_face.addEventListener('click',function(){
+      socket.send("u");
     });
 
     socket.onclose = function () {
