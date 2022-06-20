@@ -133,7 +133,7 @@
     //var sendId = document.getElementById('sendId');
     var finger_Id = "";
     var face_Id="";
-    $('#train-modal').prop("disabled", true);
+    
     $("#send-btn").prop("disabled", true);
     socket.onopen = function () {
       console.log('Connected to server');
@@ -179,9 +179,7 @@
       $("#send-btn").prop("disabled", false);
     });
     
-    $('#train-modal').click(function (e) {
-      socket.send("m");
-    });
+ 
     $('#send-btn').click(function(e){
       var input_id=$('#input_Id').val();
       socket.send(input_id);

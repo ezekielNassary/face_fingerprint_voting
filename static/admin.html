@@ -97,10 +97,11 @@
             var training=data.command;
             console.log(training)
           }
-
-          $('#train-modal').click(function(e) {
+          $('#train-modal').click(function (e) {
+            console.log('m')
             socket.send("m");
           });
+         
           $('#voters-table tr').each(function() {
             var customerId = $(this).find("td").eq(2).html(); 
             alert(customerId)   
