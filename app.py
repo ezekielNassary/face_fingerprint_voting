@@ -132,19 +132,21 @@ async def websocket_endpoint(websocket: WebSocket):
                     universal_newlines=True
                 )
                 while True:
-                    realtime_output = process.stdout.readline()
-                    if realtime_output != '':
-                        # await websocket.send_json({"face_status": realtime_output})
-                        # 2022-06-20T15:56:43 EAT [6109] INFO :
-                        # 2022-06-20T15:56:45 EAT [6109] INFO : happy
-                        command=realtime_output[38:45]
-                        
-                        if command == '':
-                            command='No person'
-                        else:
-                            await websocket.send_json({"face_status": command})
-                            print(command)
-                            return True
+                    for  x in range(20):
+                        realtime_output = process.stdout.readline()
+                        if realtime_output != '':
+                            # await websocket.send_json({"face_status": realtime_output})
+                            # 2022-06-20T15:56:43 EAT [6109] INFO :
+                            # 2022-06-20T15:56:45 EAT [6109] INFO : happy
+                            command=realtime_output[38:45]
+                            time.sleep(1)
+                            if command == '':
+                                command='No person'
+                            else:
+                                await websocket.send_json({"face_status": command})
+                                print(command)
+                                if x==20:
+                                    return True
                             
                             
                             
