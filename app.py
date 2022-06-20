@@ -144,11 +144,12 @@ async def websocket_endpoint(websocket: WebSocket):
                         else:
                             await websocket.send_json({"face_status": command})
                             print(command)
-                        if command=='Unknown':
-                            continue
-                    cancel = await websocket.receive_text()
-                    if cancel == "c":
-                        break
+                    
+                            cancel = await websocket.receive_text()
+                            if cancel == "c":
+                                break
+                            else:
+                                continue
                         
                 
             
