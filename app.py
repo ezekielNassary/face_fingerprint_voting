@@ -128,7 +128,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 while True:
                     realtime_output = process.stdout.readline()
                     if realtime_output != '':
-                        await websocket.send_json({"command": realtime_output})
+                        await websocket.send_json({"face_status": realtime_output})
                     break
                         
                 
