@@ -132,7 +132,7 @@ async def websocket_endpoint(websocket: WebSocket):
                         # await websocket.send_json({"face_status": realtime_output})
                         # 2022-06-20T15:56:43 EAT [6109] INFO :
                         # 2022-06-20T15:56:45 EAT [6109] INFO : happy
-                        command=srealtime_output[38,45]
+                        command=realtime_output[38,45]
                         print(command)
                         
                 
