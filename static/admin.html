@@ -34,7 +34,7 @@
                 <div class="col-sm-3">
                   <div class="card">
                     <div class="card-body">
-                      <a  type="button" class="btn btn-warning w-100" id="train">TRAIN MODAL</a>
+                      <a  type="button" class="btn btn-warning w-100" id="train-modal">TRAIN MODAL</a>
                     </div>
                   </div>
                 </div>
@@ -94,7 +94,8 @@
           };
           socket.onmessage = function(event) {
             var data = JSON.parse(event.data);
-          
+            var training=data.command;
+            console.log(training)
           }
 
           $('#train-modal').click(function(e) {
