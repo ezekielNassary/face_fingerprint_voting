@@ -123,7 +123,6 @@ async def websocket_endpoint(websocket: WebSocket):
                 from device.FaceRecognition import FaceRecognition
                 face_recognizer = FaceRecognition(
                 encodings="encodings/encodings.pickle",)
-                face_recognizer.faces_detection()
                 await websocket.send_json({"command": face_recognizer.faces_detection()})
                 break
                 
