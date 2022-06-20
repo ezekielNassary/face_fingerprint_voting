@@ -140,7 +140,7 @@ async def websocket_endpoint(websocket: WebSocket):
                         # 2022-06-20T15:56:45 EAT [6109] INFO : happy
                         command=realtime_output[38:45]
                         
-                        # print(x)
+                        print(realtime_output)
                         if command == '':
                             command='No person'
                         else:
