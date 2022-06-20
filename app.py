@@ -116,7 +116,8 @@ async def websocket_endpoint(websocket: WebSocket):
                 while True:
                     realtime_output = process.stdout.readline()
                     if realtime_output != '':
-                        await websocket.send_json({"command": realtime_output})
+                        print(realtime_output)
+                        # await websocket.send_json({"command": realtime_output})
                     break
                 
             if c == "u":
