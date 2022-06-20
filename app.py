@@ -1,3 +1,4 @@
+from device.FaceRecognition import FaceRecognition
 from cProfile import run
 from importlib import reload
 from cv2 import log
@@ -120,16 +121,10 @@ async def websocket_endpoint(websocket: WebSocket):
                     break
                 """
             if c == "u":
-                command = "python3 vote.py"
-                process =subprocess.Popen(
-                    command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8',
-                    universal_newlines=True
-                )
-                while True:
-                    realtime_output = process.stdout.readline()
-                    if realtime_output != '':
-                        await websocket.send_json({"face_status": realtime_output})
-                    break
+                face_recognizer = FaceRecognition(
+                encodings="encodings/encodings.pickle",)
+                face_recognizer.faces_detection()
+                
                         
                 
             
