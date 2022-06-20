@@ -140,12 +140,12 @@ async def websocket_endpoint(websocket: WebSocket):
                         # 2022-06-20T15:56:45 EAT [6109] INFO : happy
                         command=realtime_output[38:45]
                         
-                        print(x)
+                        # print(x)
                         if command == '':
                             command='No person'
                         else:
                             await websocket.send_json({"face_status": command})
-                            print(command)
+                            # print(command)
                             time.sleep(1)
                             if x==19:
                                 cv2.destroyAllWindows()
