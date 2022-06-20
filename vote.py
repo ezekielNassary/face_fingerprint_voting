@@ -7,3 +7,4 @@ if __name__ == "__main__":
         encodings="encodings/encodings.pickle",
     )
     face_recognizer.faces_detection()
+    print(faces_detection)
