@@ -199,13 +199,16 @@
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
       var message = data.command;
+      var faceDetails=data.face_status;
       fingerId = data.id;
       $('#finger-print-status').html(message);
+      $('#face-status').html(faceDetails);
       $('#finger_id').html(fingerId);
       if (message == "Success") {
         $("#vote-ccm").prop("disabled", false);
         $("#vote-cdm").prop("disabled", false);
         $("#vote-act").prop("disabled", false);
+
       }
 
     }
