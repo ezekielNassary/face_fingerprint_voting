@@ -148,8 +148,9 @@ async def websocket_endpoint(websocket: WebSocket):
                             # print(command)
                             time.sleep(1)
                             if x==19:
-                                cv2.destroyAllWindows()
                                 cv2.waitKey(1)
+                                cv2.destroyAllWindows()
+                                
                 return True
                             
                             
