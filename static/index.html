@@ -205,7 +205,7 @@
       if(faceDetails==''){
         faceDetails="No person detected";
       }else{
-
+        
       }
       $('#finger-print-status').html(message);
       $('#face-status').html(faceDetails);
@@ -260,7 +260,7 @@
  });
 
     start_fingerprint.addEventListener('click', function () {
-      socket.send("c");
+      socket.send("f");
 
     });
     start_face.addEventListener('click',function(){

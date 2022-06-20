@@ -121,7 +121,7 @@ async def websocket_endpoint(websocket: WebSocket):
                             # await websocket.send_json({"command": realtime_output})
                 except subprocess.CalledProcessError:
                     print("Timeout expired!")
-                break
+                return True
                    
                     
                 
@@ -144,12 +144,10 @@ async def websocket_endpoint(websocket: WebSocket):
                         else:
                             await websocket.send_json({"face_status": command})
                             print(command)
-                    
-                            cancel = await websocket.receive_text()
-                            if cancel == "c":
-                                break
-                            else:
-                                continue
+                            return True
+                            
+                            
+                            
                         
                 
             
