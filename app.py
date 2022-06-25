@@ -91,9 +91,10 @@ async def websocket_endpoint(websocket: WebSocket):
             if c == "f":
                 if await get_fingerprint(websocket):
                     print("Detected #", finger.finger_id, "with confidence", finger.confidence)
-                    await websocket.send_json({"command": "Success"})
                     fingerId=finger.finger_id
                     await websocket.send_json({"id": fingerId})
+                    await websocket.send_json({"command": "Success"})
+                    
                     
                 else:
                     print("Finger not found")
@@ -355,9 +356,9 @@ async def enroll_finger(location,websocket: WebSocket):
     i = finger.store_model(location)
     if i == adafruit_fingerprint.OK:
         print("Stored")
-        
-        await websocket.send_json({"command": "Success"})
         await websocket.send_json({"id": location})
+        await websocket.send_json({"command": "Success"})
+        
         
     else:
         if i == adafruit_fingerprint.BADLOCATION:
