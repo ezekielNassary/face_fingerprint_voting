@@ -12,7 +12,11 @@
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
     integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
+  <style>
+    .multiple_section {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="bg-light">
@@ -70,106 +74,156 @@
 
 
 
-            <div class="mb-3 mt-3 p-3 bg-secondary">
-              <div class="row">
-                <div class="col-md-12 ">
-               
-                  <div class="card p-2">
-                    <!-- <div class="input-group mb-3 mt-3">
-                    <input type="number" class="form-control" id="input_Id" placeholder="Enter finger id (1-127)">
-                    <div class="input-group-append">
-                      <button class="btn btn-secondary" type="submit">Send</button>
-                    </div>
-                  </div>  -->
 
-                    <h4 class="p-3">Finger Print Verification</h4>
-                    <button type="button" class="btn btn-warning" id="start-fingerprint">Start</button>
 
-                    <div class=" p-3 mb-2  bg-danger text-light text-center" style="height: 200px; ">
-                      <h3 id="finger-print-status" style="margin-top: 50px; ">
-                        <div class="spinner-grow spinner-grow-lg text-warning"></div>
-                      </h3>
+
+
+
+            <form action="">
+              <div class="multiple_section" id="section_1" style="display:block">
+
+                <div class="mb-3 mt-3 p-3 bg-secondary">
+                  <div class="row">
+                    <div class="col-md-12 ">
+
+                      <div class="card p-2">
+                        <!-- <div class="input-group mb-3 mt-3">
+                        <input type="number" class="form-control" id="input_Id" placeholder="Enter finger id (1-127)">
+                        <div class="input-group-append">
+                          <button class="btn btn-secondary" type="submit">Send</button>
+                        </div>
+                      </div>  -->
+
+                        <h4 class="p-3">Finger Print Verification</h4>
+                        <button type="button" class="btn btn-warning" id="start-fingerprint">Start</button>
+
+                        <div class=" p-3 mb-2  bg-danger text-light text-center" style="height: 200px; ">
+                          <h3 id="finger-print-status" style="margin-top: 50px; ">
+                            <div class="spinner-grow spinner-grow-lg text-warning"></div>
+                          </h3>
+                        </div>
+                        <p id="fingerid"></p>
+                      </div>
                     </div>
-                    <p id="fingerid"></p>
+
+                  </div>
+
+                </div>
+
+
+
+                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_2">Next</button>
+              </div>
+              <div class="multiple_section" id="section_2">
+                <div class="mb-3 mt-3 p-3 bg-secondary">
+                  <div class="row">
+
+                    <div class="col-md-12 ">
+                      <div class="card p-2">
+                        <h4 class="p-3">Face Recognition</h4>
+                        <button type="button" class="btn btn-warning" id="start-face">Start</button>
+                        <div class=" p-3 bg-danger text-light text-center" style="height: 200px; ">
+                          <h3 id="face-status" style="margin-top: 50px; ">
+                            <div class="spinner-grow spinner-grow-lg text-warning"></div>
+                          </h3>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_1">Prev</button>
+                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_3">Next</button>
+              </div>
+              <div class="multiple_section" id="section_3">
+                <div class="mb-3 mt-3 p-3 bg-secondary">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="row">
+                        <p><b>CANDIDATES</b></p>
+                        <div class="col-sm-4">
+                          <div class="card">
+                            <img src="img/ccm.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
+                            <div class="card-body">
+                              <h4 class="card-title">Samia Hassan Suluhu</h4>
+                              <p class="card-text">CCM</p>
+                              <button type="button" class="btn btn-warning" id="vote-ccm">SELECT</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="card">
+                            <img src="img/chadema.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
+                            <div class="card-body">
+                              <h4 class="card-title">Tundu Antipas Lissu</h4>
+                              <p class="card-text">CHADEMA</p>
+                              <button type="button" class="btn btn-danger" id="vote-cdm">SELECT</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 ">
+                          <div class="card h-100">
+                            <img src="img/act.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
+                            <div class="card-body">
+                              <h4 class="card-title">Zitto Kabwe</h4>
+                              <p class="card-text">ACT WAZALENDO</p>
+                              <button type="button" class="btn btn-primary" id="vote-act">SELECT</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-12 ">
-                  <div class="card p-2">
-                    <h4 class="p-3">Face Recognition</h4>
-                    <button type="button" class="btn btn-warning" id="start-face">Start</button>
-                    <div class=" p-3 bg-danger text-light text-center" style="height: 200px; ">
-                      <h3 id="face-status"  style="margin-top: 50px; ">
-                        <div class="spinner-grow spinner-grow-lg text-warning"></div>
-                      </h3>
+                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_2">Prev</button>
+                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_4">Next</button>
+              </div>
+              <div class="multiple_section" id="section_4">
+                <div class="mb-3 mt-3 p-3 bg-danger">
+                  <div class="row">
+                    <div class="col-lg-12 text-center "  style="height: 100px; ">
+                      <button type="Submit" class="btn btn-primary mt-3" >Vote</button>
                     </div>
-
                   </div>
                 </div>
+                
+                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_3">Prev</button>
+                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_5">Next</button>
               </div>
+              <div class="multiple_section" id="section_5">
+                <div class="mb-3 mt-3 p-3 bg-secondary">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h4 class="text-center">VOTING STATUS </h4>
+                        </div>
+                        <div class="card-body">
+                          <div class=" card bg-light p-5 text-center" id="votestatus">
 
-            </div>
-
-            <div class="card">
-              <div class="card-body">
-
+                          </div>
+                          <a href="resultpage.html" class="btn btn-warning w-100">VIEW RESULT</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_4">Prev</button>
+                <button type="button" class="btn btn-primary">Close</button>
               </div>
-            </div>
-
+            </form>
           </div>
-          <div class="col-lg-12">
-            <div class="row">
-              <p><b>CANDIDATES</b></p>
-              <div class="col-sm-4">
-                <div class="card">
-                  <img src="img/ccm.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
-                  <div class="card-body">
-                    <h4 class="card-title">Samia Hassan Suluhu</h4>
-                    <p class="card-text">CCM</p>
-                    <button type="button" class="btn btn-warning" id="vote-ccm">VOTE</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="card">
-                  <img src="img/chadema.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
-                  <div class="card-body">
-                    <h4 class="card-title">Tundu Antipas Lissu</h4>
-                    <p class="card-text">CHADEMA</p>
-                    <button type="button" class="btn btn-danger" id="vote-cdm">VOTE</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="card">
-                  <img src="img/act.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
-                  <div class="card-body">
-                    <h4 class="card-title">Zitto Kabwe</h4>
-                    <p class="card-text">ACT WAZALENDO</p>
-                    <button type="button" class="btn btn-primary" id="vote-act">VOTE</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
+
+
+
         </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h4 class="text-center">VOTING STATUS </h4>
-          </div>
-          <div class="card-body">
-            <div class=" card bg-light p-5 text-center" id="votestatus">
-
-            </div>
-            <a href="resultpage.html" class="btn btn-warning w-100">VIEW RESULT</a>
-          </div>
-        </div>
-
-
       </div>
     </div>
-  </div>
-  <div class="card-footer">Footer</div>
+    <div class="card-footer text-center mb-3">@DIT Fingerprint and Facial Recognition Voting Syatem</div>
   </div>
 
 
@@ -188,7 +242,13 @@
     var party = "";
     var faceId = "";
     var server_status = document.getElementById('serverStatus');
-
+    $(document).ready(function () {
+      $(".next-prev").click(function () {
+        var section = $(this).attr("data-next-prev");
+        $(".multiple_section").css("display", "none");
+        $("#" + section).css("display", "block");
+      });
+    });
     $("#vote-ccm").prop("disabled", true);
     $("#vote-cdm").prop("disabled", true);
     $("#vote-act").prop("disabled", true);
@@ -200,13 +260,13 @@
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
       var message = data.command;
-      var faceDetails=data.face_status;
+      var faceDetails = data.face_status;
       fingerId = data.id;
       console.log(faceDetails);
-      if(faceDetails==''){
-        faceDetails="No person detected";
-      }else{
-        
+      if (faceDetails == '') {
+        faceDetails = "No person detected";
+      } else {
+
       }
       $('#finger-print-status').html(message);
       $('#face-status').html(faceDetails);
@@ -244,27 +304,27 @@
       party = "";
     });
 
- $('#login').click(function (e) {
-  var email = $("#email").val();
-  var pwd = $("#pwd").val();
+    $('#login').click(function (e) {
+      var email = $("#email").val();
+      var pwd = $("#pwd").val();
 
-  if(email =='' || pwd ==''){
-    alert("Fill all information");
-  }else if(email == 'happy@gmail.com' && pwd == '12345'){
-    window.location.replace("admin.html");
-  }else{
-    alert("Provided information is incorrect");
-    $("#pwd").val('');
-    $("#email").val('');
-  }
+      if (email == '' || pwd == '') {
+        alert("Fill all information");
+      } else if (email == 'happy@gmail.com' && pwd == '12345') {
+        window.location.replace("admin.html");
+      } else {
+        alert("Provided information is incorrect");
+        $("#pwd").val('');
+        $("#email").val('');
+      }
 
- });
+    });
 
     start_fingerprint.addEventListener('click', function () {
       socket.send("f");
 
     });
-    start_face.addEventListener('click',function(){
+    start_face.addEventListener('click', function () {
       socket.send("u");
     });
 
