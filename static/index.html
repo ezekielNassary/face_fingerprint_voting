@@ -16,7 +16,6 @@
     .multiple_section {
       display: none;
     }
-   
   </style>
 </head>
 
@@ -47,7 +46,7 @@
             <div class="row">
               <div class="col-lg-12 p-3 text-success">Server Status: <span id="serverStatus">Not connected </span></div>
               <hr>
-             
+
             </div>
 
 
@@ -90,7 +89,8 @@
 
 
 
-                <button type="button" id="sec_1" class="btn btn-primary next-prev" data-next-prev="section_2">Next</button>
+                <button type="button" id="sec_1" class="btn btn-primary next-prev"
+                  data-next-prev="section_2">Next</button>
               </div>
               <div class="multiple_section" id="section_2">
                 <div class="mb-3 mt-3 p-3 bg-secondary">
@@ -113,8 +113,10 @@
                 </div>
 
 
-                <button type="button" id="sec_2"  class="btn btn-primary next-prev" data-next-prev="section_1">Prev</button>
-                <button type="button" id="sec_3" class="btn btn-primary next-prev" data-next-prev="section_3">Next</button>
+                <button type="button" id="sec_2" class="btn btn-primary next-prev"
+                  data-next-prev="section_1">Prev</button>
+                <button type="button" id="sec_3" class="btn btn-primary next-prev"
+                  data-next-prev="section_3">Next</button>
               </div>
               <div class="multiple_section" id="section_3">
                 <div class="mb-3 mt-3 p-3 bg-secondary">
@@ -156,20 +158,24 @@
                     </div>
                   </div>
                 </div>
-                <button type="button" id="sec_4" class="btn btn-primary next-prev" data-next-prev="section_2">Prev</button>
-                <button type="button" id="sec_5" class="btn btn-primary next-prev" data-next-prev="section_4">Next</button>
+                <button type="button" id="sec_4" class="btn btn-primary next-prev"
+                  data-next-prev="section_2">Prev</button>
+                <button type="button" id="sec_5" class="btn btn-primary next-prev"
+                  data-next-prev="section_4">Next</button>
               </div>
               <div class="multiple_section" id="section_4">
                 <div class="mb-3 mt-3 p-3 bg-danger">
                   <div class="row">
-                    <div class="col-lg-12 text-center "  style="height: 100px; ">
-                      <button type="Submit" class="btn btn-primary mt-3" >Vote</button>
+                    <div class="col-lg-12 text-center " style="height: 100px; ">
+                      <button type="Submit" class="btn btn-primary mt-3">Vote</button>
                     </div>
                   </div>
                 </div>
-                
-                <button type="button" id="sec_6" class="btn btn-primary next-prev" data-next-prev="section_3">Prev</button>
-                <button type="button" id="sec_7" class="btn btn-primary next-prev" data-next-prev="section_5">Next</button>
+
+                <button type="button" id="sec_6" class="btn btn-primary next-prev"
+                  data-next-prev="section_3">Prev</button>
+                <button type="button" id="sec_7" class="btn btn-primary next-prev"
+                  data-next-prev="section_5">Next</button>
               </div>
               <div class="multiple_section" id="section_5">
                 <div class="mb-3 mt-3 p-3 bg-secondary">
@@ -189,7 +195,8 @@
                     </div>
                   </div>
                 </div>
-                <button type="button" id="sec_8" class="btn btn-primary next-prev" data-next-prev="section_4">Prev</button>
+                <button type="button" id="sec_8" class="btn btn-primary next-prev"
+                  data-next-prev="section_4">Prev</button>
                 <button type="button" id="sec_9" class="btn btn-primary">Close</button>
               </div>
             </form>
@@ -226,7 +233,8 @@
           </form>
         </div>
       </div>
-      <p>@DIT Fingerprint and Facial Recognition Voting Syatem</p></div>
+      <p>@DIT Fingerprint and Facial Recognition Voting Syatem</p>
+    </div>
   </div>
 
 
@@ -239,7 +247,7 @@
     var voteccm = document.getElementById("vote-ccm");
     var votecdm = document.getElementById("vote-cdm");
     var voteact = document.getElementById("vote-act");
-   
+
     var sec_1 = document.getElementById("sec_1");
     var sec_2 = document.getElementById("sec_2");
     var sec_3 = document.getElementById("sec_3");
@@ -248,7 +256,7 @@
     var sec_6 = document.getElementById("sec_6");
     var sec_7 = document.getElementById("sec_7");
     var sec_8 = document.getElementById("sec_8");
-    
+
     $("#sec_1").prop("disabled", true);
     $("#sec_2").prop("disabled", true);
     $("#sec_3").prop("disabled", true);
@@ -290,16 +298,32 @@
       } else {
 
       }
-      $('#finger-print-status').html(message);
+      $('#finger-print-status').html(fingerId);
       $('#face-status').html(faceDetails);
       $('#finger_id').html(fingerId);
       if (message == "Success") {
+        $.ajax({
+          type: "POST",
+          url: "http://192.168.165.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
+          data: {
+            fingerId: fingerId,
+          },
+          cache: false,
+          success: function (data) {
+            alert(data);
+        
+          },
+          error: function (xhr, status, error) {
+            alert('error');
+        
+          }
+        });
         $("#sec_1").prop("disabled", false);
         $("#vote-ccm").prop("disabled", false);
         $("#vote-cdm").prop("disabled", false);
         $("#vote-act").prop("disabled", false);
 
-      }else{
+      } else {
         $("#sec_1").prop("disabled", true);
       }
 
