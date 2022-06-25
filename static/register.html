@@ -96,9 +96,10 @@
                     <div class="input-group-append">
                       <button id="send-btn" class="btn btn-success" type="button">Send</button>
                     </div>
-                    <p id="id_txt"></p>
+                   
                  
                   </div> 
+                  <p id="id_txt"></p>
                 </div>
               </div>
               <div class="col-md-12 ">
@@ -214,7 +215,7 @@
       var voteId = $("#voteId").val();
       var gender = '';
       var fingerId = finger_Id;
-      var faceId=face_Id;
+      var faceId= $("#id_txt").text();
       
       for (var i = 0, length = genders.length; i < length; i++) {
         if (genders[i].checked) {
