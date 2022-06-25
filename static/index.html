@@ -306,8 +306,9 @@
 
       if (message == "Success" && fingerId != "") {
         setTimeout(function () {
+          
+          fingerId = $("#finger-print-status").val();
           alert(fingerId);
-
           $.ajax({
             type: "POST",
             url: "http://192.168.165.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
