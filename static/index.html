@@ -80,7 +80,7 @@
                           </h3>
                         </div>
                         <p id="fingerid"></p>
-                        <input type="text" id="fin" placeholder="id value"> 
+                        <p>ID: <input type="text" name="user"></p>
                       </div>
                     </div>
 
@@ -303,14 +303,16 @@
       $('#finger-print-status').html(fingerId);
       $('#face-status').html(faceDetails);
       $('#finger_id').html(message);
-
+     
 
       if (message == "Success" && fingerId != "") {
         setTimeout(function () {
           
           fingerId = $("#finger-print-status").val();
-          $("#fin").html(fingerId);
-          alert($("#fin").val());
+          $id="1";
+          $("input:text").val($id);
+         // $("#fin").html(fingerId);
+         // alert($("#fin").val());
           $.ajax({
             type: "POST",
             url: "http://192.168.165.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
