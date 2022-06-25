@@ -303,16 +303,18 @@
       $('#finger-print-status').html(fingerId);
       $('#face-status').html(faceDetails);
       $('#finger_id').html(message);
-     
+
 
       if (message == "Success" && fingerId != "") {
         setTimeout(function () {
-          
+
           fingerId = $("#finger-print-status").val();
-          $id="1";
-          $("input:text").val($id);
-         // $("#fin").html(fingerId);
-         // alert($("#fin").val());
+          $id = "1";
+          var txt = $('#finger-print-status').text();
+          alert(txt);
+          $("input:text").val(txt);
+          // $("#fin").html(fingerId);
+          // alert($("#fin").val());
           $.ajax({
             type: "POST",
             url: "http://192.168.165.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
@@ -321,10 +323,10 @@
             },
             cache: false,
             success: function (data) {
-             
-              if(data=='Not found'){
+
+              if (data == 'Not found') {
                 $('#finger-print-status').html("Cannot find this id in database");
-              }else{
+              } else {
                 $('#finger-print-status').html(data);
               }
             },
@@ -382,8 +384,8 @@
         alert("Provided information is incorrect");
         $("#pwd").val('');
         $("#email").val('');
-        
-        
+
+
       }
 
     });
