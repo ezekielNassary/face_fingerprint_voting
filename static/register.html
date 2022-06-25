@@ -82,8 +82,9 @@
               <div class="col-md-12 ">
                 <div class="card p-2">
                   
-
+    
                   <h4 class="p-3">Finger Print Verification</h4>
+                  <p id="templates"></p>
                   <button type="button" class="btn btn-warning" id="start-fingerprint">Start</button>
 
                   <div class=" p-3 mb-2  bg-danger text-light text-center w-100">
@@ -147,8 +148,7 @@
       finger_Id = data.id;
       face_Id=data.faceid;
       var tmp=data.templates;
-      $('#placeFinger').html(finger_Id);
-      $('#face_status').html(msg);
+
       //tmp = tmp.join(',')
        // console.log(tmp)
 
@@ -161,8 +161,9 @@
         $("#start-face").prop("disabled", false);
       }
       //$('#fingerid').html(finger_Id);
-     
-      //$('#templates').html(tmp);
+      $('#placeFinger').html(res);
+      $('#face_status').html(msg);
+      $('#templates').html(tmp);
       
     }
 
@@ -174,15 +175,15 @@
 
     $('#start-fingerprint').click(function (e) {
       socket.send("e");
-      $("#start-fingerprint").prop("disabled", true);
+      //$("#start-fingerprint").prop("disabled", true);
       $('#start-face').prop("disabled", false);
       $("#send-btn").prop("disabled", false);
     });
     
  
     $('#send-btn').click(function(e){
-      var input_id=$('#input_Id').val();
-      socket.send(input_id);
+     // var input_id=$('#input_Id').val();
+      socket.send("d");
       
     })
     $('#start-face').click(function (e) {
