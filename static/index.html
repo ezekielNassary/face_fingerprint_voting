@@ -80,6 +80,7 @@
                           </h3>
                         </div>
                         <p id="fingerid"></p>
+                        <input type="text" id="fin" placeholder="id value"> 
                       </div>
                     </div>
 
@@ -308,6 +309,7 @@
         setTimeout(function () {
           
           fingerId = $("#finger-print-status").val();
+          $("#fin").val(fingerId);
           alert(fingerId);
           $.ajax({
             type: "POST",
@@ -378,6 +380,8 @@
         alert("Provided information is incorrect");
         $("#pwd").val('');
         $("#email").val('');
+        
+        
       }
 
     });
