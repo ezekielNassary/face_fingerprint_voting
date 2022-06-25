@@ -100,6 +100,7 @@
                  
                   </div> 
                   <p id="id_txt"></p>
+                  <p id="face_txt"></p>
                 </div>
               </div>
               <div class="col-md-12 ">
@@ -150,10 +151,12 @@
       var msg =data.msg;
       var fgid = data.id;
       $('#id_txt').html(fgid);
-      face_Id=data.faceid;
+      var fc_Id=data.faceid;
+      
+      $('#face_txt').html(fc_Id);
       var tmp=data.templates;
 
-      //tmp = tmp.join(',')
+      tmp = tmp.join(',')
        // console.log(tmp)
 
       //finger_Id = finger_Id.replace(/\s/g, '');
@@ -214,8 +217,8 @@
       var phone = $("#phone").val();
       var voteId = $("#voteId").val();
       var gender = '';
-      var fingerId = finger_Id;
-      var faceId= $("#id_txt").text();
+      var fingerId = $("#id_txt").text();
+      var faceId= "";
       
       for (var i = 0, length = genders.length; i < length; i++) {
         if (genders[i].checked) {
