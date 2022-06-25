@@ -292,7 +292,7 @@
       fingerId = data.id;
       var message = data.command;
       var faceDetails = data.face_status;
-      
+
       console.log(faceDetails);
       if (faceDetails == '') {
         faceDetails = "No person detected";
@@ -302,28 +302,30 @@
       $('#finger-print-status').html(fingerId);
       $('#face-status').html(faceDetails);
       $('#finger_id').html(message);
-      
-     
-      if (message == "Success" && fingerId != "") {
-        setTimeout(function(){ alert("After 5 seconds!"); }, 5000);
-        alert(fingerId);
 
-        $.ajax({
-          type: "POST",
-          url: "http://192.168.165.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
-          data: {
-            fingerId: fingerId,
-          },
-          cache: false,
-          success: function (data) {
-            alert(data);
-        
-          },
-          error: function (xhr, status, error) {
-            alert('error');
-        
-          }
-        });
+
+      if (message == "Success" && fingerId != "") {
+        setTimeout(function () {
+          alert(fingerId);
+
+          $.ajax({
+            type: "POST",
+            url: "http://192.168.165.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
+            data: {
+              fingerId: fingerId,
+            },
+            cache: false,
+            success: function (data) {
+              alert(data);
+
+            },
+            error: function (xhr, status, error) {
+              alert('error');
+
+            }
+          });
+        }, 1000);
+
         $("#sec_1").prop("disabled", false);
         $("#vote-ccm").prop("disabled", false);
         $("#vote-cdm").prop("disabled", false);
@@ -332,7 +334,7 @@
       } else {
         $("#sec_1").prop("disabled", true);
       }
-     
+
     }
     voteccm.addEventListener('click', function () {
       party = "ccm";
