@@ -274,6 +274,7 @@
     var vote = 0;
     var party = "";
     var faceId = "";
+    var voterName="";
     var server_status = document.getElementById('serverStatus');
     $(document).ready(function () {
       $(".next-prev").click(function () {
@@ -329,8 +330,10 @@
                 $('#finger-print-status').html("Cannot find this id in database");
                 $("#sec_1").prop("disabled", true);
               }else{
+                voterName=data;
                 $('#finger-print-status').html(data);
                 $("#sec_1").prop("disabled", false);
+                $("#sec_2").prop("disabled", false);
               }
             },
             error: function (xhr, status, error) {
@@ -342,7 +345,14 @@
       } else {
         
     }
-
+    if(voterName != ''){
+      if(faceDetails==voterName){
+        $("#sec_3").prop("disabled", false);
+        $('#face-status').html('Voter Name: '+faceDetails);
+      }else{
+        $('#face-status').html('Name not matched');
+      }
+    }
     }
     voteccm.addEventListener('click', function () {
       party = "ccm";
@@ -392,7 +402,7 @@
 
     });
     start_face.addEventListener('click', function () {
-      $("#sec_2").prop("disabled", false);
+     
       socket.send("u");
      
     });
