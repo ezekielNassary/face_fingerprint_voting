@@ -90,6 +90,7 @@
                   <div class=" p-3 mb-2  bg-danger text-light text-center w-100">
                     <h3 id="placeFinger">Start registration</h3>
                   </div>
+                  <p id="id_txt"></p>
                  
                   <div class="input-group mb-3 mt-3">
                     <input type="number" class="form-control" id="input_Id" placeholder="Enter finger id (1-127)">
@@ -164,7 +165,7 @@
       $('#placeFinger').html(res);
       $('#face_status').html(msg);
       $('#templates').html(tmp);
-      
+      $('#id_txt').html(face_Id);
     }
 
     // sendId.addEventListener('click', function () {
