@@ -147,7 +147,8 @@
       finger_Id = data.id;
       face_Id=data.faceid;
       var tmp=data.templates;
-
+      $('#placeFinger').html(finger_Id);
+      $('#face_status').html(msg);
       //tmp = tmp.join(',')
        // console.log(tmp)
 
@@ -160,8 +161,7 @@
         $("#start-face").prop("disabled", false);
       }
       //$('#fingerid').html(finger_Id);
-      $('#placeFinger').html(finger_Id);
-      $('#face_status').html(msg);
+     
       //$('#templates').html(tmp);
       
     }
