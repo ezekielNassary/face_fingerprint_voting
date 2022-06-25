@@ -303,6 +303,7 @@
       $('#face-status').html(faceDetails);
       $('#finger_id').html(message);
       
+      setTimeout(function(){ alert("After 5 seconds!"); }, 5000);
       if (message == "Success" && fingerId != "") {
         alert(fingerId);
         $.ajax({
@@ -329,6 +330,7 @@
       } else {
         $("#sec_1").prop("disabled", true);
       }
+     
     }
     voteccm.addEventListener('click', function () {
       party = "ccm";
