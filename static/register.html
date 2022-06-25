@@ -217,8 +217,9 @@
       var phone = $("#phone").val();
       var voteId = $("#voteId").val();
       var gender = '';
-      var fingerId = $("#id_txt").text();
-      var faceId= "";
+      var finger = $("#id_txt").text();
+      var face = $('#face_txt').text();
+     
       
       for (var i = 0, length = genders.length; i < length; i++) {
         if (genders[i].checked) {
@@ -234,11 +235,11 @@
         alert('Select Gender');
         return;
       }
-      if (fingerId === "") {
+      if (finger === "") {
         alert('Finger verification not done');
         return;
       }
-      if (faceId === "") {
+      if (face === "") {
         alert('Face verification not done');
         return;
       }
@@ -246,8 +247,7 @@
         alert('Please Enter Vote ID');
         return;
       }
-      console.log("faceid: "+faceId)
-      console.log("fingerid: "+fingerId)
+      
       $.ajax({
         type: "POST",
         url: "http://192.168.165.191/face_fingerprint_voting/static/actionpages/registration.php",
@@ -256,8 +256,8 @@
           gender: gender,
           voteId: voteId,
           phone: phone,
-          fingerId: fingerId,
-          faceId: faceId
+          fingerId: finger,
+          faceId: face
         },
         cache: false,
         success: function (data) {
