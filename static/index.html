@@ -392,8 +392,9 @@
 
     });
     start_face.addEventListener('click', function () {
-      socket.send("u");
       $("#sec_2").prop("disabled", false);
+      socket.send("u");
+     
     });
 
     socket.onclose = function () {
