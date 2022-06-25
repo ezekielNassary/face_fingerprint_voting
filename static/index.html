@@ -16,6 +16,7 @@
     .multiple_section {
       display: none;
     }
+   
   </style>
 </head>
 
@@ -46,30 +47,7 @@
             <div class="row">
               <div class="col-lg-12 p-3 text-success">Server Status: <span id="serverStatus">Not connected </span></div>
               <hr>
-              <div class="row">
-                <div class="col-sm-4">
-                  <p> Admin must login here</p>
-                </div>
-                <div class="col-sm-8">
-                  <form class="form-inline">
-                    <div class="row">
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <input type="email" class="form-control" id="email" placeholder="Enter Email">
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                          <input type="password" class="form-control" id="pwd" placeholder="Enter Password">
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary" id="login">Login</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
+             
             </div>
 
 
@@ -112,7 +90,7 @@
 
 
 
-                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_2">Next</button>
+                <button type="button" id="sec_1" class="btn btn-primary next-prev" data-next-prev="section_2">Next</button>
               </div>
               <div class="multiple_section" id="section_2">
                 <div class="mb-3 mt-3 p-3 bg-secondary">
@@ -135,8 +113,8 @@
                 </div>
 
 
-                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_1">Prev</button>
-                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_3">Next</button>
+                <button type="button" id="sec_2"  class="btn btn-primary next-prev" data-next-prev="section_1">Prev</button>
+                <button type="button" id="sec_3" class="btn btn-primary next-prev" data-next-prev="section_3">Next</button>
               </div>
               <div class="multiple_section" id="section_3">
                 <div class="mb-3 mt-3 p-3 bg-secondary">
@@ -178,8 +156,8 @@
                     </div>
                   </div>
                 </div>
-                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_2">Prev</button>
-                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_4">Next</button>
+                <button type="button" id="sec_4" class="btn btn-primary next-prev" data-next-prev="section_2">Prev</button>
+                <button type="button" id="sec_5" class="btn btn-primary next-prev" data-next-prev="section_4">Next</button>
               </div>
               <div class="multiple_section" id="section_4">
                 <div class="mb-3 mt-3 p-3 bg-danger">
@@ -190,8 +168,8 @@
                   </div>
                 </div>
                 
-                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_3">Prev</button>
-                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_5">Next</button>
+                <button type="button" id="sec_6" class="btn btn-primary next-prev" data-next-prev="section_3">Prev</button>
+                <button type="button" id="sec_7" class="btn btn-primary next-prev" data-next-prev="section_5">Next</button>
               </div>
               <div class="multiple_section" id="section_5">
                 <div class="mb-3 mt-3 p-3 bg-secondary">
@@ -211,8 +189,8 @@
                     </div>
                   </div>
                 </div>
-                <button type="button" class="btn btn-primary next-prev" data-next-prev="section_4">Prev</button>
-                <button type="button" class="btn btn-primary">Close</button>
+                <button type="button" id="sec_8" class="btn btn-primary next-prev" data-next-prev="section_4">Prev</button>
+                <button type="button" id="sec_9" class="btn btn-primary">Close</button>
               </div>
             </form>
           </div>
@@ -223,7 +201,32 @@
         </div>
       </div>
     </div>
-    <div class="card-footer text-center mb-3">@DIT Fingerprint and Facial Recognition Voting Syatem</div>
+    <div class="card-footer text-center mb-3">
+      <div class="row">
+        <div class="col-sm-4">
+          <p> Admin must login here</p>
+        </div>
+        <div class="col-sm-8">
+          <form class="form-inline">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <input type="password" class="form-control" id="pwd" placeholder="Enter Password">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <button type="button" class="btn btn-primary" id="login">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <p>@DIT Fingerprint and Facial Recognition Voting Syatem</p></div>
   </div>
 
 
@@ -236,6 +239,25 @@
     var voteccm = document.getElementById("vote-ccm");
     var votecdm = document.getElementById("vote-cdm");
     var voteact = document.getElementById("vote-act");
+   
+    var sec_1 = document.getElementById("sec_1");
+    var sec_2 = document.getElementById("sec_2");
+    var sec_3 = document.getElementById("sec_3");
+    var sec_4 = document.getElementById("sec_4");
+    var sec_5 = document.getElementById("sec_5");
+    var sec_6 = document.getElementById("sec_6");
+    var sec_7 = document.getElementById("sec_7");
+    var sec_8 = document.getElementById("sec_8");
+    
+    $("#sec_1").prop("disabled", true);
+    $("#sec_2").prop("disabled", true);
+    $("#sec_3").prop("disabled", true);
+    $("#sec_4").prop("disabled", true);
+    $("#sec_5").prop("disabled", true);
+    $("#sec_6").prop("disabled", true);
+    $("#sec_7").prop("disabled", true);
+    $("#sec_8").prop("disabled", true);
+
 
     var fingerId = "";
     var vote = 0;
@@ -272,6 +294,7 @@
       $('#face-status').html(faceDetails);
       $('#finger_id').html(fingerId);
       if (message == "Success") {
+        $("#sec_1").prop("disabled", false);
         $("#vote-ccm").prop("disabled", false);
         $("#vote-cdm").prop("disabled", false);
         $("#vote-act").prop("disabled", false);
