@@ -339,9 +339,6 @@
             }
           });
         }, 1000);
-
-      
-
       } else {
         
     }
@@ -396,6 +393,7 @@
     });
     start_face.addEventListener('click', function () {
       socket.send("u");
+      $("#sec_2").prop("disabled", false);
     });
 
     socket.onclose = function () {
