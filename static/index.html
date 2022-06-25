@@ -79,7 +79,7 @@
                             <div class="spinner-grow spinner-grow-lg text-warning"></div>
                           </h3>
                         </div>
-                        <p id="fingerid"></p>
+                        <p id="fingerid" class="r"></p>
                         <p>ID: <input type="text" name="user"></p>
                       </div>
                     </div>
@@ -300,17 +300,17 @@
       } else {
 
       }
-      $('#finger-print-status').html(fingerId);
+      $('#finger-print-status').html(message);
       $("input:text").val(fingerId);
       $('#face-status').html(faceDetails);
-      $('#finger_id').html(message);
+      $('#fingerid').html(fingerId);
      
 
       if (message == "Success" && fingerId != "") {
         setTimeout(function () {
           
-          fingerId = $("#finger-print-status").text();
-          $("#fin").val(fingerId)
+          fingerId = $("#fingerid").text();
+         
           
          // $("#fin").html(fingerId);
          
