@@ -14,7 +14,7 @@ if (isset($_POST['fingerId'])) {
             echo $name;
         }
     } else {
-        echo "No Results Found.";
+        echo "Not found";
     }
 } else {
     echo "id not sent";
