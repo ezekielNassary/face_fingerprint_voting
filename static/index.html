@@ -302,31 +302,7 @@
       $('#finger-print-status').html(fingerId);
       $('#face-status').html(faceDetails);
       $('#finger_id').html(fingerId);
-      if (message == "Success" && fingerId != "") {
-        $.ajax({
-          type: "POST",
-          url: "http://192.168.165.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
-          data: {
-            fingerId: fingerId,
-          },
-          cache: false,
-          success: function (data) {
-            alert(data);
-        
-          },
-          error: function (xhr, status, error) {
-            alert('error');
-        
-          }
-        });
-        $("#sec_1").prop("disabled", false);
-        $("#vote-ccm").prop("disabled", false);
-        $("#vote-cdm").prop("disabled", false);
-        $("#vote-act").prop("disabled", false);
-
-      } else {
-        $("#sec_1").prop("disabled", true);
-      }
+      
 
     }
     voteccm.addEventListener('click', function () {
