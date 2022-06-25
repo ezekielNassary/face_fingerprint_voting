@@ -160,7 +160,7 @@
         $("#start-face").prop("disabled", false);
       }
       //$('#fingerid').html(finger_Id);
-      $('#placeFinger').html(res);
+      $('#placeFinger').html(finger_Id);
       $('#face_status').html(msg);
       //$('#templates').html(tmp);
       
@@ -242,7 +242,7 @@
       console.log("fingerid: "+fingerId)
       $.ajax({
         type: "POST",
-        url: "http://192.168.46.191/face_fingerprint_voting/static/actionpages/registration.php",
+        url: "http://192.168.165.191/face_fingerprint_voting/static/actionpages/registration.php",
         data: {
           name: name,
           gender: gender,
