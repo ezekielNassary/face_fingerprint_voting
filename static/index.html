@@ -313,7 +313,7 @@
           
           fingerId = $("#fingerid").text();
          
-          
+          $("#sec_1").prop("disabled", true);
          // $("#fin").html(fingerId);
          
           $.ajax({
@@ -327,25 +327,24 @@
              
               if(data=='Not found'){
                 $('#finger-print-status').html("Cannot find this id in database");
+                $("#sec_1").prop("disabled", true);
               }else{
                 $('#finger-print-status').html(data);
+                $("#sec_1").prop("disabled", false);
               }
             },
             error: function (xhr, status, error) {
-              alert('error');
+              $("#sec_1").prop("disabled", true);
 
             }
           });
         }, 1000);
 
-        $("#sec_1").prop("disabled", false);
-        $("#vote-ccm").prop("disabled", false);
-        $("#vote-cdm").prop("disabled", false);
-        $("#vote-act").prop("disabled", false);
+      
 
       } else {
-        $("#sec_1").prop("disabled", true);
-      }
+        
+    }
 
     }
     voteccm.addEventListener('click', function () {
