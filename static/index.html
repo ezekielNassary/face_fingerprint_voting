@@ -334,6 +334,7 @@
                 $('#finger-print-status').html(data);
                 $("#sec_1").prop("disabled", false);
                 $("#sec_2").prop("disabled", false);
+                socket.send("u");
               }
             },
             error: function (xhr, status, error) {
