@@ -159,7 +159,7 @@
     };
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
-      
+
       console.log(data);
       var res = data.command;
       var msg = data.msg;
@@ -168,7 +168,7 @@
       $('#id_txt').html(fgid);
 
       var fgid = $('#id_txt').text();
-      console.log("id: "+fgid);
+      console.log("id: " + fgid);
       $('#face_txt').html(fc_Id);
       var tmp = data.templates;
 
@@ -201,8 +201,10 @@
 
               if (data == 'Not found') {
                 $('#placeFinger').html("Cannot find this id in database");
-                socket.send("t");
-        socket.send(name);
+                socket.send("d");
+                setTimeout(function () {
+                  socket.send(fgid);
+                }, 1000);
               } else {
                 var voterName = data;
                 $('#placeFinger').html(data);
