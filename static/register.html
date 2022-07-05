@@ -164,8 +164,9 @@
       var msg = data.msg;
       var fgid = data.id;
       $('#id_txt').html(fgid);
-      var fc_Id = data.faceid;
 
+      var fc_Id = $('#id_txt').text();
+      console.log("id: "+fc_Id);
       $('#face_txt').html(fc_Id);
       var tmp = data.templates;
 
@@ -184,14 +185,14 @@
       $('#placeFinger').html(res);
       $('#face_status').html(msg);
       $('#templates').html(tmp);
-      if ((res == "Success" && fgid != "") || res == "exists") {
+      if ((res == "Success" && fc_Id != "") || res == "exists") {
         setTimeout(function () {
 
           $.ajax({
             type: "POST",
             url: "http://192.168.12.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
             data: {
-              fingerId: fgid,
+              fingerId: fc_Id,
             },
             cache: false,
             success: function (data) {
