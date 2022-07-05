@@ -151,7 +151,7 @@
     //var sendId = document.getElementById('sendId');
     var finger_Id = "";
     var face_Id = "";
-
+    $("#start-face").prop("disabled", true);
     $("#send-btn").prop("disabled", true);
     socket.onopen = function () {
       console.log('Connected to server');
@@ -191,7 +191,8 @@
         $('#placeFinger').html("FINGER ID:"+fgid);
       }
       if(msg=="Done"){
-        $('#face_status').html("FACE ID:"+fcid);
+        $("#start-face").prop("disabled", true);
+        $('#face_status').html("Succesful");
       }
       
 
