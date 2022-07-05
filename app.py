@@ -129,7 +129,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     universal_newlines=True
                 )
                 
-                for  x in range(20):
+                for  x in range(60):
                     realtime_output = process.stdout.readline()
                     if realtime_output != '':
                         # await websocket.send_json({"face_status": realtime_output})
