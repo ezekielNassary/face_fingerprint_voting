@@ -309,8 +309,9 @@
       console.log('face: '+fc_id)
       console.log(faceDetails);
       console.log('Voter Name: '+voterName);
-      
-      if(faceDetails==voterName){
+      faceDetails=document.write(faceDetails.replace(/\s/g, '') );
+      voterName=document.write(voterName.replace(/\s/g, '') );
+      if(faceDetails == voterName){
         $("#sec_3").prop("disabled", false);
         $('#face-status').html('Voter Name: '+voterName);
       }else{
@@ -319,14 +320,14 @@
        
       $('#finger-print-status').html(message);
       $("input:text").val(fingerId);
+
       $('#fingerid').html(fingerId);
      
     
       if ((message == "Success" && fingerId != "")  || message=="exists") {
         setTimeout(function () {
           
-          fingerId = $("#fingerid").text();
-         
+          fingerId = $("#fingerid").text();         
           $("#sec_1").prop("disabled", true);
          // $("#fin").html(fingerId);
          
