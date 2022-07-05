@@ -118,10 +118,13 @@
                   <div class="row">
                     <div class="col-lg-12">
                       <div class="row">
-                        <p><b>CANDIDATES</b></p>
+                        <p class="h2 text-warning"><b>CANDIDATES</b></p>
                         <div class="col-sm-4">
                           <div class="card h-100">
-                            <img src="img/ccm.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
+                            <div class="card-head">
+                              <img src="img/ccm.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
+                            
+                            </div>
                             <div class="card-body">
                               <h4 class="card-title">Samia Hassan Suluhu</h4>
                               <p class="card-text">CCM</p>
@@ -131,7 +134,9 @@
                         </div>
                         <div class="col-sm-4">
                           <div class="card h-100">
-                            <img src="img/chadema.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
+                            <div class="card-head">
+                              <img src="img/chadema.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate"> 
+                            </div>
                             <div class="card-body">
                               <h4 class="card-title">Tundu Antipas Lissu</h4>
                               <p class="card-text">CHADEMA</p>
@@ -141,7 +146,10 @@
                         </div>
                         <div class="col-sm-4 ">
                           <div class="card h-100">
-                            <img src="img/act.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
+                            <div class="card-head">
+                              <img src="img/act.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
+                           
+                            </div>
                             <div class="card-body">
                               <h4 class="card-title">Zitto Kabwe</h4>
                               <p class="card-text">ACT WAZALENDO</p>
@@ -165,7 +173,7 @@
                       <button type="button" id="vote-candidate" class="btn btn-primary mt-3">Vote</button>
                     </div>
                     <div class="card-header">
-                      <h4 class="text-center">VOTING STATUS </h4>
+                      <h4 class="text-center text-light">VOTING STATUS </h4>
                     </div>
                     <div class="card-body">
                       <div class=" card bg-light p-5 text-center" id="votestatus">
@@ -464,7 +472,7 @@
           success: function (data) {
             alert(data);
             if (data == "success") {
-              $('#votestatus').html('<p class="text-success"><i class="fas fa-check h2"></i> <p class="text-success">Voted Succesful</p></p>')
+              $('#votestatus').html('<p class="text-success"><i class="fas fa-check h2"></i> <h2 class="text-success">Voted Succesful</h2></p>')
 
             } else {
 

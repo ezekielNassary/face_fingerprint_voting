@@ -25,12 +25,12 @@ if (mysqli_query($link, $sql)) {
 //echo "Error: " . mysqli_error($link);
 }
 
-$sql="SELECT * FROM voters where fingerid='$fingerId'";
+$sql="SELECT * FROM votes where Fingerid='$fingerId'";
     $result = mysqli_query($link,$sql);
 if($row = mysqli_fetch_array($result)) {
      $check=true;
     } 
-if($check) {
+if(!$check) {
   
 $sql = "INSERT INTO votes (CCM,CHADEMA,ACT,Fingerid,Faceid)
 VALUES ('".$ccm."','".$cdm."','".$act."','".$fingerId."','".$faceId."')";
@@ -42,7 +42,7 @@ if (mysqli_query($link, $sql)) {
 	echo ("error: ".mysqli_error($link));
 	}
     }else{
-        echo "Voter not registered";
+        echo "You cant vote twice";
     }
 
 
