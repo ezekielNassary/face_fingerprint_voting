@@ -260,7 +260,7 @@
     var sec_7 = document.getElementById("sec_7");
     var sec_8 = document.getElementById("sec_8");
 
-    $("#sec_1").prop("disabled", true);
+    $("#sec_1").prop("disabled", false);
     $("#sec_2").prop("disabled", true);
     $("#sec_3").prop("disabled", true);
     $("#sec_4").prop("disabled", true);
@@ -331,14 +331,14 @@
                 $("#sec_1").prop("disabled", false);
               }else{
                 voterName=data;
-                $('#finger-print-status').html(data);
+               // $('#finger-print-status').html(data);
                 $("#sec_1").prop("disabled", false);
                 $("#sec_2").prop("disabled", false);
                 
               }
             },
             error: function (xhr, status, error) {
-              $("#sec_1").prop("disabled", true);
+             // $("#sec_1").prop("disabled", true);
 
             }
           });
