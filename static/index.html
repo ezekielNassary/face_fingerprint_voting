@@ -162,7 +162,7 @@
                 <div class="mb-3 mt-3 p-3 bg-danger">
                   <div class="row">
                     <div class="col-lg-12 text-center " style="height: 100px; ">
-                      <button type="Submit" class="btn btn-primary mt-3">Vote</button>
+                      <button type="button" id="vote-candidate" class="btn btn-primary mt-3">Vote</button>
                     </div>
                   </div>
                 </div>
@@ -242,6 +242,7 @@
     var start_face = document.getElementById('start-face');
     var input_name = document.getElementById('input_name');
     var voteccm = document.getElementById("vote-ccm");
+    var votebtn=document.getElementById("vote-candidate");
     var votecdm = document.getElementById("vote-cdm");
     var voteact = document.getElementById("vote-act");
 
@@ -312,7 +313,7 @@
         i = i.replace(/\s+/g, '');
         if(isBtnClicked){
           if (f == i) {
-            $('#face-status').html('Found Name: '+faceDetails+"");
+            $('#face-status').html('Found Name: '+voterName+"");
             $("#sec_3").prop("disabled", false);
             $("#sec_4").prop("disabled", false);
             $("#sec_5").prop("disabled", false);
@@ -380,9 +381,17 @@
 
 
     }
+    votebtn.addEventListener('click',function(){
+      if(party != ""){
+        voting(party);
+      }else{
+        alert("You must select party")
+      }
+     
+    })
     voteccm.addEventListener('click', function () {
       party = "ccm";
-      voting(party);
+      
       $("#vote-ccm").prop("disabled", true);
       $("#vote-cdm").prop("disabled", true);
       $("#vote-act").prop("disabled", true);
@@ -390,19 +399,19 @@
     });
     votecdm.addEventListener('click', function () {
       party = "chadema";
-      voting(party);
+      
       $("#vote-ccm").prop("disabled", true);
       $("#vote-cdm").prop("disabled", true);
       $("#vote-act").prop("disabled", true);
-      party = "";
+      
     });
     voteact.addEventListener('click', function () {
       party = "act";
-      voting(party);
+      
       $("#vote-ccm").prop("disabled", true);
       $("#vote-cdm").prop("disabled", true);
       $("#vote-act").prop("disabled", true);
-      party = "";
+     
     });
 
     $('#login').click(function (e) {
