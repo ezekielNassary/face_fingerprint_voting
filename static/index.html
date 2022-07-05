@@ -314,7 +314,7 @@
           
           fingerId = $("#fingerid").text();
          
-          $("#sec_1").prop("disabled", true);
+         // $("#sec_1").prop("disabled", true);
          // $("#fin").html(fingerId);
          
           $.ajax({
@@ -325,7 +325,7 @@
             },
             cache: false,
             success: function (data) {
-             
+             alert(data)
               if(data=='Not found'){
                 $('#finger-print-status').html("Cannot find this id in database");
                 $("#sec_1").prop("disabled", true);
