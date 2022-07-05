@@ -166,10 +166,11 @@
       var fgid = data.id;
       var fc_Id = data.faceid;
       $('#id_txt').html(fgid);
-
-      var fgid = $('#id_txt').text();
-      console.log("id: " + fgid);
       $('#face_txt').html(fc_Id);
+      var fgid = $('#id_txt').text();
+      var fcid = $('#face_txt').text();
+      console.log("id: " + fgid);
+
       var tmp = data.templates;
 
       //tmp = tmp.join(',')
@@ -184,7 +185,18 @@
         $("#start-face").prop("disabled", false);
       }
       //$('#fingerid').html(finger_Id);
-      $('#face_status').html(msg);
+
+      if (msg == 'Success') {
+        
+        $('#placeFinger').html("ID:"+fgid);
+      } else {
+        $('#placeFinger').html(msg);
+      }
+      if(fcid=="Done"){
+        $('#face_status').html("Name:"+fcid);
+      }else{
+        $('#face_status').html(res);
+      }
       $('#templates').html(tmp);
       if (res == "exists") {
         $('#placeFinger').html("Checking id...");
@@ -202,7 +214,7 @@
               if (data == 'Not found') {
                 $('#placeFinger').html("Cannot find this id in database");
                 socket.send("d");
-             
+
               } else {
                 var voterName = data;
                 $('#placeFinger').html(data);
@@ -244,7 +256,7 @@
       $("#start-face").prop("disabled", true);
       var name = $("#name").val();
       var sname = $("#sname").val();
-      var full_name=name+" "+sname;
+      var full_name = name + " " + sname;
       if (name === "" || sname === "") {
         alert('Provide Voters Name');
         $('#start-face').prop("disabled", false);
@@ -260,7 +272,7 @@
       e.preventDefault();
       var name = $("#name").val();
       var sname = $("#sname").val();
-      
+
       var genders = document.getElementsByName('gender');
       var phone = $("#phone").val();
       var voteId = $("#voteId").val();
@@ -299,7 +311,7 @@
         alert('Please Enter Vote ID');
         return;
       }
-      var fullname=name+" "+sname;
+      var fullname = name + " " + sname;
       $.ajax({
         type: "POST",
         url: "http://192.168.12.191/face_fingerprint_voting/static/actionpages/registration.php",
