@@ -385,6 +385,7 @@ def get_num():
 async def get_finger_id(websocket):
     while True:
         id = await websocket.receive_text()
+        await websocket.send_json({"from app": id})
         if id != 0:
             return id 
 
