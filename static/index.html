@@ -308,10 +308,10 @@
       console.log('finger: '+fg_id)
       console.log('face: '+fc_id)
       console.log(faceDetails);
-      if (faceDetails == '') {
-        faceDetails = "Start camera..";
+      if (fc_id == voterName) {
+        faceDetails = "Matched";
       } else {
-
+        faceDetails = fc_id;
       }
       console.log('Voter Name: '+voterName);
       $('#finger-print-status').html(message);
