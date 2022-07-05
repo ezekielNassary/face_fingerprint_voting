@@ -185,7 +185,7 @@
                 </div>
 
                 <button type="button" id="sec_6" class="next-btns btn next-prev"
-                  data-next-prev="section_4">Prev</button>
+                  data-next-prev="section_3">Prev</button>
               </div>
             
             </form>
@@ -254,7 +254,7 @@
     $("#sec_3").prop("disabled", true);
     $("#sec_4").prop("disabled", true);
     $("#sec_5").prop("disabled", true);
-    $("#sec_6").prop("disabled", true);
+    $("#sec_6").prop("disabled", false);
     $("#sec_7").prop("disabled", true);
     $("#sec_8").prop("disabled", true);
 
@@ -474,12 +474,12 @@
             alert(data);
             if (data == "success") {
              
-              $("#sec_6").prop("disabled", false);
+             
               $('#votestatus').html('<p class="text-success"><i class="fas fa-check h2"></i> <h2 class="text-success">Voted Succesful</h2></p>')
 
             } else {
 
-              $('#votestatus').html('<p class="text-danger"><i class="fas fa-window-close h2"></i> <p class="text-danger">' + data + '</p></p>')
+              $('#votestatus').html('<p class="text-danger"><i class="fas fa-window-close h2"></i> <h2 class="text-danger">' + data + '</h2></p>')
 
             }
           },
