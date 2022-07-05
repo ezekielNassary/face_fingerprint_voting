@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers: *");
     $act = mysqli_real_escape_string($link, $_POST['act']);
     $fingerId = mysqli_real_escape_string($link, $_POST['fingerId']);
     $faceId = mysqli_real_escape_string($link, $_POST['faceId']);
-
+$check=false;
 $sql="CREATE TABLE IF NOT EXISTS `votes` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `CCM` varchar(50) NOT NULL,
@@ -28,9 +28,9 @@ if (mysqli_query($link, $sql)) {
 $sql="SELECT * FROM voters where fingerid='$fingerId'";
     $result = mysqli_query($link,$sql);
 if($row = mysqli_fetch_array($result)) {
-      echo ("registered");
+     $check=true;
     } 
-else {
+if($check) {
   
 $sql = "INSERT INTO votes (CCM,CHADEMA,ACT,Fingerid,Faceid)
 VALUES ('".$ccm."','".$cdm."','".$act."','".$fingerId."','".$faceId."')";
@@ -41,6 +41,8 @@ if (mysqli_query($link, $sql)) {
 	else {
 	echo ("error: ".mysqli_error($link));
 	}
+    }else{
+        echo "Voter not registered";
     }
 
 
