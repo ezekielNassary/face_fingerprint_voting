@@ -342,6 +342,8 @@
               }else{
                 voterName=data;
                 $('#finger-print-status').html(data);
+                voterName=$('#finger-print-status').text();
+                console.log('Voter Name: '+voterName);
                 $("#sec_1").prop("disabled", false);
                 $("#sec_2").prop("disabled", false);
                 
@@ -356,8 +358,7 @@
       } else {
         
        }
-       voterName=$('#finger-print-status').text();
-      console.log('Voter Name: '+voterName);
+      
   
       if(faceDetails==voterName){
         $("#sec_3").prop("disabled", false);
