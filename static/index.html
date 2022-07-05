@@ -264,7 +264,7 @@
     var sec_6 = document.getElementById("sec_6");
     var sec_7 = document.getElementById("sec_7");
     var sec_8 = document.getElementById("sec_8");
-
+    var voterName="";
     $("#sec_1").prop("disabled", true);
     $("#sec_2").prop("disabled", true);
     $("#sec_3").prop("disabled", true);
@@ -279,7 +279,7 @@
     var vote = 0;
     var party = "";
     var faceId = "";
-    var voterName="";
+   
     var server_status = document.getElementById('serverStatus');
     $(document).ready(function () {
       $(".next-prev").click(function () {
@@ -355,16 +355,16 @@
         }, 1000);
       } else {
         
-    }
-    console.log('Voter Name: '+voterName)
-    if(voterName != ''){
+       }
+      console.log('Voter Name: '+voterName);
+  
       if(faceDetails==voterName){
         $("#sec_3").prop("disabled", false);
         $('#face-status').html('Voter Name: '+voterName);
       }else{
         $('#face-status').html('Name not matched');
       }
-    }
+    
     }
     voteccm.addEventListener('click', function () {
       party = "ccm";
