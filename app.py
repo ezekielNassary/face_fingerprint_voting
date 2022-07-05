@@ -80,23 +80,18 @@ async def websocket_endpoint(websocket: WebSocket):
                     print("Detected #", finger.finger_id, "with confidence", finger.confidence)
                     await websocket.send_json({"command": "Voter exists with id "+str(finger.finger_id)})
                     await websocket.send_json({"id": ""})
-                    finger.delete_model(finger.finger_id)
+                    #finger.delete_model(finger.finger_id)
                 else:
                     time.sleep(3)
                     await websocket.send_json({"command": "Registration initializing..."})
                     time.sleep(3)
                     await enroll_finger(get_num(),websocket)
-                    
-                    
-                
             if c == "f":
                 if await get_fingerprint(websocket):
                     print("Detected #", finger.finger_id, "with confidence", finger.confidence)
                     fingerId=finger.finger_id
                     await websocket.send_json({"id": fingerId})
                     await websocket.send_json({"command": "Success"})
-                    
-                    
                 else:
                     print("Finger not found")
                     await websocket.send_json({"command": "Finger not found"})
@@ -123,7 +118,10 @@ async def websocket_endpoint(websocket: WebSocket):
                             # await websocket.send_json({"command": realtime_output})
                 except subprocess.CalledProcessError:
                     print("Timeout expired!")
-                return True 
+                return True
+                   
+                    
+                
             if c == "u":
                 command = "python3 vote.py"
                 process =subprocess.Popen(
@@ -150,7 +148,15 @@ async def websocket_endpoint(websocket: WebSocket):
                                 cv2.waitKey(1)
                                 cv2.destroyAllWindows()
                                 
-                    return True        
+                return True
+                            
+                            
+                            
+                        
+                
+            
+                
+           
     except Exception as e:
         logger.error(f"Error message f{e}", exc_info=True)
         # await websocket.close()
@@ -259,7 +265,7 @@ async def get_fingerprint_detail(websocket):
             print("Image invalid")
         else:
             print("Other error")
-    return False
+        return False
 
     print("Searching...", end="", flush=True)
     i = finger.finger_fast_search()
@@ -276,8 +282,7 @@ async def get_fingerprint_detail(websocket):
             await websocket.send_json({"command": "No match found....."})
         else:
             print("Other error")
-            return False
-    return True
+        return False
     
 
 # pylint: disable=too-many-statements
