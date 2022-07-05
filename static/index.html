@@ -239,6 +239,8 @@
           </form>
         </div>
       </div>
+      <p>FINGER ID: <span id="id_txt"></span>
+        FACE ID: <span id="face_txt"></span></p>
       <p>@DIT Fingerprint and Facial Recognition Voting Syatem</p>
     </div>
   </div>
@@ -299,7 +301,12 @@
       fingerId = data.id;
       var message = data.command;
       var faceDetails = data.face_status;
-
+      $('#id_txt').html(fingerId);
+      $('#face_txt').html(faceDetails);
+      var fg_id = $('#id_txt').text();
+      var fc_id = $('#face_txt').text();
+      console.log('finger: '+fg_id)
+      console.log('face: '+fc_id)
       console.log(faceDetails);
       if (faceDetails == '') {
         faceDetails = "No person detected";
