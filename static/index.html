@@ -260,7 +260,7 @@
     var sec_7 = document.getElementById("sec_7");
     var sec_8 = document.getElementById("sec_8");
 
-    $("#sec_1").prop("disabled", false);
+    $("#sec_1").prop("disabled", true);
     $("#sec_2").prop("disabled", true);
     $("#sec_3").prop("disabled", true);
     $("#sec_4").prop("disabled", true);
@@ -314,35 +314,35 @@
           
           fingerId = $("#fingerid").text();
          
-         // $("#sec_1").prop("disabled", true);
+          $("#sec_1").prop("disabled", true);
          // $("#fin").html(fingerId);
          
           $.ajax({
             type: "POST",
-            url: "http://192.168.12.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
+            url: "http://192.168.165.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
             data: {
               fingerId: fingerId,
             },
             cache: false,
             success: function (data) {
-             alert(data)
+             
               if(data=='Not found'){
                 $('#finger-print-status').html("Cannot find this id in database");
-                $("#sec_1").prop("disabled", false);
+                $("#sec_1").prop("disabled", true);
               }else{
                 voterName=data;
-               // $('#finger-print-status').html(data);
+                $('#finger-print-status').html(data);
                 $("#sec_1").prop("disabled", false);
                 $("#sec_2").prop("disabled", false);
                 
               }
             },
             error: function (xhr, status, error) {
-             // $("#sec_1").prop("disabled", true);
+              $("#sec_1").prop("disabled", true);
 
             }
           });
-        }, 1);
+        }, 1000);
       } else {
         
     }

@@ -259,7 +259,7 @@ async def get_fingerprint_detail(websocket):
             print("Image invalid")
         else:
             print("Other error")
-        return False
+    return False
 
     print("Searching...", end="", flush=True)
     i = finger.finger_fast_search()
@@ -276,7 +276,8 @@ async def get_fingerprint_detail(websocket):
             await websocket.send_json({"command": "No match found....."})
         else:
             print("Other error")
-        return False
+            return False
+    return True
     
 
 # pylint: disable=too-many-statements
