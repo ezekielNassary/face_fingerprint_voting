@@ -12,3 +12,7 @@ body {
   .multiple_section {
     display: none;
   }
+  .start-button{
+    height: 100px;
+    font-size: 45px;
+  }
