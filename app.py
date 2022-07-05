@@ -96,9 +96,9 @@ async def websocket_endpoint(websocket: WebSocket):
                     print("Finger not found")
                     await websocket.send_json({"command": "Finger not found"})
             if c == "d":
-                if finger.delete_model(get_finger_id()) == adafruit_fingerprint.OK:
+                if finger.delete_model(get_finger_id(websocket)) == adafruit_fingerprint.OK:
                     print("Deleted!")
-                    await websocket.send_json({"command": "Deleted"+str(get_finger_id())})
+                    await websocket.send_json({"command": "Deleted"+str(get_finger_id(websocket))})
                 else:
                     print("Failed to delete")
             if c == "t":
@@ -382,7 +382,7 @@ def get_num():
         except ValueError:
             pass
     return i
-def get_finger_id():
+async def get_finger_id(websocket):
     while True:
         id = await websocket.receive_text()
         if id != '':
