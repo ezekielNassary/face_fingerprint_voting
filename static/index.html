@@ -298,6 +298,7 @@
     };
     let fc_id = "";
     let fg_id = "";
+    let flag=false;
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
       fingerId = data.id;
@@ -319,19 +320,23 @@
       if (f != '' && i != '') {
         f = f.replace(/\s+/g, '');
         i = i.replace(/\s+/g, '');
+        if (f == i) {
+          $('#face-status').html('matched');
+          $("#sec_3").prop("disabled", false);
+          $("#sec_4").prop("disabled", false);
+          $("#sec_5").prop("disabled", false);
+          $("#vote-ccm").prop("disabled", false);
+          $("#vote-cdm").prop("disabled", false);
+          $("#vote-act").prop("disabled", false);
+          flag=true;
+        } else {
+          if(flag==false){
+            $('#face-status').html(faceDetails);
+          }
+         
+        }
       }
-      if (f == i) {
-        
-        $('#face-status').html('matched');
-        $("#sec_3").prop("disabled", false);
-        $("#sec_4").prop("disabled", false);
-        $("#sec_5").prop("disabled", false);
-        $("#vote-ccm").prop("disabled", false);
-        $("#vote-cdm").prop("disabled", false);
-        $("#vote-act").prop("disabled", false);
-      } else {
-        $('#face-status').html(faceDetails);
-      }
+      
 
       $('#finger-print-status').html(message);
       $("input:text").val(fingerId);
