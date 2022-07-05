@@ -185,18 +185,16 @@
         $("#start-face").prop("disabled", false);
       }
       //$('#fingerid').html(finger_Id);
+      $('#placeFinger').html(res);
+      $('#face_status').html(msg);
+      if(res=="Success"){
+        $('#placeFinger').html("FINGER ID:"+fgid);
+      }
+      if(msg=="Done"){
+        $('#face_status').html("FACE ID:"+fcid);
+      }
       
-      if (msg == 'Success') {
-        
-        $('#placeFinger').html("ID:"+fgid);
-      } else {
-        $('#placeFinger').html(res);
-      }
-      if(fcid=="Done"){
-        $('#face_status').html("Name:"+fcid);
-      }else{
-        $('#face_status').html(msg);
-      }
+
       $('#templates').html(tmp);
       if (res == "exists") {
         $('#placeFinger').html("Checking id...");
