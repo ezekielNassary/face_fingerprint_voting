@@ -159,14 +159,15 @@
     };
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
+      
       console.log(data);
       var res = data.command;
       var msg = data.msg;
       var fgid = data.id;
       $('#id_txt').html(fgid);
 
-      var fc_Id = $('#id_txt').text();
-      console.log("id: "+fc_Id);
+      var fgid = $('#id_txt').text();
+      console.log("id: "+fgid);
       $('#face_txt').html(fc_Id);
       var tmp = data.templates;
 
