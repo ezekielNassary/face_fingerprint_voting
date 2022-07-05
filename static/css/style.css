@@ -23,3 +23,9 @@ body {
     width: 120px;
     font-size: 40px;
   }
+#vote-candidate{
+    width: 150px;
+    font-size: 23px;
+    background: #523003;
+    color: #fff;
+}
