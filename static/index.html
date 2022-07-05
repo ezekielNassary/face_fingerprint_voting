@@ -311,12 +311,13 @@
       console.log('face: '+fc_id)
       console.log(faceDetails);
       console.log('Voter Name: '+voterName);
-      
+
+      $('#face-status').html(faceDetails);
       if(fc_id == voterName){
         $("#sec_3").prop("disabled", false);
-        $('#face-status').html(faceDetails);
+        $('#face-status').html('matched');
       }else{
-        $('#face-status').html('Unknown');
+       
       }
        
       $('#finger-print-status').html(message);
