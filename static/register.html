@@ -251,7 +251,7 @@
         return;
       } else {
         socket.send("t");
-        socket.send(name);
+        socket.send(full_name);
 
       }
 
@@ -304,7 +304,7 @@
         type: "POST",
         url: "http://192.168.12.191/face_fingerprint_voting/static/actionpages/registration.php",
         data: {
-          name: name,
+          name: fullname,
           gender: gender,
           voteId: voteId,
           phone: phone,
