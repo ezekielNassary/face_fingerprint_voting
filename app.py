@@ -140,7 +140,7 @@ async def websocket_endpoint(websocket: WebSocket):
                         print(realtime_output)
                         if command == '':
                             command='No person'
-                        else:
+                        else: 
                             await websocket.send_json({"face_status": command})
                             # print(command)
                             time.sleep(1)
