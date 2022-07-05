@@ -200,7 +200,7 @@
       if (res == "exists") {
         $('#placeFinger').html("Checking id...");
         setTimeout(function () {
-          $('#placeFinger').html("Voter Exists ID: "+fgid);
+          $('#placeFinger').html("Voter finger ID Exists");
           $.ajax({
             type: "POST",
             url: "http://192.168.12.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
