@@ -184,7 +184,8 @@
                   </div>
                 </div>
 
-                
+                <button type="button" id="sec_6" class="next-btns btn next-prev"
+                  data-next-prev="section_4">Prev</button>
               </div>
             
             </form>
@@ -309,7 +310,7 @@
             $('#face-status').html('Found Name: '+voterName+"");
             $("#sec_3").prop("disabled", false);
             $("#sec_4").prop("disabled", false);
-            $("#sec_5").prop("disabled", false);
+           
             $("#vote-ccm").prop("disabled", false);
             $("#vote-cdm").prop("disabled", false);
             $("#vote-act").prop("disabled", false);
@@ -472,6 +473,8 @@
           success: function (data) {
             alert(data);
             if (data == "success") {
+              $("#sec_5").prop("disabled", false);
+              $("#sec_6").prop("disabled", false);
               $('#votestatus').html('<p class="text-success"><i class="fas fa-check h2"></i> <h2 class="text-success">Voted Succesful</h2></p>')
 
             } else {
