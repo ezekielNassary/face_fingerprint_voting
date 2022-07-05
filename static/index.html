@@ -312,12 +312,14 @@
       console.log(faceDetails);
       console.log('Voter Name: '+voterName);
 
-      $('#face-status').html(faceDetails);
-      if(fc_id == voterName){
+      
+      var f=$('#face-status').text();
+      var i=$('#finger-print-status').text();
+      if(f == i){
         $("#sec_3").prop("disabled", false);
         $('#face-status').html('matched');
       }else{
-       
+        $('#face-status').html(faceDetails);
       }
        
       $('#finger-print-status').html(message);
