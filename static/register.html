@@ -168,7 +168,7 @@
       $('#id_txt').html(fgid);
 
       var fgid = $('#id_txt').text();
-      
+      console.log("id: " + fgid);
       $('#face_txt').html(fc_Id);
       var tmp = data.templates;
 
@@ -243,8 +243,9 @@
     $('#start-face').click(function (e) {
       $("#start-face").prop("disabled", true);
       var name = $("#name").val();
-
-      if (name === "") {
+      var sname = $("#sname").val();
+      var full_name=name+" "+sname;
+      if (name === "" || sname === "") {
         alert('Provide Voters Name');
         $('#start-face').prop("disabled", false);
         return;
@@ -258,8 +259,8 @@
     $('#submit-btn').click(function (e) {
       e.preventDefault();
       var name = $("#name").val();
-      var lname = $("#lname").val();
       var sname = $("#sname").val();
+      
       var genders = document.getElementsByName('gender');
       var phone = $("#phone").val();
       var voteId = $("#voteId").val();
@@ -275,7 +276,11 @@
         }
       }
       if (name === "") {
-        alert('Provide Voters Name');
+        alert('Provide Voters First Name');
+        return;
+      }
+      if (sname === "") {
+        alert('Provide Voters Last Name');
         return;
       }
       if (gender === "") {
@@ -294,7 +299,7 @@
         alert('Please Enter Vote ID');
         return;
       }
-
+      var fullname=name+" "+sname;
       $.ajax({
         type: "POST",
         url: "http://192.168.12.191/face_fingerprint_voting/static/actionpages/registration.php",
