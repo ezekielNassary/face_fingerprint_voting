@@ -120,7 +120,7 @@
                       <div class="row">
                         <p><b>CANDIDATES</b></p>
                         <div class="col-sm-4">
-                          <div class="card">
+                          <div class="card h-100">
                             <img src="img/ccm.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
                             <div class="card-body">
                               <h4 class="card-title">Samia Hassan Suluhu</h4>
@@ -130,7 +130,7 @@
                           </div>
                         </div>
                         <div class="col-sm-4">
-                          <div class="card">
+                          <div class="card h-100">
                             <img src="img/chadema.png" class="card-img-top w-25 mx-auto d-block mt-2" alt="candidate">
                             <div class="card-body">
                               <h4 class="card-title">Tundu Antipas Lissu</h4>
@@ -176,33 +176,9 @@
                   </div>
                 </div>
 
-                <button type="button" id="sec_6" class="btn btn-primary next-prev"
-                  data-next-prev="section_3">Prev</button>
-                <button type="button" id="sec_7" class="btn btn-primary next-prev"
-                  data-next-prev="section_5">Next</button>
+                
               </div>
-              <div class="multiple_section" id="section_5">
-                <div class="mb-3 mt-3 p-3 bg-secondary">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="card">
-                        <div class="card-header">
-                          <h4 class="text-center">VOTING STATUS </h4>
-                        </div>
-                        <div class="card-body">
-                          <div class=" card bg-light p-5 text-center" id="votestatus">
-
-                          </div>
-                          <a href="resultpage.html" class="btn btn-warning w-100">VIEW RESULT</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button type="button" id="sec_8" class="btn btn-primary next-prev"
-                  data-next-prev="section_4">Prev</button>
-                <button type="button" id="sec_9" class="btn btn-primary">Close</button>
-              </div>
+            
             </form>
           </div>
 
@@ -400,11 +376,11 @@
     })
     voteccm.addEventListener('click', function () {
       party = "ccm";
-      
+
       $("#vote-ccm").prop("disabled", true);
       $("#vote-cdm").prop("disabled", true);
       $("#vote-act").prop("disabled", true);
-      party = "";
+      
     });
     votecdm.addEventListener('click', function () {
       party = "chadema";
