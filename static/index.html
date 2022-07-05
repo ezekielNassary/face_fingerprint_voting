@@ -84,8 +84,8 @@
                           </h3>
                           <p id="fingerid" class="text-danger"></p>
                         </div>
-                        
-                      
+
+
                       </div>
                     </div>
 
@@ -264,7 +264,7 @@
     var sec_6 = document.getElementById("sec_6");
     var sec_7 = document.getElementById("sec_7");
     var sec_8 = document.getElementById("sec_8");
-    var voterName="";
+    var voterName = "";
     $("#sec_1").prop("disabled", true);
     $("#sec_2").prop("disabled", true);
     $("#sec_3").prop("disabled", true);
@@ -279,7 +279,7 @@
     var vote = 0;
     var party = "";
     var faceId = "";
-   
+
     var server_status = document.getElementById('serverStatus');
     $(document).ready(function () {
       $(".next-prev").click(function () {
@@ -296,8 +296,8 @@
       $('#serverStatus').html('Server Connected');
 
     };
-    let fc_id="";
-    let fg_id="";
+    let fc_id = "";
+    let fg_id = "";
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
       fingerId = data.id;
@@ -307,39 +307,45 @@
       $('#face_txt').html(faceDetails);
       fg_id = $('#id_txt').text();
       fc_id = $('#face_txt').text();
-      console.log('finger: '+fg_id)
-      console.log('face: '+fc_id)
+      console.log('finger: ' + fg_id)
+      console.log('face: ' + fc_id)
       console.log(faceDetails);
-      console.log('Voter Name: '+voterName);
+      console.log('Voter Name: ' + voterName);
 
-      
-      var f=$('#face-status').text();
-      var i=$('#finger-print-status').text();
-      
-      if(f != '' && i != ''){
+
+      var f = $('#face-status').text();
+      var i = $('#finger-print-status').text();
+
+      if (f != '' && i != '') {
         f = f.replace(/\s+/g, '');
         i = i.replace(/\s+/g, '');
       }
-      if(f == i){
-        $("#sec_3").prop("disabled", false);
+      if (f == i) {
+        
         $('#face-status').html('matched');
-      }else{
+        $("#sec_3").prop("disabled", false);
+        $("#sec_4").prop("disabled", false);
+        $("#sec_5").prop("disabled", false);
+        $("#vote-ccm").prop("disabled", false);
+        $("#vote-cdm").prop("disabled", false);
+        $("#vote-act").prop("disabled", false);
+      } else {
         $('#face-status').html(faceDetails);
       }
-       
+
       $('#finger-print-status').html(message);
       $("input:text").val(fingerId);
 
       $('#fingerid').html(fingerId);
-     
-    
-      if ((message == "Success" && fingerId != "")  || message=="exists") {
+
+
+      if ((message == "Success" && fingerId != "") || message == "exists") {
         setTimeout(function () {
-          
-          fingerId = $("#fingerid").text();         
+
+          fingerId = $("#fingerid").text();
           $("#sec_1").prop("disabled", true);
-         // $("#fin").html(fingerId);
-         
+          // $("#fin").html(fingerId);
+
           $.ajax({
             type: "POST",
             url: "http://192.168.12.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
@@ -348,18 +354,18 @@
             },
             cache: false,
             success: function (data) {
-             
-              if(data=='Not found'){
+
+              if (data == 'Not found') {
                 $('#finger-print-status').html("Cannot find this id in database");
                 $("#sec_1").prop("disabled", true);
-              }else{
-                voterName=data;
+              } else {
+                voterName = data;
                 $('#finger-print-status').html(data);
-                voterName=$('#finger-print-status').text();
-               
+                voterName = $('#finger-print-status').text();
+
                 $("#sec_1").prop("disabled", false);
                 $("#sec_2").prop("disabled", false);
-                
+
               }
             },
             error: function (xhr, status, error) {
@@ -369,12 +375,12 @@
           });
         }, 1000);
       } else {
-        
-       }
-      
-  
-      
-    
+
+      }
+
+
+
+
     }
     voteccm.addEventListener('click', function () {
       party = "ccm";
@@ -413,8 +419,8 @@
         alert("Provided information is incorrect");
         $("#pwd").val('');
         $("#email").val('');
-        
-        
+
+
       }
 
     });
