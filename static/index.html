@@ -385,7 +385,7 @@
     })
     voteccm.addEventListener('click', function () {
       party = "ccm";
-
+      $("#sec_5").prop("disabled", false);
       $("#vote-ccm").prop("disabled", true);
       $("#vote-cdm").prop("disabled", true);
       $("#vote-act").prop("disabled", true);
@@ -393,7 +393,7 @@
     });
     votecdm.addEventListener('click', function () {
       party = "chadema";
-      
+      $("#sec_5").prop("disabled", false);
       $("#vote-ccm").prop("disabled", true);
       $("#vote-cdm").prop("disabled", true);
       $("#vote-act").prop("disabled", true);
@@ -401,7 +401,7 @@
     });
     voteact.addEventListener('click', function () {
       party = "act";
-      
+      $("#sec_5").prop("disabled", false);
       $("#vote-ccm").prop("disabled", true);
       $("#vote-cdm").prop("disabled", true);
       $("#vote-act").prop("disabled", true);
@@ -473,7 +473,7 @@
           success: function (data) {
             alert(data);
             if (data == "success") {
-              $("#sec_5").prop("disabled", false);
+             
               $("#sec_6").prop("disabled", false);
               $('#votestatus').html('<p class="text-success"><i class="fas fa-check h2"></i> <h2 class="text-success">Voted Succesful</h2></p>')
 
