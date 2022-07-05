@@ -123,10 +123,7 @@ async def websocket_endpoint(websocket: WebSocket):
                             # await websocket.send_json({"command": realtime_output})
                 except subprocess.CalledProcessError:
                     print("Timeout expired!")
-                return True
-                   
-                    
-                
+                return True 
             if c == "u":
                 command = "python3 vote.py"
                 process =subprocess.Popen(
@@ -153,15 +150,7 @@ async def websocket_endpoint(websocket: WebSocket):
                                 cv2.waitKey(1)
                                 cv2.destroyAllWindows()
                                 
-                return True
-                            
-                            
-                            
-                        
-                
-            
-                
-           
+                    return True        
     except Exception as e:
         logger.error(f"Error message f{e}", exc_info=True)
         # await websocket.close()
