@@ -428,7 +428,7 @@
 
     });
     start_face.addEventListener('click', function () {
-
+      $('#face-status').html('Initializing camera...');
       socket.send("u");
       isBtnClicked=true;
     });
