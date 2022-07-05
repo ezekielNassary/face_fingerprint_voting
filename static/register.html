@@ -169,8 +169,8 @@
       $('#face_txt').html(fc_Id);
       var fgid = $('#id_txt').text();
       var fcid = $('#face_txt').text();
-      console.log("id: " + fgid);
-
+      console.log("MSG: " + msg);
+      console.log("res: " + res);
       var tmp = data.templates;
 
       //tmp = tmp.join(',')
@@ -185,7 +185,7 @@
         $("#start-face").prop("disabled", false);
       }
       //$('#fingerid').html(finger_Id);
-
+      
       if (msg == 'Success') {
         
         $('#placeFinger').html("ID:"+fgid);
