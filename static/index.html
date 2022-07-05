@@ -315,6 +315,11 @@
       
       var f=$('#face-status').text();
       var i=$('#finger-print-status').text();
+      
+      if(f != '' && i != ''){
+        f = f.replace(/\s+/g, '');
+        i = i.replace(/\s+/g, '');
+      }
       if(f == i){
         $("#sec_3").prop("disabled", false);
         $('#face-status').html('matched');
