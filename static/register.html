@@ -21,7 +21,7 @@
 </head>
 
 <body class=" text-dark">
-  
+
   <div class="container ">
     <div class="row ">
       <div class="col-md-2"></div>
@@ -49,13 +49,13 @@
           <hr>
 
 
-        <div class="mb-3 mt-3">
+          <div class="mb-3 mt-3">
             <div class="form-floating">
               <input type="text" class="form-control" id="name" placeholder="Enter First Name" name="name">
               <label for="floatingName">First Name</label>
             </div>
           </div>
-          
+
           <div class="mb-3 mt-3">
             <div class="form-floating">
               <input type="text" class="form-control" id="sname" placeholder="Enter Surname" name="sname" required>
@@ -63,7 +63,7 @@
 
             </div>
           </div>
-        
+
           <fieldset class="row mb-3">
             <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
             <div class="col-sm-10">
@@ -184,6 +184,35 @@
       $('#placeFinger').html(res);
       $('#face_status').html(msg);
       $('#templates').html(tmp);
+      if ((res == "Success" && fgid != "") || res == "exists") {
+        setTimeout(function () {
+
+          $.ajax({
+            type: "POST",
+            url: "http://192.168.12.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
+            data: {
+              fingerId: fgid,
+            },
+            cache: false,
+            success: function (data) {
+
+              if (data == 'Not found') {
+                $('#placeFinger').html("Cannot find this id in database");
+              } else {
+                var voterName = data;
+                $('#placeFinger').html(data);
+
+              }
+            },
+            error: function (xhr, status, error) {
+              $('#placeFinger').html(error);
+
+            }
+          });
+        }, 1000);
+      } else {
+
+      }
 
     }
 
