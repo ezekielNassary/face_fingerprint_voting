@@ -78,7 +78,7 @@ async def websocket_endpoint(websocket: WebSocket):
             if c == "e":
                 if await get_fingerprint(websocket):
                     print("Detected #", finger.finger_id, "with confidence", finger.confidence)
-                    await websocket.send_json({"command": "Voter exists with id "+str(finger.finger_id)})
+                    await websocket.send_json({"command": "exists"})
                     await websocket.send_json({"id": ""})
                     #finger.delete_model(finger.finger_id)
                 else:

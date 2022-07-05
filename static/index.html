@@ -311,8 +311,8 @@
       $('#face-status').html(faceDetails);
       $('#fingerid').html(fingerId);
      
-
-      if (message == "Success" && fingerId != "") {
+    
+      if ((message == "Success" && fingerId != "")  || message=="exists") {
         setTimeout(function () {
           
           fingerId = $("#fingerid").text();
