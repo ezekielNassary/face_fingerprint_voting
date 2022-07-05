@@ -144,7 +144,7 @@ async def websocket_endpoint(websocket: WebSocket):
                             await websocket.send_json({"face_status": command})
                             # print(command)
                             time.sleep(1)
-                            if x==19:
+                            if x==50:
                                 cv2.waitKey(1)
                                 cv2.destroyAllWindows()
                                 
