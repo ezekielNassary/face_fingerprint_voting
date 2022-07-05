@@ -184,10 +184,10 @@
         $("#start-face").prop("disabled", false);
       }
       //$('#fingerid').html(finger_Id);
-      $('#placeFinger').html(res);
       $('#face_status').html(msg);
       $('#templates').html(tmp);
       if (res == "exists") {
+        $('#placeFinger').html("Checking id...");
         setTimeout(function () {
 
           $.ajax({
@@ -214,7 +214,7 @@
           });
         }, 1000);
       } else {
-
+        $('#placeFinger').html(res);
       }
 
     }
