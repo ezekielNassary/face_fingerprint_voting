@@ -309,10 +309,11 @@
       console.log('face: '+fc_id)
       console.log(faceDetails);
       if (faceDetails == '') {
-        faceDetails = "No person detected";
+        faceDetails = "Start camera..";
       } else {
 
       }
+      console.log('Voter Name: '+voterName);
       $('#finger-print-status').html(message);
       $("input:text").val(fingerId);
       $('#face-status').html(faceDetails);
@@ -343,7 +344,7 @@
                 voterName=data;
                 $('#finger-print-status').html(data);
                 voterName=$('#finger-print-status').text();
-                console.log('Voter Name: '+voterName);
+               
                 $("#sec_1").prop("disabled", false);
                 $("#sec_2").prop("disabled", false);
                 
