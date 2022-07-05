@@ -296,6 +296,8 @@
       $('#serverStatus').html('Server Connected');
 
     };
+    let fc_id="";
+    let fg_id="";
     socket.onmessage = function (event) {
       var data = JSON.parse(event.data);
       fingerId = data.id;
@@ -303,15 +305,14 @@
       var faceDetails = data.face_status;
       $('#id_txt').html(fingerId);
       $('#face_txt').html(faceDetails);
-      var fg_id = $('#id_txt').text();
-      var fc_id = $('#face_txt').text();
+      fg_id = $('#id_txt').text();
+      fc_id = $('#face_txt').text();
       console.log('finger: '+fg_id)
       console.log('face: '+fc_id)
       console.log(faceDetails);
       console.log('Voter Name: '+voterName);
-      faceDetails=document.write(faceDetails.replace(/\s/g, '') );
-      voterName=document.write(voterName.replace(/\s/g, '') );
-      if(faceDetails == voterName){
+     
+      if(fc_id == voterName){
         $("#sec_3").prop("disabled", false);
         $('#face-status').html('Voter Name: '+voterName);
       }else{
