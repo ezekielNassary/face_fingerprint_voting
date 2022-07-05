@@ -8,6 +8,7 @@
   <title>Voting System</title>
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
 
@@ -19,13 +20,25 @@
   </script>
 </head>
 
-<body class="bg-light text-dark">
+<body class=" text-dark">
+  
   <div class="container ">
     <div class="row ">
       <div class="col-md-2"></div>
-      <div class="col-md-8 shadow-sm p-3 mb-5 bg-white rounded">
+      <div class="col-md-8 shadow-sm p-3 mb-5 bg-light rounded">
         <h3 class="text-center p-3">ELECTRONIC VOTING</h3>
-        <form id="register-form " class="bg-light p-3">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="../static/">VOTE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../static/register.html">REGISTER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../static/admin.html">LOGIN</a>
+          </li>
+        </ul>
+        <form id="register-form " class="bg-white p-3">
           <div>
             <p class=" bg-warning p-2 text-center">REGISTER</p>
           </div>
@@ -42,17 +55,11 @@
               <label for="floatingName">First Name</label>
             </div>
           </div>
-          <div class="mb-3 mt-3">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="mname" placeholder="Enter Middle Name" name="name" required>
-              <label for="name"> Middle Name</label>
-
-            </div>
-          </div>
+          
           <div class="mb-3 mt-3">
             <div class="form-floating">
               <input type="text" class="form-control" id="sname" placeholder="Enter Surname" name="sname" required>
-              <label for="sname"> Middle Name</label>
+              <label for="sname"> Surname</label>
 
             </div>
           </div>
@@ -103,16 +110,9 @@
                     <h3 id="placeFinger">Start registration</h3>
                   </div>
 
-                  <div class="input-group mb-3 mt-3">
-                    <input type="number" class="form-control" id="input_Id" placeholder="Enter finger id (1-127)">
-                    <div class="input-group-append">
-                      <button id="send-btn" class="btn btn-success" type="button">Send</button>
-                    </div>
-
-
-                  </div>
 
                 </div>
+                <br>
               </div>
               <div class="col-md-12 ">
                 <div class="card p-2">

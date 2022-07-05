@@ -1,0 +1,14 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    background: #c1cadb;
+   
+  }
+  #placeFinger, #face_status, #finger-print-status {
+    margin-top: 50px;
+   font-size: 50px;
+    transition: all 0.3s;
+  }
+  
+  .multiple_section {
+    display: none;
+  }
