@@ -310,7 +310,7 @@
       console.log(faceDetails);
       console.log('Voter Name: '+voterName);
       
-      if(fc_id==voterName){
+      if(faceDetails==voterName){
         $("#sec_3").prop("disabled", false);
         $('#face-status').html('Voter Name: '+voterName);
       }else{
@@ -319,7 +319,6 @@
        
       $('#finger-print-status').html(message);
       $("input:text").val(fingerId);
-      $('#face-status').html(faceDetails);
       $('#fingerid').html(fingerId);
      
     
