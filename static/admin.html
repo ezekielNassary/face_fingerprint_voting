@@ -60,7 +60,8 @@
 
                 <h4 class="p-3">REGISTERED VOTERS</h4>
 
-
+                
+                <div id="training"></div>
                 <div class="voters"></div>
 
 
@@ -84,11 +85,13 @@
           socket.onmessage = function(event) {
             var data = JSON.parse(event.data);
             var res = data.command;
-            console.log(res)
+            var train_res=data.train;
+            console.log(train_res)
           }
           $('#train-modal').click(function (e) {
             console.log('m')
             socket.send("m");
+            $("#training").html("Training....")
           });
          
           $('#voters-table tr').each(function() {

@@ -118,6 +118,7 @@ async def websocket_endpoint(websocket: WebSocket):
                             # await websocket.send_json({"command": realtime_output})
                 except subprocess.CalledProcessError:
                     print("Timeout expired!")
+                    await websocket.send_json({"train": "done"})
                 return True
                    
                     

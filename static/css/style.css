@@ -29,3 +29,11 @@ body {
     background: #523003;
     color: #fff;
 }
+#training{
+  height: 100px;
+  background: #07dab0;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+}
