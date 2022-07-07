@@ -38,11 +38,34 @@
                 <a class="nav-link" href="../static/register.html">REGISTER</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../static/admin.html">LOGIN</a>
+                <a class="nav-link" href="../static/resultpage.html">RESULT</a>
               </li>
             </ul>
 
-
+            <div class="row">
+              <div class="col-sm-4">
+                <p> Admin must login here</p>
+              </div>
+              <div class="col-sm-8">
+                <form class="form-inline">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter Password">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <button type="button" class="btn btn-primary" id="login">Login</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
 
 
 
@@ -203,30 +226,7 @@
       </div>
     </div>
     <div class="card-footer text-center mb-3">
-      <div class="row">
-        <div class="col-sm-4">
-          <p> Admin must login here</p>
-        </div>
-        <div class="col-sm-8">
-          <form class="form-inline">
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="form-group">
-                  <input type="email" class="form-control" id="email" placeholder="Enter Email">
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="form-group">
-                  <input type="password" class="form-control" id="pwd" placeholder="Enter Password">
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <button type="button" class="btn btn-primary" id="login">Login</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
+      
       <p>FINGER ID: <span id="id_txt"></span>
         FACE ID: <span id="face_txt"></span></p>
       <p>@DIT Fingerprint and Facial Recognition Voting Syatem</p>
@@ -476,7 +476,7 @@
           },
           cache: false,
           success: function (data) {
-            alert(data);
+           // alert(data);
             if (data == "success") {
              
              
