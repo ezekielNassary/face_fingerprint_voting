@@ -12,7 +12,7 @@ echo ' <table id="voters-table" class = "table table-bordered" style = "width: 1
                 <th>Vote ID</th>
                 <th>Finger ID</th>
                 <th>Face ID</th>
-                <th>Action</th> 
+               
              </tr>
     </thead>
     <tbody>';
@@ -37,7 +37,6 @@ while ($row = mysqli_fetch_array($result)) {
     echo "<td>" . $voteid . "</td>";
      echo "<td>" . $fingerid . "</td>";
      echo "<td>" . $faceid . "</td>";
-    echo  " <td><button type='button' class='btn btn-warning w-100' id='train'>DELETE</button></td>";
     echo "</tr>";
 }
 echo '</tbody>';
