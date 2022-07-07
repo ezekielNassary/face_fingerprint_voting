@@ -203,7 +203,7 @@
           $('#placeFinger').html("Voter finger ID Exists");
           $.ajax({
             type: "POST",
-            url: "http://192.168.12.191/face_fingerprint_voting/static/actionpages/checkfingerId.php",
+            url: "http://192.168.43.161/face_fingerprint_voting/static/actionpages/checkfingerId.php",
             data: {
               fingerId: fgid,
             },
@@ -313,7 +313,7 @@
       var fullname = name + " " + sname;
       $.ajax({
         type: "POST",
-        url: "http://192.168.12.191/face_fingerprint_voting/static/actionpages/registration.php",
+        url: "http://192.168.43.161/face_fingerprint_voting/static/actionpages/registration.php",
         data: {
           name: fullname,
           gender: gender,
