@@ -131,7 +131,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     universal_newlines=True
                 )
                 
-                for  x in range(30):
+                for  x in range(15):
                     realtime_output = process.stdout.readline()
                     if realtime_output != '':
                         # await websocket.send_json({"face_status": realtime_output})
@@ -146,7 +146,7 @@ async def websocket_endpoint(websocket: WebSocket):
                             await websocket.send_json({"face_status": command})
                             # print(command)
                             time.sleep(1)
-                            if x==25:
+                            if x==14:
                                 cv2.waitKey(1)
                                 cv2.destroyAllWindows()
                                 
