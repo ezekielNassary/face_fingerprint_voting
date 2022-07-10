@@ -9,8 +9,9 @@
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
- <script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script>
     if (window.history.replaceState) {
       window.history.replaceState(null, null, window.location.href);
     }
@@ -20,7 +21,7 @@
 <body class="bg-light text-dark">
   <div class="container ">
     <div class="row ">
-      
+
       <div class="col-md-12 shadow-sm p-3 mb-5 bg-white rounded">
         <h3 class="text-center p-3">ELECTRONIC VOTING</h3>
         <div>
@@ -30,112 +31,123 @@
           <div class="row">
             <div class="col-md-12 ">
               <div class="row">
-              
-              
-              <ul class="nav justify-content-center">
-                <li class="nav-item">
-                  <a class="nav-link active" href="../static/">HOME</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="../static/resultpage.html">RESULT</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="register.html">REGISTER</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="javascript:void(0)"  id="train-modal">TRAIN MODAL</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="javascript:void(0)">LOGOUT</a>
-                </li>
-              </ul>
-               <br>
-              <div class="card p-2">
-                <!-- <div class="input-group mb-3 mt-3">
+
+
+                <ul class="nav justify-content-center">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="../static/">HOME</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="../static/resultpage.html">RESULT</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="register.html">REGISTER</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)" id="train-modal">TRAIN MODAL</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)">LOGOUT</a>
+                  </li>
+                </ul>
+                <br>
+                <div class="card p-2">
+                  <!-- <div class="input-group mb-3 mt-3">
                     <input type="number" class="form-control" id="input_Id" placeholder="Enter finger id (1-127)">
                     <div class="input-group-append">
                       <button class="btn btn-success" type="submit">Send</button>
                     </div>
                   </div>  -->
 
-                <h4 class="p-3">REGISTERED VOTERS</h4>
+                  <h4 class="p-3">REGISTERED VOTERS</h4>
 
-                
-                <div id="training"></div>
-                <div class="voters"></div>
-                <div class="">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <button type="button" id="delete-data">Delete All Data</button>
-                    </div>
-                    <div class="col-sm-6">
-                      <p id="deleted"></p>
+
+                  <div id="training"></div>
+                  <div class="voters"></div>
+                  <div class="">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <button type="button" id="delete-data">Delete All Data</button>
+                      </div>
+                      <div class="col-sm-6">
+                        <p id="deleted"></p>
+                      </div>
                     </div>
                   </div>
+
                 </div>
+
 
               </div>
 
-
             </div>
-            
           </div>
-        </div>
 
 
-        <script>
-          var socket = new WebSocket('ws:localhost:5555/ws');
-          var server_status = document.getElementById('serverStatus');
-         
-          socket.onopen = function() {
-            console.log('Connected to server');
-            $('#serverStatus').html('Server Connected');
-          };
-          socket.onmessage = function(event) {
-            var data = JSON.parse(event.data);
-            var res = data.command;
-            var train_res=data.train;
-            console.log(train_res);
-            console.log(res);
-            $("#deleted").html(res)
-          }
-          $('#train-modal').click(function (e) {
-                      socket.send("m");
-            $("#training").html("Training....")
-          });
-          $('#delete-data').click(function (e) {
-            var i=0;
-            for(i=1; i<=127; i++){
-              setTimeout(function () {
+          <script>
+            var socket = new WebSocket('ws:localhost:5555/ws');
+            var server_status = document.getElementById('serverStatus');
+
+            socket.onopen = function () {
+              console.log('Connected to server');
+              $('#serverStatus').html('Server Connected');
+            };
+            socket.onmessage = function (event) {
+              var data = JSON.parse(event.data);
+              var res = data.command;
+              var train_res = data.train;
+              console.log(train_res);
+              console.log(res);
+              $("#deleted").html(res)
+            }
+            $('#train-modal').click(function (e) {
+              socket.send("m");
+              $("#training").html("Training....")
+            });
+            $('#delete-data').click(function (e) {
+              var i = 0;
+              for (i = 1; i <= 127; i++) {
+                setTimeout(function () {
                   socket.send("d");
-                }, 500);
-            }
-           
-          });
-         
-          $('#voters-table tr').each(function() {
-            var customerId = $(this).find("td").eq(2).html(); 
-            alert(customerId)   
-        });
-       
-          $.ajax({
-            type: "POST",
-            url: "http://192.168.43.161/face_fingerprint_voting/static/actionpages/voters.php",
-            data: {  },
-            cache: false,
-            success: function(data) {
-              //alert(data);
-            $('.voters').html(data);
-            },
-            error: function(xhr, status, error) {
-              // alert(error);
-            }
-          });
-          socket.onclose = function() {
-            console.log('Network Disconneted');
-            $('#serverStatus').html('Server Disconneted');
-          };
-        </script>
+                }, 2000);
+              }
+              $.ajax({
+                type: "POST",
+                url: "http://192.168.43.161/face_fingerprint_voting/static/actionpages/delete.php",
+                data: {},
+                cache: false,
+                success: function (data) {
+                  $("#deleted").html(data)
+                },
+                error: function (xhr, status, error) {
+
+                }
+              });
+            });
+
+            $('#voters-table tr').each(function () {
+              var customerId = $(this).find("td").eq(2).html();
+              alert(customerId)
+            });
+
+            $.ajax({
+              type: "POST",
+              url: "http://192.168.43.161/face_fingerprint_voting/static/actionpages/voters.php",
+              data: {},
+              cache: false,
+              success: function (data) {
+                //alert(data);
+                $('.voters').html(data);
+              },
+              error: function (xhr, status, error) {
+                // alert(error);
+              }
+            });
+            socket.onclose = function () {
+              console.log('Network Disconneted');
+              $('#serverStatus').html('Server Disconneted');
+            };
+          </script>
 </body>
 
 </html>
