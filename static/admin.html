@@ -43,9 +43,7 @@
                   <li class="nav-item">
                     <a class="nav-link" href="register.html">REGISTER</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)" id="train-modal">TRAIN MODAL</a>
-                  </li>
+                 
                   <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)">LOGOUT</a>
                   </li>
@@ -100,10 +98,7 @@
               console.log(res);
               $("#deleted").html(res)
             }
-            $('#train-modal').click(function (e) {
-              socket.send("m");
-              $("#training").html("Training....")
-            });
+            
             $('#delete-data').click(function (e) {
               var i = 0;
               for (i = 1; i <= 127; i++) {
