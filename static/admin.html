@@ -96,29 +96,40 @@
               var train_res = data.train;
               console.log(train_res);
               console.log(res);
-              $("#deleted").html(res)
+              $("#deleted").html(res);
             }
             
             $('#delete-data').click(function (e) {
               var i = 0;
+              var f_deleted=false;
               for (i = 1; i <= 127; i++) {
                 setTimeout(function () {
                   socket.send("d");
                 }, 2000);
+                if(i==127){
+                  f_deleted=true;
+                }
               }
+              if(f_deleted==true){
               $.ajax({
                 type: "POST",
                 url: "http://192.168.43.161/face_fingerprint_voting/static/actionpages/delete.php",
                 data: {},
                 cache: false,
                 success: function (data) {
-                  alert(data);
-                  $("#deleted").html(data)
+                 //alert(data);
+                  if(data=="Deleted"){
+                    $("#training").html("Data Deleted Succesful")
+                  }else{
+                    $("#training").html("An error occured")
+                  }
+                  
                 },
                 error: function (xhr, status, error) {
 
                 }
               });
+            }
             });
 
             $('#voters-table tr').each(function () {
