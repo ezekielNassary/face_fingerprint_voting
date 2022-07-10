@@ -133,7 +133,7 @@
           <div class="card">
             <div class="card-body">
               <button type="button"  class="btn btn-warning w-100" id="submit-btn">Register</button>
-            <p id="reg-status" class="p-3 bg-light text-danger text-center mt-3"></p>
+            <p id="reg-status" class="h2 p-3 bg-light text-danger text-center mt-3"></p>
             </div>
           </div>
 
@@ -273,6 +273,7 @@
     });
     $('#submit-btn').click(function (e) {
       e.preventDefault();
+      $('#reg-status').html('');
       var name = $("#name").val();
       var sname = $("#sname").val();
 
@@ -330,9 +331,9 @@
         success: function (data) {
           
           $('#reg-status').html(data);
-          
+          $('#register-form').trigger("reset");
           if (data == "success") {
-            $('#register-form').trigger("reset");
+           
           } else {
             $("#error").show();
             $('#error').html('Error Occured');
