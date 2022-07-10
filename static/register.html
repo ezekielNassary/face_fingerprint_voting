@@ -132,7 +132,8 @@
           </div>
           <div class="card">
             <div class="card-body">
-              <button type="button" class="btn btn-warning w-100 h2" id="submit-btn">Register</button>
+              <button type="button"  class="btn btn-warning w-100" id="submit-btn">Register</button>
+            <p id="reg-status" class="p-3 bg-light text-danger"></p>
             </div>
           </div>
 
@@ -327,7 +328,9 @@
         },
         cache: false,
         success: function (data) {
-          alert(data);
+          
+          $('#reg-status').html(data);
+          
           if (data == "success") {
             $('#register-form').trigger("reset");
           } else {
