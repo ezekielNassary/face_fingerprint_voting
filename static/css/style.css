@@ -32,8 +32,9 @@ body {
 #training{
   height: 100px;
   background: #07dab0;
-  color: #fff;
+  color: rgb(171, 5, 5);
   width: 100%;
   text-align: center;
   padding-top: 20px;
+  font-size: 25px;
 }
